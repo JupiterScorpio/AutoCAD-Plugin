@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{470975D3-B35F-4D42-A3E3-FC0338D775CE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NBCLayers</RootNamespace>
+    <AssemblyName>Preval</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>NBCicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="accoremgd, Version=24.1.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\Speckle.AutoCAD.API.2022.0.0.3\lib\net47\accoremgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcCui, Version=24.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Speckle.AutoCAD.API.2022.0.0.3\lib\net47\AcCui.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acdbmgd, Version=24.1.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\Speckle.AutoCAD.API.2022.0.0.3\lib\net47\acdbmgd.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acdbmgdbrep, Version=24.1.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\Speckle.AutoCAD.API.2022.0.0.3\lib\net47\acdbmgdbrep.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcDx, Version=20.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD-2015.Net.Base.1.0.0\lib\net45\AcDx.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="acmgd, Version=24.1.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\Speckle.AutoCAD.API.2022.0.0.3\lib\net47\acmgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcMr, Version=20.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD-2015.Net.Base.1.0.0\lib\net45\AcMr.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcTcMgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD-2015.Net.Base.1.0.0\lib\net45\AcTcMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcWindows, Version=20.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD-2015.Net.Base.1.0.0\lib\net45\AcWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdWindows, Version=3.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Speckle.AutoCAD.API.2022.0.0.3\lib\net47\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Autodesk.Forge, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autodesk.Forge.1.9.0\lib\net452\Autodesk.Forge.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="RestSharp, Version=106.11.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.11.7\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ANBnPropWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ANBnPropWork.Designer.cs">
+      <DependentUpon>ANBnPropWork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ANPassage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ANPassage.Designer.cs">
+      <DependentUpon>ANPassage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ANRamp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ANRamp.Designer.cs">
+      <DependentUpon>ANRamp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Createdlayerlists.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Createdlayerlists.Designer.cs">
+      <DependentUpon>Createdlayerlists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FloorNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FloorNameForm.Designer.cs">
+      <DependentUpon>FloorNameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarginForm.Designer.cs">
+      <DependentUpon>MarginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjInform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjInform.Designer.cs">
+      <DependentUpon>ProjInform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DoorSizeFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoorSizeFrm.Designer.cs">
+      <DependentUpon>DoorSizeFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerRenameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayerRenameForm.Designer.cs">
+      <DependentUpon>LayerRenameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayersShowHideForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayersShowHideForm.Designer.cs">
+      <DependentUpon>LayersShowHideForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NBCrelate.cs" />
+    <Compile Include="NBCruleCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NBCruleCheck.Designer.cs">
+      <DependentUpon>NBCruleCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlineCloseFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlineCloseFrm.Designer.cs">
+      <DependentUpon>PlineCloseFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plugin.cs" />
+    <Compile Include="PluginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PluginForm.Designer.cs">
+      <DependentUpon>PluginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projtittle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Projtittle.Designer.cs">
+      <DependentUpon>Projtittle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoadAName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoadAName.Designer.cs">
+      <DependentUpon>RoadAName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoomNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoomNameForm.Designer.cs">
+      <DependentUpon>RoomNameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RuleCheckForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RuleCheckForm.Designer.cs">
+      <DependentUpon>RuleCheckForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SecLineFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SecLineFrm.Designer.cs">
+      <DependentUpon>SecLineFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="windowrule.cs" />
+    <Compile Include="WindowSize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowSize.Designer.cs">
+      <DependentUpon>WindowSize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WindowSizeFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowSizeFrm.Designer.cs">
+      <DependentUpon>WindowSizeFrm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ANBnPropWork.resx">
+      <DependentUpon>ANBnPropWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ANPassage.resx">
+      <DependentUpon>ANPassage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ANRamp.resx">
+      <DependentUpon>ANRamp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Createdlayerlists.resx">
+      <DependentUpon>Createdlayerlists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FloorNameForm.resx">
+      <DependentUpon>FloorNameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarginForm.resx">
+      <DependentUpon>MarginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjInform.resx">
+      <DependentUpon>ProjInform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoorSizeFrm.resx">
+      <DependentUpon>DoorSizeFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerRenameForm.resx">
+      <DependentUpon>LayerRenameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayersShowHideForm.resx">
+      <DependentUpon>LayersShowHideForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NBCruleCheck.resx">
+      <DependentUpon>NBCruleCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlineCloseFrm.resx">
+      <DependentUpon>PlineCloseFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PluginForm.resx">
+      <DependentUpon>PluginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projtittle.resx">
+      <DependentUpon>Projtittle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoadAName.resx">
+      <DependentUpon>RoadAName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoomNameForm.resx">
+      <DependentUpon>RoomNameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RuleCheckForm.resx">
+      <DependentUpon>RuleCheckForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SecLineFrm.resx">
+      <DependentUpon>SecLineFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowSize.resx">
+      <DependentUpon>WindowSize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowSizeFrm.resx">
+      <DependentUpon>WindowSizeFrm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NBCicon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy D:\All_tasks\CAD\NBC_Plugin\autocad-addin-NBC\ProsoftAcPlugin\bin\x64\Release\Preval.dll D:\All_tasks\CAD\NBC_Plugin\AutoCadPlugin\AutoCadPlugin\bin\Release\Preval.bundle\Contents\Preval.dll
+</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

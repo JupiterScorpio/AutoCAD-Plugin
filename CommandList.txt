@@ -1,0 +1,8 @@
+RoomRename
+InstDoor
+InstWindow
+InstSecLine
+InstRefCir
+InstNDir
+InstTree
+InstBuTem
