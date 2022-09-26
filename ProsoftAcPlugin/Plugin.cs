@@ -157,7 +157,7 @@ namespace ProsoftAcPlugin
         public static List<MText> aAccuseTxt = new List<MText>();
 
         public static float nCurwidth, nCurheight,nCurDepth;        //door, window width and height
-        Polyline curPline;
+        //Polyline curPline;
         public static double LeftOwnerArea=0, SurroundtoAuthorityArea=0;
         public static string ANexistRdwidth, ANpropRdwidth;      //only use assign name-road
         public static bool bANRd=false;
@@ -224,7 +224,6 @@ namespace ProsoftAcPlugin
         public void Initialize()
         {
             Document doc = Application.DocumentManager.MdiActiveDocument;
-            readExcel();
             BuildMenuCUI();
             docMgr.DocumentCreated += DocumentCreated;
             bLpmhs = true;
@@ -244,7 +243,7 @@ namespace ProsoftAcPlugin
               "LAYERCLOSE" + "\n",
               false, false, false);
         }
-        private void readExcel()
+        private static void readExcel()
         {
             Excel.Application xlApp;
             Excel.Workbook xlWorkBook;
@@ -253,67 +252,75 @@ namespace ProsoftAcPlugin
             string str;
             int rCnt = 0;
             int cCnt = 0;
-            string str1 = System.IO.Directory.GetCurrentDirectory();
-            string strpath = System.IO.Directory.GetCurrentDirectory() + "\\" + "layer details.xlsx";
-            xlApp = new Excel.Application();
-            xlWorkBook = xlApp.Workbooks.Open(System.IO.Directory.GetCurrentDirectory() + "\\" + "layer details.xlsx", 0, true, 5, "", "", true,
-                Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-            range = xlWorkSheet.UsedRange;
-            for (rCnt = 2; rCnt <= range.Rows.Count; rCnt++)
+            string strpath = Environment.ExpandEnvironmentVariables("%ProgramFiles%\\Autodesk\\ApplicationPlugins\\Preval.bundle");
+            strpath = strpath.Replace(" (x86)", ""); 
+            strpath = strpath + "\\Contents\\" + "layer details.xlsx";
+            if (File.Exists(strpath))
             {
-                for (cCnt = 2; cCnt <= range.Columns.Count; cCnt++)
+                xlApp = new Excel.Application();
+                xlWorkBook = xlApp.Workbooks.Open(strpath, 0, true, 5, "", "", true,
+                    Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                range = xlWorkSheet.UsedRange;
+                for (rCnt = 2; rCnt <= range.Rows.Count; rCnt++)
                 {
-                    str = Convert.ToString((range.Cells[rCnt, cCnt] as Excel.Range).Value2);
-                    //str = str.Trim();
-                    switch (cCnt)
+                    for (cCnt = 2; cCnt <= range.Columns.Count; cCnt++)
                     {
-                        case 2:
-                            Plugin.lyrName.Add(str);
-                            break;
-                        case 3:
-                            Plugin.lyrOn.Add(str);
-                            break;
-                        case 4:
-                            Plugin.lyrFreeze.Add(str);
-                            break;
-                        case 5:
-                            Plugin.lyrLock.Add(str);
-                            break;
-                        case 6:
-                            Plugin.lyrColor.Add(str);
-                            break;
-                        case 7:
-                            Plugin.lyrLinetype.Add(str);
-                            break;
-                        case 8:
-                            Plugin.lyrLineweight.Add(str);
-                            break;
-                        case 9:
-                            Plugin.lyrTrans.Add(str);
-                            break;
-                        case 10:
-                            Plugin.lyrPlotstyle.Add(str);
-                            break;
-                        case 11:
-                            Plugin.lyrPlot.Add(str);
-                            break;
-                        case 12:
-                            Plugin.lyrNewVp.Add(str);
-                            break;
-                        case 13:
-                            Plugin.lyrUse.Add(str);
-                            break;
+                        str = Convert.ToString((range.Cells[rCnt, cCnt] as Excel.Range).Value2);
+                        switch (cCnt)
+                        {
+                            case 2:
+                                Plugin.lyrName.Add(str);
+                                break;
+                            case 3:
+                                Plugin.lyrOn.Add(str);
+                                break;
+                            case 4:
+                                Plugin.lyrFreeze.Add(str);
+                                break;
+                            case 5:
+                                Plugin.lyrLock.Add(str);
+                                break;
+                            case 6:
+                                Plugin.lyrColor.Add(str);
+                                break;
+                            case 7:
+                                Plugin.lyrLinetype.Add(str);
+                                break;
+                            case 8:
+                                Plugin.lyrLineweight.Add(str);
+                                break;
+                            case 9:
+                                Plugin.lyrTrans.Add(str);
+                                break;
+                            case 10:
+                                Plugin.lyrPlotstyle.Add(str);
+                                break;
+                            case 11:
+                                Plugin.lyrPlot.Add(str);
+                                break;
+                            case 12:
+                                Plugin.lyrNewVp.Add(str);
+                                break;
+                            case 13:
+                                Plugin.lyrUse.Add(str);
+                                break;
+                        }
                     }
                 }
+                xlWorkBook.Close(true, null, null);
+                xlApp.Quit();
+                releaseObject(xlWorkSheet);
+                releaseObject(xlWorkBook);
+                releaseObject(xlApp);
+            }    
+            else
+            {
+                MessageBox.Show(strpath +" LayerList File does not Exist");
             }
-            xlWorkBook.Close(true, null, null);
-            xlApp.Quit();
-            releaseObject(xlWorkSheet);
-            releaseObject(xlWorkBook);
-            releaseObject(xlApp);
+            
         }
-        private void releaseObject(object obj)
+        private static void releaseObject(object obj)
         {
             try
             {
@@ -418,94 +425,39 @@ namespace ProsoftAcPlugin
               false, false, false
             );
         }
-        [CommandMethod("crtlyrs")]
-        public static void makingLayers()
+        public static void AddDoc()
         {
-            var documentManager = Application.DocumentManager;
-            var currentDocument = documentManager.MdiActiveDocument;
-            var database = currentDocument.Database;
-            ObjectId layerId = ObjectId.Null;
-            using (DocumentLock docLock = currentDocument.LockDocument())
+            string strTemplatePath = "acad.dwt";
+            DocumentCollection acDocMgr = Application.DocumentManager;
+            Document acDoc = acDocMgr.Add(strTemplatePath);
+            acDocMgr.MdiActiveDocument = acDoc;
+            SignDraw(acDoc);
+
+        }
+        public static void SignDraw(Document curdoc)
+        {
+            var database = curdoc.Database;
+            var ed = curdoc.Editor;
+            using (DocumentLock docLock = curdoc.LockDocument())
             {
                 using (Transaction acTrans = database.TransactionManager.StartTransaction())
                 {
-                    // Open the Layer table for read
-                    LayerTable acLyrTbl;
-                    acLyrTbl = acTrans.GetObject(database.LayerTableId,
-                                                 OpenMode.ForRead) as LayerTable;
-
-                    for (int i = 0; i < Plugin.lyrName.Count; i++)
-                    {
-                        if (acLyrTbl.Has(Plugin.lyrName[i]) == false)
-                        {
-                            LayerTableRecord acLyrTblRec = new LayerTableRecord();
-                            acLyrTblRec.Name = Plugin.lyrName[i];
-                            acLyrTblRec.IsOff = getbool(Plugin.lyrOn[i]);
-                            acLyrTblRec.IsFrozen = getbool(Plugin.lyrFreeze[i]);
-                            acLyrTblRec.IsLocked = getbool(Plugin.lyrLock[i]);
-                            acLyrTblRec.Color = Getcolor(Plugin.lyrColor[i]);
-
-                            LinetypeTable acLinTbl;
-                            acLinTbl = acTrans.GetObject(database.LinetypeTableId,
-                                                               OpenMode.ForRead) as LinetypeTable;
-                            if (acLinTbl.Has(Plugin.lyrLinetype[i]) == true)
-                            {
-                                acLyrTblRec.LinetypeObjectId = acLinTbl[Plugin.lyrLinetype[i]];
-                            }
-                            acLyrTblRec.LineWeight = GetLwgt(Plugin.lyrLineweight[i]);
-
-                            using (PlaceHolder hldr = new PlaceHolder())
-                            {
-                                DictionaryWithDefaultDictionary d =
-                                  (DictionaryWithDefaultDictionary)acTrans.GetObject
-                                      (database.PlotStyleNameDictionaryId, OpenMode.ForWrite);
-                                d.SetAt(Plugin.lyrPlotstyle[i], hldr);
-                            }
-                            acLyrTblRec.IsPlottable = getbool(Plugin.lyrPlot[i]);
-                            acLyrTblRec.ViewportVisibilityDefault = getbool(Plugin.lyrNewVp[i]);
-                            // Upgrade the Layer table for write
-                            acLyrTbl.UpgradeOpen();
-
-                            // Append the new layer to the Layer table and the transaction
-                            acLyrTbl.Add(acLyrTblRec);
-                            acTrans.AddNewlyCreatedDBObject(acLyrTblRec, true);
-                        }
-                    }
+                    BlockTable acBlkTbl;
+                    acBlkTbl = acTrans.GetObject(database.BlockTableId,
+                                                           OpenMode.ForRead, false, true) as BlockTable;
+                    BlockTableRecord acBlkTblRec = (BlockTableRecord)acTrans.GetObject(acBlkTbl[BlockTableRecord.ModelSpace],
+                                                              OpenMode.ForWrite) as BlockTableRecord;
+                    MText acMText = new MText();
+                    acMText.SetDatabaseDefaults();
+                    acMText.Location = new Point3d(2, 2, 0);
+                    acMText.Width = 4;
+                    acMText.Contents = "Product Sign";
+                    acBlkTblRec.AppendEntity(acMText);
+                    acTrans.AddNewlyCreatedDBObject(acMText, true);
                     acTrans.Commit();
                 }
-                for (int i = 0; i < Plugin.lyrName.Count; i++)
-                {
-                    SetLayerTransparency(Plugin.lyrName[i], (byte)Convert.ToInt32(Plugin.lyrTrans[i]));
-                }
+                ed.UpdateScreen();
             }
-            SetLayerCurrent("0");
-        }
-
-        [CommandMethod("lyrsh")]
-        public void LayersShowHide()
-        {
-            if (!Plugin.blyrsh)
-            {
-                Plugin.blyrsh = true;
-                var frm = new LayersShowHideForm();
-                frm.Show();
-            }
-        }
-        [CommandMethod("rnlyrs")]
-        public void RenameNotincludedlayers()
-        {
-            Plugin.b_renamelyr = false;
-            Document doc = Application.DocumentManager.MdiActiveDocument;
-            Database db = doc.Database;
-            Editor ed = doc.Editor;
-            List<string> tmplst = LayersToList(db);
-            var list1 = tmplst.Except(Plugin.lyrName);
-            foreach (string str in list1)
-            {
-                Plugin.differentlyrs.Add(str);
-            }
-            var frm = new LayerRenameForm();
-            frm.Show();
         }
         public void ChangeLayerOfEntitiess()
         {
@@ -594,103 +546,6 @@ namespace ProsoftAcPlugin
                 default: return $"Custom View";
             }
         }
-        [CommandMethod("calcarea")]
-        public void CalculateArea()
-        {
-            SelectObjectsCalcArea();
-        }
-
-        [CommandMethod("chkcls")]
-        public void CheckAllClosed()
-        {
-            Document acDoc = Application.DocumentManager.MdiActiveDocument;
-            Database acCurDb = acDoc.Database;
-            Editor ed = acDoc.Editor;
-            foreach (string lyrnm in Plugin.lyrName)
-            {
-                GetPolylineEntitiesOnLayer(acCurDb, lyrnm);
-            }
-            //if(Plugin.blnclosed)
-            var frm = new PlineCloseFrm();
-            frm.Show();
-            frm.Show_LineCloseResult();
-        }
-
-        [CommandMethod("viewchk")]
-        public void ViewCheck()
-        {
-            Document doc = Application.DocumentManager.MdiActiveDocument;
-            Database db = doc.Database;
-            Editor ed = doc.Editor;
-            // Ask the user for the layer name, allowing
-            using (var view = ed.GetCurrentView())
-            {
-                ed.WriteMessage($"\nCurrent View: {GetViewName(view.ViewDirection)}");
-            }
-        }
-        [CommandMethod("nbcrule")]
-        public void NBCRULECheck()
-        {
-            //var frm = new NBCruleCheck();
-            //frm.Show();
-            var documentManager = Application.DocumentManager;
-            var currentDocument = documentManager.CurrentDocument;
-            var database = currentDocument.Database;
-            Plugin.allLayers = Commands.LayersToList(database);
-            NBCrelate.Rulecheck();
-            var frm = new RuleCheckForm();
-            frm.Show();
-        }
-        [CommandMethod("openpro")]
-        public void OpenProj()
-        {
-            bNewproj = false;
-            string sourceFileName = "";
-            OpenFileDialog openFileDialog1 = new OpenFileDialog
-            {
-                InitialDirectory = @"D:\",
-                Title = "Browse Drawing Files",
-                CheckFileExists = true,
-                CheckPathExists = true,
-                DefaultExt = "dwg",
-                Filter = "Drawing files (*.dwg)|*.dwg",
-                FilterIndex = 2,
-                RestoreDirectory = true,
-                ReadOnlyChecked = true,
-                ShowReadOnly = true
-            };
-
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                sourceFileName = openFileDialog1.FileName;
-            }
-            DocumentCollection acDocMgr = Application.DocumentManager;
-
-            if (File.Exists(sourceFileName))
-            {
-                Document curdoc = acDocMgr.Open(sourceFileName, false);
-                acDocMgr.MdiActiveDocument = curdoc;
-                curdoc.SendStringToExecute("Application" + "\n", false, false, false);
-                bLpmhs = true;
-                curdoc.SendStringToExecute(
-                  "LAYERCLOSE" + "\n",
-                  false, false, false);
-                //SignDraw(curdoc);
-            }
-            else
-            {
-                acDocMgr.MdiActiveDocument.Editor.WriteMessage("File " + sourceFileName +
-                                                                     " does not exist.");
-            }
-        }
-
-        [CommandMethod("mmg")]
-        public void MarkMargin()
-        {
-            var frm = new NBCLayers.MarginForm();
-            frm.Show();
-        }
         public static void Frontmargin()
         {
             var documentManager = Application.DocumentManager;
@@ -708,16 +563,16 @@ namespace ProsoftAcPlugin
                 {
                     //if ((string)Application.GetSystemVariable("clayer") == "_MarginLine")
                     //{
-                        if (result.Status == PromptStatus.OK)
-                        {
-                            Line line = tr.GetObject(result.ObjectId, OpenMode.ForWrite, false) as Line;
-                            line.Color = Getcolor("red");
-                        }
+                    if (result.Status == PromptStatus.OK)
+                    {
+                        Line line = tr.GetObject(result.ObjectId, OpenMode.ForWrite, false) as Line;
+                        line.Color = Getcolor("red");
+                    }
                     //}
                     tr.Commit();
                 }
             }
-            
+
         }
         public static void Rearmargin()
         {
@@ -736,11 +591,11 @@ namespace ProsoftAcPlugin
                 {
                     //if ((string)Application.GetSystemVariable("clayer") == "_MarginLine")
                     //{
-                        if (result.Status == PromptStatus.OK)
-                        {
-                            Line line = tr.GetObject(result.ObjectId, OpenMode.ForWrite, false) as Line;
-                            line.Color = Getcolor("magenta");
-                        }
+                    if (result.Status == PromptStatus.OK)
+                    {
+                        Line line = tr.GetObject(result.ObjectId, OpenMode.ForWrite, false) as Line;
+                        line.Color = Getcolor("magenta");
+                    }
                     //}
                     tr.Commit();
                 }
@@ -763,11 +618,11 @@ namespace ProsoftAcPlugin
                 {
                     //if ((string)Application.GetSystemVariable("clayer") == "_MarginLine")
                     //{
-                        if (result.Status == PromptStatus.OK)
-                        {
-                            Line line = tr.GetObject(result.ObjectId, OpenMode.ForWrite, false) as Line;
-                            line.Color = Getcolor("blue");
-                        }
+                    if (result.Status == PromptStatus.OK)
+                    {
+                        Line line = tr.GetObject(result.ObjectId, OpenMode.ForWrite, false) as Line;
+                        line.Color = Getcolor("blue");
+                    }
                     //}
                     tr.Commit();
                 }
@@ -790,11 +645,11 @@ namespace ProsoftAcPlugin
                 {
                     //if ((string)Application.GetSystemVariable("clayer") == "_MarginLine")
                     //{
-                        if (result.Status == PromptStatus.OK)
-                        {
-                            Line line = tr.GetObject(result.ObjectId, OpenMode.ForWrite, false) as Line;
-                            line.Color = Getcolor("green");
-                        }
+                    if (result.Status == PromptStatus.OK)
+                    {
+                        Line line = tr.GetObject(result.ObjectId, OpenMode.ForWrite, false) as Line;
+                        line.Color = Getcolor("green");
+                    }
                     //}
                     tr.Commit();
                 }
@@ -805,7 +660,7 @@ namespace ProsoftAcPlugin
             var doc = Application.DocumentManager.MdiActiveDocument;
             var db = doc.Database;
             var ed = doc.Editor;
-            Point2d pt1, pt2;
+            //Point2d pt1, pt2;
             using (Transaction acCurrTrans = db.TransactionManager.StartTransaction())
             {
                 SetLayerCurrent("_MarginLine");
@@ -823,7 +678,7 @@ namespace ProsoftAcPlugin
                 pPtOpts.BasePoint = ptStart;
                 pPtRes = acDoc.Editor.GetPoint(pPtOpts);
                 Point3d ptEnd = pPtRes.Value;
-                Plugin.fmargindepth =Math.Abs( ptStart.Y - ptEnd.Y);
+                Plugin.fmargindepth = Math.Abs(ptStart.Y - ptEnd.Y);
                 acCurrTrans.Commit();
             }
             return Plugin.fmargindepth;
@@ -833,7 +688,7 @@ namespace ProsoftAcPlugin
             var doc = Application.DocumentManager.MdiActiveDocument;
             var db = doc.Database;
             var ed = doc.Editor;
-            Point2d pt1, pt2;
+            //Point2d pt1, pt2;
             using (Transaction acCurrTrans = db.TransactionManager.StartTransaction())
             {
                 SetLayerCurrent("_MarginLine");
@@ -842,7 +697,7 @@ namespace ProsoftAcPlugin
                 PromptPointResult pPtRes;
                 PromptPointOptions pPtOpts = new PromptPointOptions("");
                 // Prompt for the start point
-               
+
                 pPtOpts.Message = "\nEnter the start point of the line: ";
                 pPtRes = acDoc.Editor.GetPoint(pPtOpts);
                 Point3d ptStart = pPtRes.Value;
@@ -850,10 +705,10 @@ namespace ProsoftAcPlugin
                 pPtOpts.Message = "\nEnter the end point of the line: ";
                 pPtOpts.UseBasePoint = true;
                 pPtOpts.BasePoint = ptStart;
-                
+
                 pPtRes = acDoc.Editor.GetPoint(pPtOpts);
                 Point3d ptEnd = pPtRes.Value;
-                Plugin.fmarginwidth = Math.Abs(ptEnd.X-ptStart.X) ;
+                Plugin.fmarginwidth = Math.Abs(ptEnd.X - ptStart.X);
                 acCurrTrans.Commit();
             }
             return Plugin.fmarginwidth;
@@ -1125,94 +980,6 @@ namespace ProsoftAcPlugin
             }
             return resultwei;
         }
-
-        [CommandMethod("nbcsave")]
-        public void NbcSave()
-        {
-            var documentManager = Application.DocumentManager;
-            var currentDocument = documentManager.MdiActiveDocument;
-            var database = currentDocument.Database;
-            var ed = currentDocument.Editor;
-
-            SaveFileDialog svdlg = new SaveFileDialog();
-            svdlg.Filter = "Drawing files (*.dwg)|*.dwg|All files (*.*)|*.*";
-            svdlg.FilterIndex = 2;
-            svdlg.RestoreDirectory = true;
-            string str = "";
-            if (svdlg.ShowDialog() == DialogResult.OK)
-            {
-                str = svdlg.FileName;
-            }
-            if (str != "")
-                database.SaveAs(str, DwgVersion.Current);
-        }
-        [CommandMethod("hsl")]
-        public void hideshowLPM()
-        {
-            Document doc = Application.DocumentManager.MdiActiveDocument;
-            object oldCmdEcho = Application.GetSystemVariable("CMDECHO");
-            if (bLpmhs)
-            {
-                doc.SendStringToExecute(
-              "LAYER" + "\n",
-              false, false, false);
-                bLpmhs = !bLpmhs;
-            }
-            else
-            {
-                doc.SendStringToExecute(
-              "LAYERCLOSE" + "\n",
-              false, false, false);
-                bLpmhs = !bLpmhs;
-            }
-        }
-        [CommandMethod("newpro")]
-        public void NewProj()
-        {
-            var authrFrm = new projectinForm();
-            authrFrm.Show();
-            //makingLayers();
-        }
-        public static void AddDoc()
-        {
-            string strTemplatePath = "acad.dwt";
-            DocumentCollection acDocMgr = Application.DocumentManager;
-            Document acDoc = acDocMgr.Add(strTemplatePath);
-            acDocMgr.MdiActiveDocument = acDoc;
-            SignDraw(acDoc);
-
-        }
-        public static void SignDraw(Document curdoc)
-        {
-            var database = curdoc.Database;
-            var ed = curdoc.Editor;
-            using (DocumentLock docLock = curdoc.LockDocument())
-            {
-                using (Transaction acTrans = database.TransactionManager.StartTransaction())
-                {
-                    BlockTable acBlkTbl;
-                    acBlkTbl = acTrans.GetObject(database.BlockTableId,
-                                                           OpenMode.ForRead, false, true) as BlockTable;
-                    BlockTableRecord acBlkTblRec = (BlockTableRecord)acTrans.GetObject(acBlkTbl[BlockTableRecord.ModelSpace],
-                                                              OpenMode.ForWrite) as BlockTableRecord;
-                    MText acMText = new MText();
-                    acMText.SetDatabaseDefaults();
-                    acMText.Location = new Point3d(2, 2, 0);
-                    acMText.Width = 4;
-                    acMText.Contents = "Product Sign";
-                    acBlkTblRec.AppendEntity(acMText);
-                    acTrans.AddNewlyCreatedDBObject(acMText, true);
-                    acTrans.Commit();
-                }
-                ed.UpdateScreen();
-            }
-        }
-        [CommandMethod("Application")]
-        public void MonitorCommandEvents_Method()
-        {
-            SubscribeToDoc(Application.DocumentManager.MdiActiveDocument);
-        }
-
         public static void SubscribeToDoc(AcadDocument doc)
         {
             //doc.CommandEnded += new CommandEventHandler(doc_CommandEnded);
@@ -1383,6 +1150,582 @@ namespace ProsoftAcPlugin
         {
             return (pt2.Y - pt1.Y);
         }
+        public static SelectionSet PromptForPolyLineSSet(String prompt)
+        {
+            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
+
+            TypedValue[] typedValueArray = new TypedValue[1];
+            typedValueArray.SetValue(new TypedValue((int)DxfCode.Start, "POLYLINE,LWPOLYLINE"), 0);
+
+            var selectionFilter = new SelectionFilter(typedValueArray);
+
+            var promptSelectionResult = ed.GetSelection(selectionFilter);
+
+            var selectionSet = promptSelectionResult.Value;
+
+            if (promptSelectionResult.Status == PromptStatus.OK)
+            {
+                Application.ShowAlertDialog($"Number of objects selected: " +
+                                        $"{selectionSet.Count.ToString()}");
+            }
+            else
+            {
+                Application.ShowAlertDialog("Number of objects selected: 0");
+
+            }
+            return selectionSet;
+        }
+        public static void AddLightweightPolyline(Polyline pl)
+        {
+
+            // Get the current document and database
+            var doc = Application.DocumentManager.MdiActiveDocument;
+            var db = doc.Database;
+            var ed = doc.Editor;
+            // Start a transaction
+            using (Transaction tr = db.TransactionManager.StartTransaction())
+            {
+                Point3d leftpt = pl.GetPoint3dAt(0);
+                Point3d upperpt = pl.GetPoint3dAt(0);
+                Point3d rightpt = pl.GetPoint3dAt(0);
+                Point3d bottompt = pl.GetPoint3dAt(0);
+
+                int cnt1 = pl.NumberOfVertices;
+                for (int i = 0; i < cnt1; i++)
+                {
+                    Point3d curpt = pl.GetPoint3dAt(i);
+                    if (curpt.X < leftpt.X)
+                        leftpt = curpt;
+                    if (curpt.Y < upperpt.Y)
+                        upperpt = curpt;
+                    if (curpt.X > rightpt.X)
+                        rightpt = curpt;
+                    if (curpt.Y > bottompt.Y)
+                        bottompt = curpt;
+                }
+                double basewidth = rightpt.X - leftpt.X;
+                double baseheight = bottompt.Y - upperpt.Y;
+                // Open the Block table for read
+                BlockTable acBlkTbl;
+                acBlkTbl = tr.GetObject(db.BlockTableId,
+                                                   OpenMode.ForRead) as BlockTable;
+                // Open the Block table record Model space for write
+                BlockTableRecord acBlkTblRec;
+                acBlkTblRec = tr.GetObject(acBlkTbl[BlockTableRecord.ModelSpace],
+                                                      OpenMode.ForWrite) as BlockTableRecord;
+                // Create a polyline with two segments (3 points)
+                Polyline acPoly = new Polyline();
+                acPoly.SetDatabaseDefaults();
+                acPoly.AddVertexAt(0, new Point2d(leftpt.X + basewidth / 10, upperpt.Y), 0, 0, 0);
+                acPoly.AddVertexAt(1, new Point2d(leftpt.X + basewidth / 10 + Plugin.nCurwidth, upperpt.Y), 0, 0, 0);
+                acPoly.AddVertexAt(2, new Point2d(leftpt.X + basewidth / 10 + Plugin.nCurwidth, upperpt.Y - Plugin.nCurDepth), 0, 0, 0);
+                acPoly.AddVertexAt(3, new Point2d(leftpt.X + basewidth / 10, upperpt.Y - Plugin.nCurDepth), 0, 0, 0);
+                acPoly.Closed = true;
+                // Add the new object to the block table record and the transaction
+                acBlkTblRec.AppendEntity(acPoly);
+                tr.AddNewlyCreatedDBObject(acPoly, true);
+                // Save the new object to the database
+                TextStyleTable ts = (TextStyleTable)tr.GetObject(db.TextStyleTableId, OpenMode.ForRead);
+                ObjectId mtStyleid = db.Textstyle;
+
+                if (ts.Has("Romans"))
+                {
+                    mtStyleid = ts["Romans"];
+                }
+
+                MText txt = new MText();
+                string curlayer = (string)Application.GetSystemVariable("clayer");
+                switch (curlayer)
+                {
+                    case "_Door":
+                        txt.Contents = Commands.InsdoorName; //<==change to your default string value
+                        break;
+                    case "_Window":
+                        txt.Contents = Commands.InswindName;
+                        break;
+
+                }
+
+                txt.SetDatabaseDefaults(db);
+                txt.Height = Plugin.nCurheight; //<==change to your default height
+                //txt.Rotation = ang;
+                txt.Width = Plugin.nCurwidth;
+                txt.TextStyleId = mtStyleid;
+                txt.TextHeight = Plugin.nCurDepth;
+                txt.Attachment = AttachmentPoint.MiddleCenter;
+                txt.Location = new Point3d(leftpt.X + basewidth / 10 + Plugin.nCurwidth / 2, upperpt.Y, 0);
+                acBlkTblRec.AppendEntity(txt);
+                tr.AddNewlyCreatedDBObject(txt, true);
+                tr.Commit();
+            }
+        }
+        public static Point3d Getleft(Polyline pl)
+        {
+            var doc = Application.DocumentManager.MdiActiveDocument;
+            var db = doc.Database;
+            var ed = doc.Editor;
+            Point3d leftpt = pl.GetPoint3dAt(0);
+            using (Transaction tr = db.TransactionManager.StartTransaction())
+            {
+                int cnt1 = pl.NumberOfVertices;
+                for (int i = 0; i < cnt1; i++)
+                {
+                    Point3d curpt = pl.GetPoint3dAt(i);
+                    if (curpt.X < leftpt.X)
+                        leftpt = curpt;
+                }
+                tr.Commit();
+            }
+            return leftpt;
+        }
+        public static Point3d Getright(Polyline pl)
+        {
+            var doc = Application.DocumentManager.MdiActiveDocument;
+            var db = doc.Database;
+            var ed = doc.Editor;
+            Point3d rightpt = pl.GetPoint3dAt(0);
+            using (Transaction tr = db.TransactionManager.StartTransaction())
+            {
+                int cnt1 = pl.NumberOfVertices;
+                for (int i = 0; i < cnt1; i++)
+                {
+                    Point3d curpt = pl.GetPoint3dAt(i);
+                    if (curpt.X > rightpt.X)
+                        rightpt = curpt;
+                }
+                tr.Commit();
+            }
+            return rightpt;
+        }
+        public static Point3d Gettop(Polyline pl)
+        {
+            var doc = Application.DocumentManager.MdiActiveDocument;
+            var db = doc.Database;
+            var ed = doc.Editor;
+            Point3d toppt = pl.GetPoint3dAt(0);
+            using (Transaction tr = db.TransactionManager.StartTransaction())
+            {
+                int cnt1 = pl.NumberOfVertices;
+                for (int i = 0; i < cnt1; i++)
+                {
+                    Point3d curpt = pl.GetPoint3dAt(i);
+                    if (curpt.Y < toppt.Y)
+                        toppt = curpt;
+                }
+                tr.Commit();
+            }
+            return toppt;
+        }
+        public static Point3d Getbottom(Polyline pl)
+        {
+            var doc = Application.DocumentManager.MdiActiveDocument;
+            var db = doc.Database;
+            var ed = doc.Editor;
+            Point3d bottompt = pl.GetPoint3dAt(0);
+            using (Transaction tr = db.TransactionManager.StartTransaction())
+            {
+                int cnt1 = pl.NumberOfVertices;
+                for (int i = 0; i < cnt1; i++)
+                {
+                    Point3d curpt = pl.GetPoint3dAt(i);
+                    if (curpt.Y > bottompt.Y)
+                        bottompt = curpt;
+                }
+                tr.Commit();
+            }
+            return bottompt;
+        }
+        public static bool IsOverlapped(Polyline pl)
+        {
+            var doc = Application.DocumentManager.MdiActiveDocument;
+            var db = doc.Database;
+            var ed = doc.Editor;
+            bool boverlap = false;
+            using (var tr = db.TransactionManager.StartOpenCloseTransaction())
+            {
+                var blockTable = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
+                foreach (ObjectId btrId in blockTable)
+                {
+                    var btr = (BlockTableRecord)tr.GetObject(btrId, OpenMode.ForRead);
+                    var PlineCls = RXObject.GetClass(typeof(Polyline));
+                    foreach (ObjectId id in btr)
+                    {
+                        if (id.ObjectClass == PlineCls)
+                        {
+                            var curve = (Curve)tr.GetObject(id, OpenMode.ForRead);
+                            var points = new Point3dCollection();
+                            pl.IntersectWith(curve, Intersect.OnBothOperands, points, IntPtr.Zero, IntPtr.Zero);
+                            if (points.Count > 0)
+                                boverlap = true;
+                        }
+                    }
+                }
+            }
+            return boverlap;
+        }
+        public static string GetMTextContent(MText txt)
+        {
+            string content = "";
+            content = txt.Contents;
+            return content;
+        }
+        public static double GetRoadWidth(string str)
+        {
+            double result = 0;
+            int pos = str.IndexOf("M") - 1;
+            string strtmp = str.Substring(0, pos);
+            result = Convert.ToDouble(strtmp);
+            return result;
+        }
+        private static bool IsincludedinList(string str, List<string> strlist)
+        {
+            bool bresult = false;
+            foreach (string strinst in strlist)
+            {
+                if (str == strinst)
+                {
+                    bresult = true;
+                    return bresult;
+                }
+            }
+            return bresult;
+        }
+        public static void CallImplement()
+        {
+            ImplementANBnP(Plugin.ANBNPpl1, Plugin.ANBNPpl2);
+        }
+        public static void ImplementANBnP(Polyline pln1, Polyline pln2)
+        {
+            var doc = Application.DocumentManager.MdiActiveDocument;
+            var db = doc.Database;
+            var ed = doc.Editor;
+            using (DocumentLock docLock = doc.LockDocument())
+            {
+                using (Transaction acCurrTrans = db.TransactionManager.StartTransaction())
+                {
+                    TextStyleTable ts = (TextStyleTable)acCurrTrans.GetObject(db.TextStyleTableId, OpenMode.ForRead);
+                    ObjectId mtStyleid = db.Textstyle;
+                    if (ts.Has("Romans"))
+                    {
+                        mtStyleid = ts["Romans"];
+                    }
+                    if (pln1 != null && pln2 != null)
+                    {
+                        Point3d leftpt = pln1.GetPoint3dAt(0);
+                        Point3d upperpt = pln1.GetPoint3dAt(0);
+                        Point3d rightpt = pln1.GetPoint3dAt(0);
+                        Point3d bottompt = pln1.GetPoint3dAt(0);
+
+                        int cnt1 = pln1.NumberOfVertices;
+                        for (int i = 0; i < cnt1; i++)
+                        {
+                            Point3d curpt = pln1.GetPoint3dAt(i);
+                            if (curpt.X < leftpt.X)
+                                leftpt = curpt;
+                            if (curpt.Y < upperpt.Y)
+                                upperpt = curpt;
+                            if (curpt.X > rightpt.X)
+                                rightpt = curpt;
+                            if (curpt.Y > bottompt.Y)
+                                bottompt = curpt;
+                        }
+                        BlockTableRecord btr = (BlockTableRecord)acCurrTrans.GetObject(db.CurrentSpaceId, OpenMode.ForWrite);
+                        DBText txt = new DBText();
+                        txt.TextString = Plugin.ANBNPwing + Plugin.ANBNPbuilding;
+                        txt.SetDatabaseDefaults(db);
+                        txt.Height = 0.5; //<==change to your default height
+                                          //txt.Height = HeightRectPolyLine(upperpt, bottompt) / 8.0; //<==change to your default height
+                                          //txt.Width = WidthRectPolyLine(leftpt, rightpt);
+                        txt.TextStyleId = mtStyleid;
+                        //txt.Height = txt.Height / 3.0;
+
+                        //txt.AlignmentPoint = TextHorizontalMode.TextCenter;
+                        txt.Layer = pln1.Layer;
+                        txt.Position = new Point3d(leftpt.X + WidthRectPolyLine(leftpt, rightpt) / 2, upperpt.Y + HeightRectPolyLine(upperpt, bottompt) / 2, 0);
+                        btr.AppendEntity(txt);
+                        acCurrTrans.AddNewlyCreatedDBObject(txt, true);
+
+                        int cnt2 = pln2.NumberOfVertices;
+                        leftpt = pln2.GetPoint3dAt(0);
+                        upperpt = pln2.GetPoint3dAt(0);
+                        rightpt = pln2.GetPoint3dAt(0);
+                        bottompt = pln2.GetPoint3dAt(0);
+                        for (int i = 0; i < cnt2; i++)
+                        {
+                            Point3d curpt = pln2.GetPoint3dAt(i);
+                            if (curpt.X < leftpt.X)
+                                leftpt = curpt;
+                            if (curpt.Y < upperpt.Y)
+                                upperpt = curpt;
+                            if (curpt.X > rightpt.X)
+                                rightpt = curpt;
+                            if (curpt.Y > bottompt.Y)
+                                bottompt = curpt;
+                        }
+
+                        BlockTableRecord btr1 = (BlockTableRecord)acCurrTrans.GetObject(db.CurrentSpaceId, OpenMode.ForWrite);
+                        DBText txt1 = new DBText();
+                        txt1.TextString = Plugin.ANBNPwing + Plugin.ANBNPbuilding;
+                        txt1.SetDatabaseDefaults(db);
+                        txt1.Height = 0.5; //<==change to your default height
+                                           //txt1.Height = HeightRectPolyLine(upperpt, bottompt) / 8.0; //<==change to your default height
+                        txt1.TextStyleId = mtStyleid;
+                        //txt1.Attachment = AttachmentPoint.TopCenter;
+                        txt1.Layer = pln2.Layer;
+                        txt1.Position = new Point3d(leftpt.X, upperpt.Y, 0);
+                        btr1.AppendEntity(txt1);
+                        acCurrTrans.AddNewlyCreatedDBObject(txt1, true);
+                    }
+                    acCurrTrans.Commit();
+                }
+            }
+        }
+        [CommandMethod("crtlyrs")]
+        public static void makingLayers()
+        {
+            var documentManager = Application.DocumentManager;
+            var currentDocument = documentManager.MdiActiveDocument;
+            var database = currentDocument.Database;
+            ObjectId layerId = ObjectId.Null;
+            readExcel();
+            using (DocumentLock docLock = currentDocument.LockDocument())
+            {
+                using (Transaction acTrans = database.TransactionManager.StartTransaction())
+                {
+                    // Open the Layer table for read
+                    LayerTable acLyrTbl;
+                    acLyrTbl = acTrans.GetObject(database.LayerTableId,
+                                                 OpenMode.ForRead) as LayerTable;
+
+                    for (int i = 0; i < Plugin.lyrName.Count; i++)
+                    {
+                        if (acLyrTbl.Has(Plugin.lyrName[i]) == false)
+                        {
+                            LayerTableRecord acLyrTblRec = new LayerTableRecord();
+                            acLyrTblRec.Name = Plugin.lyrName[i];
+                            acLyrTblRec.IsOff = getbool(Plugin.lyrOn[i]);
+                            acLyrTblRec.IsFrozen = getbool(Plugin.lyrFreeze[i]);
+                            acLyrTblRec.IsLocked = getbool(Plugin.lyrLock[i]);
+                            acLyrTblRec.Color = Getcolor(Plugin.lyrColor[i]);
+
+                            LinetypeTable acLinTbl;
+                            acLinTbl = acTrans.GetObject(database.LinetypeTableId,
+                                                               OpenMode.ForRead) as LinetypeTable;
+                            if (acLinTbl.Has(Plugin.lyrLinetype[i]) == true)
+                            {
+                                acLyrTblRec.LinetypeObjectId = acLinTbl[Plugin.lyrLinetype[i]];
+                            }
+                            acLyrTblRec.LineWeight = GetLwgt(Plugin.lyrLineweight[i]);
+
+                            using (PlaceHolder hldr = new PlaceHolder())
+                            {
+                                DictionaryWithDefaultDictionary d =
+                                  (DictionaryWithDefaultDictionary)acTrans.GetObject
+                                      (database.PlotStyleNameDictionaryId, OpenMode.ForWrite);
+                                d.SetAt(Plugin.lyrPlotstyle[i], hldr);
+                            }
+                            acLyrTblRec.IsPlottable = getbool(Plugin.lyrPlot[i]);
+                            acLyrTblRec.ViewportVisibilityDefault = getbool(Plugin.lyrNewVp[i]);
+                            // Upgrade the Layer table for write
+                            acLyrTbl.UpgradeOpen();
+
+                            // Append the new layer to the Layer table and the transaction
+                            acLyrTbl.Add(acLyrTblRec);
+                            acTrans.AddNewlyCreatedDBObject(acLyrTblRec, true);
+                        }
+                    }
+                    acTrans.Commit();
+                }
+                for (int i = 0; i < Plugin.lyrName.Count; i++)
+                {
+                    SetLayerTransparency(Plugin.lyrName[i], (byte)Convert.ToInt32(Plugin.lyrTrans[i]));
+                }
+            }
+            SetLayerCurrent("0");
+        }
+
+        [CommandMethod("lyrsh")]
+        public void LayersShowHide()
+        {
+            //    string strpath = Environment.ExpandEnvironmentVariables("%ProgramFiles%\\Autodesk\\ApplicationPlugins\\Preval.bundle");
+            //    strpath = strpath.Replace(" (x86)", "");
+            //    strpath = strpath + "\\" + "layer details.xlsx";
+            //    MessageBox.Show(strpath);
+            if (!Plugin.blyrsh)
+            {
+                Plugin.blyrsh = true;
+                var frm = new LayersShowHideForm();
+                frm.Show();
+            }
+        }
+        [CommandMethod("rnlyrs")]
+        public void RenameNotincludedlayers()
+        {
+            Plugin.b_renamelyr = false;
+            Document doc = Application.DocumentManager.MdiActiveDocument;
+            Database db = doc.Database;
+            Editor ed = doc.Editor;
+            List<string> tmplst = LayersToList(db);
+            var list1 = tmplst.Except(Plugin.lyrName);
+            foreach (string str in list1)
+            {
+                Plugin.differentlyrs.Add(str);
+            }
+            var frm = new LayerRenameForm();
+            frm.Show();
+        }
+
+        [CommandMethod("calcarea")]
+        public void CalculateArea()
+        {
+            SelectObjectsCalcArea();
+        }
+        [CommandMethod("chkcls")]
+        public void CheckAllClosed()
+        {
+            Document acDoc = Application.DocumentManager.MdiActiveDocument;
+            Database acCurDb = acDoc.Database;
+            Editor ed = acDoc.Editor;
+            foreach (string lyrnm in Plugin.lyrName)
+            {
+                GetPolylineEntitiesOnLayer(acCurDb, lyrnm);
+            }
+            //if(Plugin.blnclosed)
+            var frm = new PlineCloseFrm();
+            frm.Show();
+            frm.Show_LineCloseResult();
+        }
+
+        [CommandMethod("viewchk")]
+        public void ViewCheck()
+        {
+            Document doc = Application.DocumentManager.MdiActiveDocument;
+            Database db = doc.Database;
+            Editor ed = doc.Editor;
+            // Ask the user for the layer name, allowing
+            using (var view = ed.GetCurrentView())
+            {
+                ed.WriteMessage($"\nCurrent View: {GetViewName(view.ViewDirection)}");
+            }
+        }
+        [CommandMethod("nbcrule")]
+        public void NBCRULECheck()
+        {
+            //var frm = new NBCruleCheck();
+            //frm.Show();
+            var documentManager = Application.DocumentManager;
+            var currentDocument = documentManager.CurrentDocument;
+            var database = currentDocument.Database;
+            Plugin.allLayers = Commands.LayersToList(database);
+            NBCrelate.Rulecheck();
+            var frm = new RuleCheckForm();
+            frm.Show();
+        }
+        [CommandMethod("openpro")]
+        public void OpenProj()
+        {
+            bNewproj = false;
+            string sourceFileName = "";
+            OpenFileDialog openFileDialog1 = new OpenFileDialog
+            {
+                InitialDirectory = @"D:\",
+                Title = "Browse Drawing Files",
+                CheckFileExists = true,
+                CheckPathExists = true,
+                DefaultExt = "dwg",
+                Filter = "Drawing files (*.dwg)|*.dwg",
+                FilterIndex = 2,
+                RestoreDirectory = true,
+                ReadOnlyChecked = true,
+                ShowReadOnly = true
+            };
+
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                sourceFileName = openFileDialog1.FileName;
+            }
+            DocumentCollection acDocMgr = Application.DocumentManager;
+
+            if (File.Exists(sourceFileName))
+            {
+                Document curdoc = acDocMgr.Open(sourceFileName, false);
+                acDocMgr.MdiActiveDocument = curdoc;
+                curdoc.SendStringToExecute("Application" + "\n", false, false, false);
+                bLpmhs = true;
+                curdoc.SendStringToExecute(
+                  "LAYERCLOSE" + "\n",
+                  false, false, false);
+                //SignDraw(curdoc);
+            }
+            else
+            {
+                acDocMgr.MdiActiveDocument.Editor.WriteMessage("File " + sourceFileName +
+                                                                     " does not exist.");
+            }
+        }
+
+        [CommandMethod("mmg")]
+        public void MarkMargin()
+        {
+            var frm = new NBCLayers.MarginForm();
+            frm.Show();
+        }
+
+        [CommandMethod("nbcsave")]
+        public void NbcSave()
+        {
+            var documentManager = Application.DocumentManager;
+            var currentDocument = documentManager.MdiActiveDocument;
+            var database = currentDocument.Database;
+            var ed = currentDocument.Editor;
+
+            SaveFileDialog svdlg = new SaveFileDialog();
+            svdlg.Filter = "Drawing files (*.dwg)|*.dwg|All files (*.*)|*.*";
+            svdlg.FilterIndex = 2;
+            svdlg.RestoreDirectory = true;
+            string str = "";
+            if (svdlg.ShowDialog() == DialogResult.OK)
+            {
+                str = svdlg.FileName;
+            }
+            if (str != "")
+                database.SaveAs(str, DwgVersion.Current);
+        }
+        [CommandMethod("hsl")]
+        public void hideshowLPM()
+        {
+            Document doc = Application.DocumentManager.MdiActiveDocument;
+            object oldCmdEcho = Application.GetSystemVariable("CMDECHO");
+            if (bLpmhs)
+            {
+                doc.SendStringToExecute(
+              "LAYER" + "\n",
+              false, false, false);
+                bLpmhs = !bLpmhs;
+            }
+            else
+            {
+                doc.SendStringToExecute(
+              "LAYERCLOSE" + "\n",
+              false, false, false);
+                bLpmhs = !bLpmhs;
+            }
+        }
+        [CommandMethod("newpro")]
+        public void NewProj()
+        {
+            var authrFrm = new projectinForm();
+            authrFrm.Show();
+            //makingLayers();
+        }
+
+        [CommandMethod("Application")]
+        public void MonitorCommandEvents_Method()
+        {
+            SubscribeToDoc(Application.DocumentManager.MdiActiveDocument);
+        }
+
         [CommandMethod("RoomRename")]               ///////Assign Name Module   /////////////////
         public void RenameRoom()
         {
@@ -1457,32 +1800,6 @@ namespace ProsoftAcPlugin
                 }
                 Commands.brmnamechanged = false;
             }
-        }
-
-        public static SelectionSet PromptForPolyLineSSet(String prompt)
-        {
-            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
-
-            TypedValue[] typedValueArray = new TypedValue[1];
-            typedValueArray.SetValue(new TypedValue((int)DxfCode.Start, "POLYLINE,LWPOLYLINE"), 0);
-
-            var selectionFilter = new SelectionFilter(typedValueArray);
-
-            var promptSelectionResult = ed.GetSelection(selectionFilter);
-
-            var selectionSet = promptSelectionResult.Value;
-
-            if (promptSelectionResult.Status == PromptStatus.OK)
-            {
-                Application.ShowAlertDialog($"Number of objects selected: " +
-                                        $"{selectionSet.Count.ToString()}");
-            }
-            else
-            {
-                Application.ShowAlertDialog("Number of objects selected: 0");
-
-            }
-            return selectionSet;
         }
 
         [CommandMethod("assignroad")]
@@ -1673,96 +1990,6 @@ namespace ProsoftAcPlugin
                 acCurrTrans.Commit();
             }
         }
-        public static void CallImplement()
-        {
-            ImplementANBnP(Plugin.ANBNPpl1, Plugin.ANBNPpl2);
-        }
-        public static void ImplementANBnP(Polyline pln1, Polyline pln2)
-        {
-            var doc = Application.DocumentManager.MdiActiveDocument;
-            var db = doc.Database;
-            var ed = doc.Editor;
-            using (DocumentLock docLock = doc.LockDocument())
-            {
-                using (Transaction acCurrTrans = db.TransactionManager.StartTransaction())
-                {
-                    TextStyleTable ts = (TextStyleTable)acCurrTrans.GetObject(db.TextStyleTableId, OpenMode.ForRead);
-                    ObjectId mtStyleid = db.Textstyle;
-                    if (ts.Has("Romans"))
-                    {
-                        mtStyleid = ts["Romans"];
-                    }
-                    if (pln1 != null && pln2 != null)
-                    {
-                        Point3d leftpt = pln1.GetPoint3dAt(0);
-                        Point3d upperpt = pln1.GetPoint3dAt(0);
-                        Point3d rightpt = pln1.GetPoint3dAt(0);
-                        Point3d bottompt = pln1.GetPoint3dAt(0);
-
-                        int cnt1 = pln1.NumberOfVertices;
-                        for (int i = 0; i < cnt1; i++)
-                        {
-                            Point3d curpt = pln1.GetPoint3dAt(i);
-                            if (curpt.X < leftpt.X)
-                                leftpt = curpt;
-                            if (curpt.Y < upperpt.Y)
-                                upperpt = curpt;
-                            if (curpt.X > rightpt.X)
-                                rightpt = curpt;
-                            if (curpt.Y > bottompt.Y)
-                                bottompt = curpt;
-                        }
-                        BlockTableRecord btr = (BlockTableRecord)acCurrTrans.GetObject(db.CurrentSpaceId, OpenMode.ForWrite);
-                        DBText txt = new DBText();
-                        txt.TextString = Plugin.ANBNPwing + Plugin.ANBNPbuilding;
-                        txt.SetDatabaseDefaults(db);
-                        txt.Height = 0.5; //<==change to your default height
-                        //txt.Height = HeightRectPolyLine(upperpt, bottompt) / 8.0; //<==change to your default height
-                        //txt.Width = WidthRectPolyLine(leftpt, rightpt);
-                        txt.TextStyleId = mtStyleid;
-                        //txt.Height = txt.Height / 3.0;
-
-                        //txt.AlignmentPoint = TextHorizontalMode.TextCenter;
-                        txt.Layer = pln1.Layer;
-                        txt.Position = new Point3d(leftpt.X + WidthRectPolyLine(leftpt, rightpt) / 2, upperpt.Y + HeightRectPolyLine(upperpt, bottompt) / 2, 0);
-                        btr.AppendEntity(txt);
-                        acCurrTrans.AddNewlyCreatedDBObject(txt, true);
-
-                        int cnt2 = pln2.NumberOfVertices;
-                        leftpt = pln2.GetPoint3dAt(0);
-                        upperpt = pln2.GetPoint3dAt(0);
-                        rightpt = pln2.GetPoint3dAt(0);
-                        bottompt = pln2.GetPoint3dAt(0);
-                        for (int i = 0; i < cnt2; i++)
-                        {
-                            Point3d curpt = pln2.GetPoint3dAt(i);
-                            if (curpt.X < leftpt.X)
-                                leftpt = curpt;
-                            if (curpt.Y < upperpt.Y)
-                                upperpt = curpt;
-                            if (curpt.X > rightpt.X)
-                                rightpt = curpt;
-                            if (curpt.Y > bottompt.Y)
-                                bottompt = curpt;
-                        }
-
-                        BlockTableRecord btr1 = (BlockTableRecord)acCurrTrans.GetObject(db.CurrentSpaceId, OpenMode.ForWrite);
-                        DBText txt1 = new DBText();
-                        txt1.TextString = Plugin.ANBNPwing + Plugin.ANBNPbuilding;
-                        txt1.SetDatabaseDefaults(db);
-                        txt1.Height =0.5; //<==change to your default height
-                        //txt1.Height = HeightRectPolyLine(upperpt, bottompt) / 8.0; //<==change to your default height
-                        txt1.TextStyleId = mtStyleid;
-                        //txt1.Attachment = AttachmentPoint.TopCenter;
-                        txt1.Layer = pln2.Layer;
-                        txt1.Position = new Point3d(leftpt.X , upperpt.Y, 0);
-                        btr1.AppendEntity(txt1);
-                        acCurrTrans.AddNewlyCreatedDBObject(txt1, true);
-                    }
-                    acCurrTrans.Commit();
-                }
-            }
-        }
 
         [CommandMethod("AssignFloorName")]
         public void AssignFloorNames()
@@ -1770,119 +1997,119 @@ namespace ProsoftAcPlugin
             var doc = Application.DocumentManager.MdiActiveDocument;
             var db = doc.Database;
             var ed = doc.Editor;
-repeat:     var frm = new NBCLayers.FloorNameForm();
+        repeat: var frm = new NBCLayers.FloorNameForm();
             frm.Show();
             SetLayerCurrent("_FloorInSection");
             using (Transaction tr = db.TransactionManager.StartTransaction())
+            {
+                PromptEntityOptions options = new PromptEntityOptions("\nSelect a FloorInSection Polyline: ");
+                options.SetRejectMessage("\nSelected object is no a Polyline.");
+                options.AddAllowedClass(typeof(Polyline), true);
+                PromptEntityResult result = ed.GetEntity(options);
+                if ((string)Application.GetSystemVariable("clayer") == "_FloorInSection")
                 {
-                    PromptEntityOptions options = new PromptEntityOptions("\nSelect a FloorInSection Polyline: ");
-                    options.SetRejectMessage("\nSelected object is no a Polyline.");
-                    options.AddAllowedClass(typeof(Polyline), true);
-                    PromptEntityResult result = ed.GetEntity(options);
-                    if ((string)Application.GetSystemVariable("clayer") == "_FloorInSection")
+                    if (result.Status == PromptStatus.OK)
                     {
-                        if (result.Status == PromptStatus.OK)
+                        Polyline poly = tr.GetObject(result.ObjectId, OpenMode.ForRead, false) as Polyline;
+                        if (poly != null)
                         {
-                            Polyline poly = tr.GetObject(result.ObjectId, OpenMode.ForRead, false) as Polyline;
-                            if (poly != null)
+                            TextStyleTable ts = (TextStyleTable)tr.GetObject(db.TextStyleTableId, OpenMode.ForRead);
+                            ObjectId mtStyleid = db.Textstyle;
+                            if (ts.Has("Romans"))
                             {
-                                TextStyleTable ts = (TextStyleTable)tr.GetObject(db.TextStyleTableId, OpenMode.ForRead);
-                                ObjectId mtStyleid = db.Textstyle;
-                                if (ts.Has("Romans"))
-                                {
-                                    mtStyleid = ts["Romans"];
-                                }
-                                Point3d pickPoint = result.PickedPoint;
-                                Point3d oPoint = poly.GetClosestPointTo(pickPoint, ed.GetCurrentView().ViewDirection, false);
-                                double param = 0;
-                                param = poly.GetParameterAtPoint(oPoint);
-                                double sparam = 0, eparam = 0;
-                                sparam = (int)param;
-                                eparam = sparam + 1;
-                                Point3d sp = poly.GetPointAtParameter(sparam);
-                                Point3d ep = poly.GetPointAtParameter(eparam);
-                                double ang = Angle(sp, ep);
-                                Extents3d ext = poly.GeometricExtents;
-                                Point3d min = ext.MinPoint;
-                                Point3d max = ext.MaxPoint;
-                                Point3d geoCtr = Polar(min, Angle(min, max), Distance(min, max) / 2.0);
-                                BlockTableRecord btr = (BlockTableRecord)tr.GetObject(db.CurrentSpaceId, OpenMode.ForWrite);
-                                MText txt = new MText();
-                                txt.Contents = Commands.tmpfloorsectionName;
-                                txt.SetDatabaseDefaults(db);
-                                Point3d ptleft = Getleft(poly);
-                                Point3d ptright = Getright(poly);
-                                Point3d pttop = Gettop(poly);
-                                Point3d ptbottom = Getbottom(poly);
-                                double width = ptright.X - ptleft.X;
-                                double height = pttop.Y - ptbottom.Y;
-                                txt.Height = height; //<==change to your default height
-                                txt.Width = width;
-                                txt.TextStyleId = mtStyleid;
-                                txt.Attachment = AttachmentPoint.BottomLeft;
-                                txt.Location = new Point3d(ptleft.X, pttop.Y, 0);
-                                btr.AppendEntity(txt);
-                                tr.AddNewlyCreatedDBObject(txt, true);
+                                mtStyleid = ts["Romans"];
                             }
+                            Point3d pickPoint = result.PickedPoint;
+                            Point3d oPoint = poly.GetClosestPointTo(pickPoint, ed.GetCurrentView().ViewDirection, false);
+                            double param = 0;
+                            param = poly.GetParameterAtPoint(oPoint);
+                            double sparam = 0, eparam = 0;
+                            sparam = (int)param;
+                            eparam = sparam + 1;
+                            Point3d sp = poly.GetPointAtParameter(sparam);
+                            Point3d ep = poly.GetPointAtParameter(eparam);
+                            double ang = Angle(sp, ep);
+                            Extents3d ext = poly.GeometricExtents;
+                            Point3d min = ext.MinPoint;
+                            Point3d max = ext.MaxPoint;
+                            Point3d geoCtr = Polar(min, Angle(min, max), Distance(min, max) / 2.0);
+                            BlockTableRecord btr = (BlockTableRecord)tr.GetObject(db.CurrentSpaceId, OpenMode.ForWrite);
+                            MText txt = new MText();
+                            txt.Contents = Commands.tmpfloorsectionName;
+                            txt.SetDatabaseDefaults(db);
+                            Point3d ptleft = Getleft(poly);
+                            Point3d ptright = Getright(poly);
+                            Point3d pttop = Gettop(poly);
+                            Point3d ptbottom = Getbottom(poly);
+                            double width = ptright.X - ptleft.X;
+                            double height = pttop.Y - ptbottom.Y;
+                            txt.Height = height; //<==change to your default height
+                            txt.Width = width;
+                            txt.TextStyleId = mtStyleid;
+                            txt.Attachment = AttachmentPoint.BottomLeft;
+                            txt.Location = new Point3d(ptleft.X, pttop.Y, 0);
+                            btr.AppendEntity(txt);
+                            tr.AddNewlyCreatedDBObject(txt, true);
+                        }
 
+                    }
+                }
+                SetLayerCurrent("_Floor");
+                MessageBox.Show("Select a Floor Layer Polyline", "Floor PolyLine", MessageBoxButtons.OK, MessageBoxIcon.None);
+                PromptEntityOptions options1 = new PromptEntityOptions("\nSelect a Floor Polyline: ");
+                options1.SetRejectMessage("\nSelected object is no a Polyline.");
+                options1.AddAllowedClass(typeof(Polyline), true);
+                PromptEntityResult result1 = ed.GetEntity(options1);
+                if ((string)Application.GetSystemVariable("clayer") == "_Floor")
+                {
+                    if (result1.Status == PromptStatus.OK)
+                    {
+                        Polyline poly1 = tr.GetObject(result1.ObjectId, OpenMode.ForRead, false) as Polyline;
+                        if (poly1 != null)
+                        {
+                            TextStyleTable ts = (TextStyleTable)tr.GetObject(db.TextStyleTableId, OpenMode.ForRead);
+                            ObjectId mtStyleid = db.Textstyle;
+                            var blockTable = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
+                            BlockTableRecord btr = (BlockTableRecord)tr.GetObject(db.CurrentSpaceId, OpenMode.ForWrite);
+                            if (ts.Has("Romans"))
+                            {
+                                mtStyleid = ts["Romans"];
+                            }
+                            Point3d pickPoint = result.PickedPoint;
+                            Point3d oPoint = poly1.GetClosestPointTo(pickPoint, ed.GetCurrentView().ViewDirection, false);
+                            double param = 0;
+                            param = poly1.GetParameterAtPoint(oPoint);
+                            double sparam = 0, eparam = 0;
+                            sparam = (int)param;
+                            eparam = sparam + 1;
+                            Point3d sp = poly1.GetPointAtParameter(sparam);
+                            Point3d ep = poly1.GetPointAtParameter(eparam);
+                            double ang = Angle(sp, ep);
+                            Extents3d ext = poly1.GeometricExtents;
+                            Point3d min = ext.MinPoint;
+                            Point3d max = ext.MaxPoint;
+                            Point3d geoCtr = Polar(min, Angle(min, max), Distance(min, max) / 2.0);
+                            MText txt = new MText();
+                            txt.Contents = Commands.tmpfloorName;
+                            txt.SetDatabaseDefaults(db);
+                            Point3d ptleft = Getleft(poly1);
+                            Point3d ptright = Getright(poly1);
+                            Point3d pttop = Gettop(poly1);
+                            Point3d ptbottom = Getbottom(poly1);
+                            double width = ptright.X - ptleft.X;
+                            double height = pttop.Y - ptbottom.Y;
+                            txt.Height = height; //<==change to your default height
+                            txt.Width = width;
+                            txt.TextStyleId = mtStyleid;
+                            txt.Attachment = AttachmentPoint.BottomLeft;
+                            txt.Location = new Point3d(ptleft.X, pttop.Y, 0);
+                            btr.AppendEntity(txt);
+                            tr.AddNewlyCreatedDBObject(txt, true);
                         }
                     }
-                    SetLayerCurrent("_Floor");
-                    MessageBox.Show("Select a Floor Layer Polyline", "Floor PolyLine", MessageBoxButtons.OK, MessageBoxIcon.None);
-                    PromptEntityOptions options1 = new PromptEntityOptions("\nSelect a Floor Polyline: ");
-                    options1.SetRejectMessage("\nSelected object is no a Polyline.");
-                    options1.AddAllowedClass(typeof(Polyline), true);
-                    PromptEntityResult result1 = ed.GetEntity(options1);
-                    if ((string)Application.GetSystemVariable("clayer") == "_Floor")
-                    {
-                        if (result1.Status == PromptStatus.OK)
-                        {
-                            Polyline poly1 = tr.GetObject(result1.ObjectId, OpenMode.ForRead, false) as Polyline;
-                            if (poly1 != null)
-                            {
-                                TextStyleTable ts = (TextStyleTable)tr.GetObject(db.TextStyleTableId, OpenMode.ForRead);
-                                ObjectId mtStyleid = db.Textstyle;
-                                var blockTable = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
-                                BlockTableRecord btr = (BlockTableRecord)tr.GetObject(db.CurrentSpaceId, OpenMode.ForWrite);
-                                if (ts.Has("Romans"))
-                                {
-                                    mtStyleid = ts["Romans"];
-                                }
-                                Point3d pickPoint = result.PickedPoint;
-                                Point3d oPoint = poly1.GetClosestPointTo(pickPoint, ed.GetCurrentView().ViewDirection, false);
-                                double param = 0;
-                                param = poly1.GetParameterAtPoint(oPoint);
-                                double sparam = 0, eparam = 0;
-                                sparam = (int)param;
-                                eparam = sparam + 1;
-                                Point3d sp = poly1.GetPointAtParameter(sparam);
-                                Point3d ep = poly1.GetPointAtParameter(eparam);
-                                double ang = Angle(sp, ep);
-                                Extents3d ext = poly1.GeometricExtents;
-                                Point3d min = ext.MinPoint;
-                                Point3d max = ext.MaxPoint;
-                                Point3d geoCtr = Polar(min, Angle(min, max), Distance(min, max) / 2.0);
-                                MText txt = new MText();
-                                txt.Contents = Commands.tmpfloorName;
-                                txt.SetDatabaseDefaults(db);
-                                Point3d ptleft = Getleft(poly1);
-                                Point3d ptright = Getright(poly1);
-                                Point3d pttop = Gettop(poly1);
-                                Point3d ptbottom = Getbottom(poly1);
-                                double width = ptright.X - ptleft.X;
-                                double height = pttop.Y - ptbottom.Y;
-                                txt.Height = height; //<==change to your default height
-                                txt.Width = width;
-                                txt.TextStyleId = mtStyleid;
-                                txt.Attachment = AttachmentPoint.BottomLeft;
-                                txt.Location = new Point3d(ptleft.X, pttop.Y, 0);
-                                btr.AppendEntity(txt);
-                                tr.AddNewlyCreatedDBObject(txt, true);
-                            }
-                        }
-                    }                    
-                    tr.Commit();
                 }
+                tr.Commit();
+            }
             DialogResult dresult = MessageBox.Show("Do you want to assign more floor name?", "AutoCAD", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dresult == DialogResult.Yes)
                 goto repeat;
@@ -2083,166 +2310,6 @@ repeat:     var frm = new NBCLayers.FloorNameForm();
                 }
             }
         }
-        public static void AddLightweightPolyline(Polyline pl)
-        {
-
-            // Get the current document and database
-            var doc = Application.DocumentManager.MdiActiveDocument;
-            var db = doc.Database;
-            var ed = doc.Editor;
-            // Start a transaction
-            using (Transaction tr = db.TransactionManager.StartTransaction())
-            {
-                Point3d leftpt = pl.GetPoint3dAt(0);
-                Point3d upperpt = pl.GetPoint3dAt(0);
-                Point3d rightpt = pl.GetPoint3dAt(0);
-                Point3d bottompt = pl.GetPoint3dAt(0);
-
-                int cnt1 = pl.NumberOfVertices;
-                for (int i = 0; i < cnt1; i++)
-                {
-                    Point3d curpt = pl.GetPoint3dAt(i);
-                    if (curpt.X < leftpt.X)
-                        leftpt = curpt;
-                    if (curpt.Y < upperpt.Y)
-                        upperpt = curpt;
-                    if (curpt.X > rightpt.X)
-                        rightpt = curpt;
-                    if (curpt.Y > bottompt.Y)
-                        bottompt = curpt;
-                }
-                double basewidth = rightpt.X - leftpt.X;
-                double baseheight = bottompt.Y - upperpt.Y;
-                // Open the Block table for read
-                BlockTable acBlkTbl;
-                acBlkTbl = tr.GetObject(db.BlockTableId,
-                                                   OpenMode.ForRead) as BlockTable;
-                // Open the Block table record Model space for write
-                BlockTableRecord acBlkTblRec;
-                acBlkTblRec = tr.GetObject(acBlkTbl[BlockTableRecord.ModelSpace],
-                                                      OpenMode.ForWrite) as BlockTableRecord;
-                // Create a polyline with two segments (3 points)
-                Polyline acPoly = new Polyline();
-                acPoly.SetDatabaseDefaults();
-                acPoly.AddVertexAt(0, new Point2d(leftpt.X + basewidth / 10, upperpt.Y), 0, 0, 0);
-                acPoly.AddVertexAt(1, new Point2d(leftpt.X + basewidth / 10 + Plugin.nCurwidth, upperpt.Y), 0, 0, 0);
-                acPoly.AddVertexAt(2, new Point2d(leftpt.X + basewidth / 10 + Plugin.nCurwidth, upperpt.Y - Plugin.nCurDepth), 0, 0, 0);
-                acPoly.AddVertexAt(3, new Point2d(leftpt.X + basewidth / 10, upperpt.Y - Plugin.nCurDepth), 0, 0, 0);
-                acPoly.Closed = true;
-                // Add the new object to the block table record and the transaction
-                acBlkTblRec.AppendEntity(acPoly);
-                tr.AddNewlyCreatedDBObject(acPoly, true);
-                // Save the new object to the database
-                TextStyleTable ts = (TextStyleTable)tr.GetObject(db.TextStyleTableId, OpenMode.ForRead);
-                ObjectId mtStyleid = db.Textstyle;
-
-                if (ts.Has("Romans"))
-                {
-                    mtStyleid = ts["Romans"];
-                }
-
-                MText txt = new MText();
-                string curlayer = (string)Application.GetSystemVariable("clayer");
-                switch (curlayer)
-                {
-                    case "_Door":
-                        txt.Contents = Commands.InsdoorName; //<==change to your default string value
-                        break;
-                    case "_Window":
-                        txt.Contents = Commands.InswindName;
-                        break;
-
-                }
-
-                txt.SetDatabaseDefaults(db);
-                txt.Height = Plugin.nCurheight; //<==change to your default height
-                //txt.Rotation = ang;
-                txt.Width = Plugin.nCurwidth;
-                txt.TextStyleId = mtStyleid;
-                txt.TextHeight = Plugin.nCurDepth;
-                txt.Attachment = AttachmentPoint.MiddleCenter;
-                txt.Location = new Point3d(leftpt.X + basewidth / 10 + Plugin.nCurwidth / 2, upperpt.Y, 0);
-                acBlkTblRec.AppendEntity(txt);
-                tr.AddNewlyCreatedDBObject(txt, true);
-                tr.Commit();
-            }
-        }
-        public static Point3d Getleft(Polyline pl)
-        {
-            var doc = Application.DocumentManager.MdiActiveDocument;
-            var db = doc.Database;
-            var ed = doc.Editor;
-            Point3d leftpt = pl.GetPoint3dAt(0);
-            using (Transaction tr = db.TransactionManager.StartTransaction())
-            {
-                int cnt1 = pl.NumberOfVertices;
-                for (int i = 0; i < cnt1; i++)
-                {
-                    Point3d curpt = pl.GetPoint3dAt(i);
-                    if (curpt.X < leftpt.X)
-                        leftpt = curpt;
-                }
-                tr.Commit();
-            }
-            return leftpt;
-        }
-        public static Point3d Getright(Polyline pl)
-        {
-            var doc = Application.DocumentManager.MdiActiveDocument;
-            var db = doc.Database;
-            var ed = doc.Editor;
-            Point3d rightpt = pl.GetPoint3dAt(0);
-            using (Transaction tr = db.TransactionManager.StartTransaction())
-            {
-                int cnt1 = pl.NumberOfVertices;
-                for (int i = 0; i < cnt1; i++)
-                {
-                    Point3d curpt = pl.GetPoint3dAt(i);
-                    if (curpt.X > rightpt.X)
-                        rightpt = curpt;
-                }
-                tr.Commit();
-            }
-            return rightpt;
-        }
-        public static Point3d Gettop(Polyline pl)
-        {
-            var doc = Application.DocumentManager.MdiActiveDocument;
-            var db = doc.Database;
-            var ed = doc.Editor;
-            Point3d toppt = pl.GetPoint3dAt(0);
-            using (Transaction tr = db.TransactionManager.StartTransaction())
-            {
-                int cnt1 = pl.NumberOfVertices;
-                for (int i = 0; i < cnt1; i++)
-                {
-                    Point3d curpt = pl.GetPoint3dAt(i);
-                    if (curpt.Y < toppt.Y)
-                        toppt = curpt;
-                }
-                tr.Commit();
-            }
-            return toppt;
-        }
-        public static Point3d Getbottom(Polyline pl)
-        {
-            var doc = Application.DocumentManager.MdiActiveDocument;
-            var db = doc.Database;
-            var ed = doc.Editor;
-            Point3d bottompt = pl.GetPoint3dAt(0);
-            using (Transaction tr = db.TransactionManager.StartTransaction())
-            {
-                int cnt1 = pl.NumberOfVertices;
-                for (int i = 0; i < cnt1; i++)
-                {
-                    Point3d curpt = pl.GetPoint3dAt(i);
-                    if (curpt.Y > bottompt.Y)
-                        bottompt = curpt;
-                }
-                tr.Commit();
-            }
-            return bottompt;
-        }
 
         [CommandMethod("InstRefCir")]
         public void InstRefCir()
@@ -2334,7 +2401,7 @@ repeat:     var frm = new NBCLayers.FloorNameForm();
 
                         Circle acCirc1 = new Circle();
                         acCirc1.SetDatabaseDefaults();
-                        acCirc1.Center = new Point3d(ptCenter.X+1,ptCenter.Y,0);
+                        acCirc1.Center = new Point3d(ptCenter.X + 1, ptCenter.Y, 0);
                         acCirc1.Radius = 0.15;
 
                         // Add the new object to the block table record and the transaction
@@ -2344,8 +2411,8 @@ repeat:     var frm = new NBCLayers.FloorNameForm();
 
                         Polyline horPoly = new Polyline();
                         horPoly.SetDatabaseDefaults();
-                        horPoly.AddVertexAt(0, new Point2d(ptCenter.X+1 - acCirc1.Radius, ptCenter.Y), 0, 0, 0);
-                        horPoly.AddVertexAt(1, new Point2d(ptCenter.X+1 + acCirc1.Radius, ptCenter.Y), 0, 0, 0);
+                        horPoly.AddVertexAt(0, new Point2d(ptCenter.X + 1 - acCirc1.Radius, ptCenter.Y), 0, 0, 0);
+                        horPoly.AddVertexAt(1, new Point2d(ptCenter.X + 1 + acCirc1.Radius, ptCenter.Y), 0, 0, 0);
                         horPoly.Closed = true;
                         // Add the new object to the block table record and the transaction
                         acBlkTblRec.AppendEntity(horPoly);
@@ -2354,8 +2421,8 @@ repeat:     var frm = new NBCLayers.FloorNameForm();
 
                         Polyline verrPoly = new Polyline();
                         verrPoly.SetDatabaseDefaults();
-                        verrPoly.AddVertexAt(0, new Point2d(ptCenter.X+1, ptCenter.Y - acCirc1.Radius), 0, 0, 0);
-                        verrPoly.AddVertexAt(1, new Point2d(ptCenter.X+1, ptCenter.Y + acCirc1.Radius), 0, 0, 0);
+                        verrPoly.AddVertexAt(0, new Point2d(ptCenter.X + 1, ptCenter.Y - acCirc1.Radius), 0, 0, 0);
+                        verrPoly.AddVertexAt(1, new Point2d(ptCenter.X + 1, ptCenter.Y + acCirc1.Radius), 0, 0, 0);
                         verrPoly.Closed = true;
                         // Add the new object to the block table record and the transaction
                         acBlkTblRec.AppendEntity(verrPoly);
@@ -14685,49 +14752,6 @@ repeat:     var frm = new NBCLayers.FloorNameForm();
         }
         /////////////Mark Module End//////////////////////////
 
-        public static bool IsOverlapped(Polyline pl)
-        {
-            var doc = Application.DocumentManager.MdiActiveDocument;
-            var db = doc.Database;
-            var ed = doc.Editor;
-            bool boverlap = false;
-            using (var tr = db.TransactionManager.StartOpenCloseTransaction())
-            {
-                var blockTable = (BlockTable)tr.GetObject(db.BlockTableId, OpenMode.ForRead);
-                foreach (ObjectId btrId in blockTable)
-                {
-                    var btr = (BlockTableRecord)tr.GetObject(btrId, OpenMode.ForRead);
-                    var PlineCls = RXObject.GetClass(typeof(Polyline));
-                    foreach (ObjectId id in btr)
-                    {
-                        if (id.ObjectClass == PlineCls)
-                        {
-                            var curve = (Curve)tr.GetObject(id, OpenMode.ForRead);
-                            var points = new Point3dCollection();
-                            pl.IntersectWith(curve, Intersect.OnBothOperands, points, IntPtr.Zero, IntPtr.Zero);
-                            if (points.Count > 0)
-                                boverlap = true;
-                        }
-                    }
-                }
-            }
-            return boverlap;
-        }
-
-        public static string GetMTextContent(MText txt)
-        {
-            string content = "";
-            content = txt.Contents;
-            return content;
-        }
-        public static double GetRoadWidth(string str)
-        {
-            double result = 0;
-            int pos = str.IndexOf("M") - 1;
-            string strtmp = str.Substring(0, pos);
-            result = Convert.ToDouble(strtmp);
-            return result;
-        }
         ////////////Tool Submenu Function////////////////////
         [CommandMethod("shla")]
         public static void ShowAllLayers()
@@ -14737,7 +14761,7 @@ repeat:     var frm = new NBCLayers.FloorNameForm();
             Plugin.allLayers = Commands.LayersToList(db);
             List<string> offlayers = new List<string>();
             offlayers.Clear();
-            TurnOnLayers(Plugin.allLayers, offlayers);            
+            TurnOnLayers(Plugin.allLayers, offlayers);
         }
 
         [CommandMethod("shld")]
@@ -14748,7 +14772,7 @@ repeat:     var frm = new NBCLayers.FloorNameForm();
             Plugin.allLayers = Commands.LayersToList(db);
             List<string> onlayers = new List<string>();
             List<string> offlayers = new List<string>();
-            foreach(string str in Plugin.allLayers)
+            foreach (string str in Plugin.allLayers)
             {
                 if (str.Contains("BP_"))
                     onlayers.Add(str);
@@ -14786,7 +14810,7 @@ repeat:     var frm = new NBCLayers.FloorNameForm();
             List<string> offlayers = new List<string>();
             foreach (string str in Plugin.allLayers)
             {
-                if (str[0]=='_')
+                if (str[0] == '_')
                     onlayers.Add(str);
                 else
                     offlayers.Add(str);
@@ -14805,14 +14829,14 @@ repeat:     var frm = new NBCLayers.FloorNameForm();
             List<string> onlayers = new List<string>();
             if (File.Exists(strpath))
             {
-                foreach(string strln in File.ReadLines(strpath))
+                foreach (string strln in File.ReadLines(strpath))
                 {
                     Layerlevellayers.Add(strln);
-                }    
+                }
             }
             foreach (string str in Plugin.allLayers)
             {
-                if (IsincludedinList(str,Layerlevellayers))
+                if (IsincludedinList(str, Layerlevellayers))
                     onlayers.Add(str);
                 else
                     offlayers.Add(str);
@@ -14845,19 +14869,6 @@ repeat:     var frm = new NBCLayers.FloorNameForm();
             }
             TurnOnLayers(onlayers, offlayers);
         }
-        private static bool IsincludedinList(string str, List<string> strlist)
-        {
-            bool bresult = false;
-            foreach(string strinst in strlist)
-            {
-                if (str == strinst)
-                {
-                    bresult = true;
-                    return bresult;
-                }                    
-            }
-            return bresult;
-        }
-        ////////////Tool Submenu Function End///////////////////////////
+        //////////Tool Submenu Function End///////////////////////////
     }
 }
