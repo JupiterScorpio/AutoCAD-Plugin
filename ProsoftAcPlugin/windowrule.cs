@@ -127,10 +127,23 @@ namespace ProsoftAcPlugin
         public float width;
         public float height;
     }
+    public class aStair
+    {
+        public Polyline pl;
+        public float width;
+        public float height;
+    }
+    public class aPassage
+    {
+        public Polyline pl;
+        public float width;
+        public float height;
+    }
     public class ruleError
     {
         public string lyrname;
         public int errorCnt;
         public string errcause;
+        public List<ObjectId> objIdlist = null;
     }
 }

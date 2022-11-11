@@ -30,17 +30,114 @@ namespace ProsoftAcPlugin
             var documentManager = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager;
             var currentDocument = documentManager.MdiActiveDocument;
             var database = currentDocument.Database;
+            RuleInit();
             foreach (string layername in Plugin.allLayers)
             {
                 GetNeededEntitiesOnLayer(database, layername);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
             }
             foreach (string layername in Plugin.allLayers)
             {
-                if(Plugin.projtypestate==3|| Plugin.projtypestate == 4|| Plugin.projtypestate == 5)
-                    LayerRuleCheck_Layout(database, layername);
-                else if(Plugin.projtypestate == 0)
-                    LayerRuleCheck_BldgPermiss(database, layername);
-            }            
+                if (Plugin.projtypestate == 3 || Plugin.projtypestate == 4 || Plugin.projtypestate == 5)
+                    LayerRuleCheck_Layout( layername);
+                else if (Plugin.projtypestate == 0)
+                    LayerRuleCheck_BldgPermiss( layername);
+            }
+        }
+        public static void RuleInit()
+        {
+            Commands.errlist.Clear();
+            Plugin.awindowpline.Clear();
+            Plugin.aroompline.Clear();
+            Plugin.adoorpline.Clear();
+            Plugin.aplotpline.Clear();
+            Plugin.amroadpline.Clear();
+            Plugin.aindvSubPltpline.Clear();
+            Plugin.ainterroadpline.Clear();
+            Plugin.aopenspacepline.Clear();
+            Plugin.aAmenitypline.Clear();
+            Plugin.aMortgageAreapline.Clear();
+            Plugin.asplaypline.Clear();
+            Plugin.aBufferpline.Clear();
+            Plugin.aWaterBodypline.Clear();
+            Plugin.aWaterlinepline.Clear();
+            Plugin.aLeftownerspline.Clear();
+            Plugin.aSurAuthpline.Clear();
+            Plugin.aCompndwllpline.Clear();
+            Plugin.aElectricpline.Clear();
+            Plugin.aGllvlpline.Clear();
+            Plugin.aFlrinSecpline.Clear();
+            Plugin.aPropWrkpline = null;
+            Plugin.aParkingpline.Clear();
+            Plugin.aDrivewaypline.Clear();
+            Plugin.arampline.Clear();
+            Plugin.aFloorpline.Clear();
+            Plugin.aVoidpline.Clear();
+            Plugin.aAccusepline.Clear();
+            Plugin.aNalapline.Clear();
+            Plugin.aStairpline.Clear();
+            Plugin.aStairpline.Clear();
+            Plugin.aVenShaftpline.Clear();
+
+            Plugin.awindowNmTxt.Clear();
+            Plugin.awindowNmTxt.Clear();
+            Plugin.aroomNmTxt.Clear();
+            Plugin.adoorNmTxt.Clear();
+            Plugin.aplotNmTxt.Clear();
+            Plugin.aindvsubPltTxt.Clear();
+            Plugin.ainterroadTxt.Clear();
+            Plugin.aopenspaceTxt.Clear();
+            Plugin.aAmenityTxt.Clear();
+            Plugin.aMortgageAreaTxt.Clear();
+            Plugin.asplayTxt.Clear();
+            Plugin.aBufferTxt.Clear();
+            Plugin.aWaterBodyTxt.Clear();
+            Plugin.aWaterlineTxt.Clear();
+            Plugin.aLeftOwnersTxt.Clear();
+            Plugin.aSurAuthTxt.Clear();
+            Plugin.aCmpWallTxt.Clear();
+            Plugin.aElineTxt.Clear();
+            Plugin.aGllvlTxt.Clear();
+            Plugin.aFlrinSecTxt.Clear();
+            Plugin.aPropWrkTxt = null;
+            Plugin.aParkingTxt.Clear();
+            Plugin.aDrivewayTxt.Clear();
+            Plugin.arampTxt.Clear();
+            Plugin.aFloorTxt.Clear();
+            Plugin.aVoidTxt.Clear();
+            Plugin.aAccuseTxt.Clear();
+            Plugin.aNalaTxt.Clear();
+            Plugin.aStairTxt.Clear();
+            Plugin.aPassageTxt.Clear();
+            Plugin.aVenShaftTxt.Clear();
+            Plugin.aroomNmTxt.Clear();
+            Plugin.adoorNmTxt.Clear();
+            Plugin.aplotNmTxt.Clear();
+            Plugin.amroadNmTxt.Clear();
+            Plugin.aindvsubPltTxt.Clear();
+            Plugin.ainterroadTxt.Clear();
+            Plugin.aopenspaceTxt.Clear();
+            Plugin.aAmenityTxt.Clear();
+            Plugin.aMortgageAreaTxt.Clear();
+            Plugin.asplayTxt.Clear();
+            Plugin.aBufferTxt.Clear();
+            Plugin.aWaterBodyTxt.Clear();
+            Plugin.aWaterlineTxt.Clear();
+            Plugin.aLeftOwnersTxt.Clear();
+            Plugin.aSurAuthTxt.Clear();
+            Plugin.aCmpWallTxt.Clear();
+            Plugin.aElineTxt.Clear();
+            Plugin.aGllvlTxt.Clear();
+            Plugin.aFlrinSecTxt.Clear();
+            Plugin.aPropWrkTxt = null;
+            Plugin.aParkingTxt.Clear();
+            Plugin.aDrivewayTxt.Clear();
+            Plugin.arampTxt.Clear();
+            Plugin.aVoidTxt.Clear();
+            Plugin.aAccuseTxt.Clear();
+            Plugin.aNalaTxt.Clear();
+            Plugin.aStairTxt.Clear();
+            Plugin.aPassageTxt.Clear();
+            Plugin.aVenShaftTxt.Clear();
         }
         public static void GetNeededEntitiesOnLayer(Database db, string layerName)        //this function gets all entities in one layer
         {
@@ -52,196 +149,237 @@ namespace ProsoftAcPlugin
                     var btr = (BlockTableRecord)tr.GetObject(btrId, OpenMode.ForRead);
                     var PlineCls = RXObject.GetClass(typeof(Polyline));
                     var MTxtCls= RXObject.GetClass(typeof(MText));
+                    var TxtCls = RXObject.GetClass(typeof(DBText));
                     if (btr.IsLayout)
                     {
                         foreach (ObjectId id in btr)
                         {
-                            if (id.ObjectClass == PlineCls)
+                            Entity subent = tr.GetObject(id, OpenMode.ForRead) as Entity;
+                            if(subent.Layer==layerName)
                             {
-                                var pline = (Polyline)tr.GetObject(id, OpenMode.ForRead);
-                                if (pline.Layer.Equals(layerName, System.StringComparison.CurrentCultureIgnoreCase))
+                                if (id.ObjectClass == PlineCls)
                                 {
+                                    var pline = (Polyline)tr.GetObject(id, OpenMode.ForRead);
+                                    if (pline.Layer.Equals(layerName, System.StringComparison.CurrentCultureIgnoreCase))
+                                    {
+                                        switch (layerName)
+                                        {
+                                            case "_Window":
+                                                Plugin.awindowpline.Add(pline);
+                                                break;
+                                            case "_Room":
+                                                Plugin.aroompline.Add(pline);
+                                                break;
+                                            case "_Door":
+                                                Plugin.adoorpline.Add(pline);
+                                                break;
+                                            case "_Plot":
+                                                Plugin.aplotpline.Add(pline);
+                                                break;
+                                            case "_MainRoad":
+                                                Plugin.amroadpline.Add(pline);
+                                                break;
+                                            case "_IndivSubPlot":
+                                                Plugin.aindvSubPltpline.Add(pline);
+                                                break;
+                                            case "_InternalRoad":
+                                                Plugin.ainterroadpline.Add(pline);
+                                                break;
+                                            case "_OrganizedOpenSpace":
+                                                Plugin.aopenspacepline.Add(pline);
+                                                break;
+                                            case "_Amenity":
+                                                Plugin.aAmenitypline.Add(pline);
+                                                break;
+                                            case "_MortgageArea":
+                                                Plugin.aMortgageAreapline.Add(pline);
+                                                break;
+                                            case "_Splay":
+                                                Plugin.asplaypline.Add(pline);
+                                                break;
+                                            case "_BufferZone":
+                                                Plugin.aBufferpline.Add(pline);
+                                                break;
+                                            case "_WaterBodies":
+                                                Plugin.aWaterBodypline.Add(pline);
+                                                break;
+                                            case "_WaterLine":
+                                                Plugin.aWaterlinepline.Add(pline);
+                                                break;
+                                            case "_LeftoverOwnersLand":
+                                                Plugin.aLeftownerspline.Add(pline);
+                                                break;
+                                            case "_SurrenderToAuthority":
+                                                Plugin.aSurAuthpline.Add(pline);
+                                                break;
+                                            case "_CompoundWall":
+                                                Plugin.aCompndwllpline.Add(pline);
+                                                break;
+                                            case "_ElectricLine":
+                                                Plugin.aElectricpline.Add(pline);
+                                                break;
+                                            case "_GroundLevel":
+                                                Plugin.aGllvlpline.Add(pline);
+                                                break;
+                                            case "_FloorInSection":
+                                                Plugin.aFlrinSecpline.Add(pline);
+                                                break;
+                                            case "_ProposedWork":
+                                                Plugin.aPropWrkpline = pline;
+                                                break;
+                                            case "_Parking":
+                                                Plugin.aParkingpline.Add(pline);
+                                                break;
+                                            case "_Driveway":
+                                                Plugin.aDrivewaypline.Add(pline);
+                                                break;
+                                            case "_Ramp":
+                                                Plugin.arampline.Add(pline);
+                                                break;
+                                            case "_Floor":
+                                                Plugin.aFloorpline.Add(pline);
+                                                break;
+                                            case "_SlabCutoutVoid":
+                                                Plugin.aVoidpline.Add(pline);
+                                                break;
+                                            case "_AccessoryUse":
+                                                Plugin.aAccusepline.Add(pline);
+                                                break;
+                                            case "_NalaRoad":
+                                                Plugin.aNalapline.Add(pline);
+                                                break;
+                                            case "_StairCase":
+                                                if(pline.Closed)
+                                                    Plugin.aStairpline.Add(pline);
+                                                break;
+                                            case "_Passage":
+                                                Plugin.aStairpline.Add(pline);
+                                                break;
+                                            case "_VentilationShaft":
+                                                Plugin.aVenShaftpline.Add(pline);
+                                                break;
+
+                                        }
+                                    }
+                                }
+                                if (id.ObjectClass == MTxtCls)
+                                {
+                                    var pObj = (MText)tr.GetObject(id, OpenMode.ForRead);
                                     switch (layerName)
                                     {
                                         case "_Window":
-                                            Plugin.awindowpline.Add(pline);
+                                            Plugin.awindowNmTxt.Add(pObj);
                                             break;
                                         case "_Room":
-                                            Plugin.aroompline.Add(pline);
+                                            Plugin.aroomNmTxt.Add(pObj);
                                             break;
                                         case "_Door":
-                                            Plugin.adoorpline.Add(pline);
+                                            Plugin.adoorNmTxt.Add(pObj);
                                             break;
                                         case "_Plot":
-                                            Plugin.aplotpline.Add(pline);
+                                            Plugin.aplotNmTxt.Add(pObj);
                                             break;
                                         case "_MainRoad":
-                                            Plugin.amroadpline.Add(pline);
+                                            Plugin.amroadNmTxt.Add(pObj);
                                             break;
                                         case "_IndivSubPlot":
-                                            Plugin.aindvSubPltpline.Add(pline);
+                                            Plugin.aindvsubPltTxt.Add(pObj);
                                             break;
                                         case "_InternalRoad":
-                                            Plugin.ainterroadpline.Add(pline);
+                                            Plugin.ainterroadTxt.Add(pObj);
                                             break;
                                         case "_OrganizedOpenSpace":
-                                            Plugin.aopenspacepline.Add(pline);
+                                            Plugin.aopenspaceTxt.Add(pObj);
                                             break;
                                         case "_Amenity":
-                                            Plugin.aAmenitypline.Add(pline);
+                                            Plugin.aAmenityTxt.Add(pObj);
                                             break;
                                         case "_MortgageArea":
-                                            Plugin.aMortgageAreapline.Add(pline);
+                                            Plugin.aMortgageAreaTxt.Add(pObj);
                                             break;
                                         case "_Splay":
-                                            Plugin.asplaypline.Add(pline);
+                                            Plugin.asplayTxt.Add(pObj);
                                             break;
                                         case "_BufferZone":
-                                            Plugin.aBufferpline.Add(pline);
+                                            Plugin.aBufferTxt.Add(pObj);
                                             break;
                                         case "_WaterBodies":
-                                            Plugin.aWaterBodypline.Add(pline);
+                                            Plugin.aWaterBodyTxt.Add(pObj);
                                             break;
                                         case "_WaterLine":
-                                            Plugin.aWaterlinepline.Add(pline);
+                                            Plugin.aWaterlineTxt.Add(pObj);
                                             break;
                                         case "_LeftoverOwnersLand":
-                                            Plugin.aLeftownerspline.Add(pline);
+                                            Plugin.aLeftOwnersTxt.Add(pObj);
                                             break;
                                         case "_SurrenderToAuthority":
-                                            Plugin.aSurAuthpline.Add(pline);
+                                            Plugin.aSurAuthTxt.Add(pObj);
                                             break;
                                         case "_CompoundWall":
-                                            Plugin.aCompndwllpline.Add(pline);
+                                            Plugin.aCmpWallTxt.Add(pObj);
                                             break;
                                         case "_ElectricLine":
-                                            Plugin.aElectricpline.Add(pline);
+                                            Plugin.aElineTxt.Add(pObj);
                                             break;
                                         case "_GroundLevel":
-                                            Plugin.aGllvlpline.Add(pline);
+                                            Plugin.aGllvlTxt.Add(pObj);
                                             break;
                                         case "_FloorInSection":
-                                            Plugin.aFlrinSecpline.Add(pline);
+                                            Plugin.aFlrinSecTxt.Add(pObj);
                                             break;
                                         case "_ProposedWork":
-                                            Plugin.aPropWrkpline = pline;
+                                            Plugin.aPropWrkTxt = pObj;
                                             break;
                                         case "_Parking":
-                                            Plugin.aParkingpline.Add(pline);
+                                            Plugin.aParkingTxt.Add(pObj);
                                             break;
                                         case "_Driveway":
-                                            Plugin.aDrivewaypline.Add(pline);
+                                            Plugin.aDrivewayTxt.Add(pObj);
                                             break;
                                         case "_Ramp":
-                                            Plugin.arampline.Add(pline);
-                                            break;
-                                        case "_Floor":
-                                            Plugin.aFloorpline.Add(pline);
+                                            Plugin.arampTxt.Add(pObj);
                                             break;
                                         case "_SlabCutoutVoid":
-                                            Plugin.aVoidpline.Add(pline);
+                                            Plugin.aVoidTxt.Add(pObj);
                                             break;
                                         case "_AccessoryUse":
-                                            Plugin.aAccusepline.Add(pline);
+                                            Plugin.aAccuseTxt.Add(pObj);
+                                            break;
+                                        case "_NalaRoad":
+                                            Plugin.aNalaTxt.Add(pObj);
+                                            break;
+                                        case "_StairCase":
+                                            Plugin.aStairTxt.Add(pObj);
+                                            break;
+                                        case "_Passage":
+                                            Plugin.aPassageTxt.Add(pObj);
+                                            break;
+                                        case "_VentilationShaft":
+                                            Plugin.aVenShaftTxt.Add(pObj);
                                             break;
                                     }
-                                }                                
-                            }
-                            if (id.ObjectClass == MTxtCls)
-                            {
-                                var pObj = (MText)tr.GetObject(id, OpenMode.ForRead);
-                                switch (layerName)
-                                {
-                                    case "_Window":
-                                        Plugin.awindowNmTxt.Add(pObj);
-                                        break;
-                                    case "_Room":
-                                        Plugin.aroomNmTxt.Add(pObj);
-                                        break;
-                                    case "_Door":
-                                        Plugin.adoorNmTxt.Add(pObj);
-                                        break;
-                                    case "_Plot":
-                                        Plugin.aplotNmTxt.Add(pObj);
-                                        break;
-                                    case "_MainRoad":
-                                        Plugin.amroadNmTxt.Add(pObj);
-                                        break;
-                                    case "_IndivSubPlot":
-                                        Plugin.aindvsubPltTxt.Add(pObj);
-                                        break;
-                                    case "_InternalRoad":
-                                        Plugin.ainterroadTxt.Add(pObj);
-                                        break;
-                                    case "_OrganizedOpenSpace":
-                                        Plugin.aopenspaceTxt.Add(pObj);
-                                        break;
-                                    case "_Amenity":
-                                        Plugin.aAmenityTxt.Add(pObj);
-                                        break;
-                                    case "_MortgageArea":
-                                        Plugin.aMortgageAreaTxt.Add(pObj);
-                                        break;
-                                    case "_Splay":
-                                        Plugin.asplayTxt.Add(pObj);
-                                        break;
-                                    case "_BufferZone":
-                                        Plugin.aBufferTxt.Add(pObj);
-                                        break;
-                                    case "_WaterBodies":
-                                        Plugin.aWaterBodyTxt.Add(pObj);
-                                        break;
-                                    case "_WaterLine":
-                                        Plugin.aWaterlineTxt.Add(pObj);
-                                        break;
-                                    case "_LeftoverOwnersLand":
-                                        Plugin.aLeftOwnersTxt.Add(pObj);
-                                        break;
-                                    case "_SurrenderToAuthority":
-                                        Plugin.aSurAuthTxt.Add(pObj);
-                                        break;
-                                    case "_CompoundWall":
-                                        Plugin.aCmpWallTxt.Add(pObj);
-                                        break;
-                                    case "_ElectricLine":
-                                        Plugin.aElineTxt.Add(pObj);
-                                        break;
-                                    case "_GroundLevel":
-                                        Plugin.aGllvlTxt.Add(pObj);
-                                        break;
-                                    case "_FloorInSection":
-                                        Plugin.aFlrinSecTxt.Add(pObj);
-                                        break;
-                                    case "_ProposedWork":
-                                        Plugin.aPropWrkTxt = pObj;
-                                        break;
-                                    case "_Parking":
-                                        Plugin.aParkingTxt.Add(pObj);
-                                        break;
-                                    case "_Driveway":
-                                        Plugin.aDrivewayTxt.Add(pObj);
-                                        break;
-                                    case "_Ramp":
-                                        Plugin.arampTxt.Add(pObj);
-                                        break;
-                                    case "_Floor":
-                                        Plugin.aFloorTxt.Add(pObj);
-                                        break;
-                                    case "_SlabCutoutVoid":
-                                        Plugin.aVoidTxt.Add(pObj);
-                                        break;
-                                    case "_AccessoryUse":
-                                        Plugin.aAccuseTxt.Add(pObj);
-                                        break;
                                 }
-                            }
+                                if(id.ObjectClass == TxtCls)
+                                {
+                                    var pObj1 = (DBText)tr.GetObject(id, OpenMode.ForRead);
+                                    switch (layerName)
+                                    {
+                                        case "_Floor":
+                                            Plugin.aFloorTxt.Add(pObj1);
+                                            break;
+                                    }
+                                }
+                            }                            
                         }
                     }
                 }
             }
         }
-        public static void LayerRuleCheck_Layout(Database db, string slayer)
+        public static void LayerRuleCheck_Layout( string slayer)
         {
+            var documentManager = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager;
+            var currentDocument = documentManager.MdiActiveDocument;
+            var database = currentDocument.Database;
             switch (slayer)
             {
                 case "_Window":
@@ -250,15 +388,25 @@ namespace ProsoftAcPlugin
                         string winerrcause = "";
                         foreach (Polyline pln in Plugin.aroompline)
                         {
-                            foreach (windowrule wr in Commands.awindowrule)
+                            double rarea = pln.Area;
+                            foreach (Polyline wpl in Plugin.awindowpline)
                             {
-                                for (int i = 0; i < wr.pl.NumberOfVertices; i++)
+                                for (int i = 0; i < wpl.NumberOfVertices; i++)
                                 {
-                                    Point3d pt3 = wr.pl.GetPoint3dAt(i);
+                                    Point3d pt3 = wpl.GetPoint3dAt(i);
                                     if (IsPointOnPolyline(pln, pt3))
                                     {
-                                        double area = pln.Area;
-                                        if (area > (wr.width * wr.height * 10))
+                                        double warea = 0;
+                                        foreach (ProsoftAcPlugin.windowrule rule in ProsoftAcPlugin.Commands.awindowrule)
+                                        {
+                                            if (rule.pl == wpl)
+                                            {
+                                                warea = rule.width * rule.height;
+                                                MessageBox.Show("Window Area: " + warea.ToString());
+                                            }
+                                        }
+
+                                        if (warea < (rarea * 0.1))
                                         {
                                             windowerrcnt++;
                                             Commands.windowerrcause.Add("This Window is little than 10 % area of room");
@@ -275,54 +423,93 @@ namespace ProsoftAcPlugin
                         err.errcause = winerrcause;
                         Commands.errlist.Add(err);
                         break;
-                    }                    
+                    }
                 case "_Room":
                     {
                         int windowerrcntrm = 0;
-                    string roomerrcause = "";
-                    foreach (Polyline pln in Plugin.aroompline)
-                    {
-                        foreach (windowrule wr in Commands.awindowrule)
+                        string roomerrcause = "";
+                        foreach (Polyline pln in Plugin.aroompline)
                         {
-                            for (int i = 0; i < wr.pl.NumberOfVertices; i++)
+                            foreach (windowrule wr in Commands.awindowrule)
                             {
-                                Point3d pt3 = wr.pl.GetPoint3dAt(i);
-                                if (IsPointOnPolyline(pln, pt3))
+                                for (int i = 0; i < wr.pl.NumberOfVertices; i++)
                                 {
-                                    double area = pln.Area;
-                                    if (area > (wr.width * wr.height * 10))
+                                    Point3d pt3 = wr.pl.GetPoint3dAt(i);
+                                    if (IsPointOnPolyline(pln, pt3))
                                     {
-                                        windowerrcntrm++;
-                                        Commands.roomerrcause.Add("This room does not satisfy ventilation requirement.");
-                                        roomerrcause = roomerrcause + "-" + "This room does not satisfy ventilation requirement.";
-                                        break;
+                                        double area = pln.Area;
+                                        if (area > (wr.width * wr.height * 10))
+                                        {
+                                            windowerrcntrm++;
+                                            Commands.roomerrcause.Add("This room does not satisfy ventilation requirement.");
+                                            roomerrcause = roomerrcause + "-" + "This room does not satisfy ventilation requirement.";
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            bool bIntext = false;
+                            foreach (MText inst in Plugin.aroomNmTxt)
+                            {
+                                bIntext = IsInPolyLine(pln, inst.GeometricExtents.MinPoint, inst.GeometricExtents.MaxPoint);
+                                if (bIntext)
+                                    break;
+                                else
+                                {
+                                    windowerrcntrm++;
+                                    Commands.roomerrcause.Add("This room does not contain roomname.");
+                                    roomerrcause = roomerrcause + "-" + "This room does not contain roomname.";
+                                }
+                            }
+                        }
+                        ruleError errrm = new ruleError();
+                        errrm.errorCnt = windowerrcntrm;
+                        errrm.lyrname = "_Room";
+                        errrm.errcause = roomerrcause;
+                        Commands.errlist.Add(errrm);
+                        break;
+                    }
+                case "_Door":
+                    {
+                        int doorerrcnt = 0;
+                        string doorerrcause = "";
+                        foreach (Polyline pln in Plugin.aroompline)
+                        {
+                            double rarea = pln.Area;
+                            foreach (Polyline dpl in Plugin.adoorpline)
+                            {
+                                for (int i = 0; i < dpl.NumberOfVertices; i++)
+                                {
+                                    Point3d pt3 = dpl.GetPoint3dAt(i);
+                                    if (IsPointOnPolyline(pln, pt3))
+                                    {
+                                        double darea = 0;
+                                        foreach (ProsoftAcPlugin.doorrule rule in ProsoftAcPlugin.Commands.adoorrule)
+                                        {
+                                            if (rule.pl == dpl)
+                                            {
+                                                darea = rule.width * rule.height;
+                                                MessageBox.Show("Door Area: " + darea.ToString());
+                                            }
+                                        }
+
+                                        if (darea < (rarea * 0.1))
+                                        {
+                                            doorerrcnt++;
+                                            doorerrcause +="-This Window is little than 10 % area of room";
+                                            break;
+                                        }
                                     }
                                 }
                             }
                         }
-                        bool bIntext = false;
-                        foreach(MText inst in Plugin.aroomNmTxt)
-                        {
-                            bIntext = IsInPolyLine(pln, inst.GeometricExtents.MinPoint, inst.GeometricExtents.MaxPoint);
-                            if (bIntext)
-                                break;
-                            else
-                            {
-                                windowerrcntrm++;
-                                Commands.roomerrcause.Add( "This room does not contain roomname.");
-                                roomerrcause = roomerrcause + "-" + "This room does not contain roomname.";
-                            }
-                        }
+                        ruleError err = new ruleError();
+                        err.errorCnt = doorerrcnt;
+                        err.lyrname = "_Door";
+                        err.errcause = doorerrcause;
+                        Commands.errlist.Add(err);
+                        break;
                     }
-                    ruleError errrm = new ruleError();
-                    errrm.errorCnt = windowerrcntrm;
-                    errrm.lyrname = "_Room";
-                    errrm.errcause = roomerrcause;
-                    Commands.errlist.Add(errrm);
-                    break;
-                    }                    
-                case "_Door":
-                    break;
                 case "_Plot":
                     {
                         int ploterrcnt = 0;
@@ -344,7 +531,7 @@ namespace ProsoftAcPlugin
                         errplot.errcause = ploterrcaues;
                         Commands.errlist.Add(errplot);
                         break;
-                    }                    
+                    }
                 case "_MainRoad":
                     {
                         string mroaderrcause = "";
@@ -384,7 +571,7 @@ namespace ProsoftAcPlugin
                         errmroad.errcause = mroaderrcause;
                         Commands.errlist.Add(errmroad);
                         break;
-                    }                    
+                    }
                 case "_IndivSubPlot":
                     {
                         double totalAreaSubPlt = 0, PlotArea = 0;
@@ -425,7 +612,7 @@ namespace ProsoftAcPlugin
                         errIndsub.errcause = errcause;
                         Commands.errlist.Add(errIndsub);
                         break;
-                    }                    
+                    }
                 case "_InternalRoad":
                     {
                         bool istchmrd = false, istchindv = false, istchamenity = false, istchopensp = false;
@@ -495,7 +682,7 @@ namespace ProsoftAcPlugin
                         errIntrd.errcause = intrderrcause;
                         Commands.errlist.Add(errIntrd);
                         break;
-                    }                    
+                    }
                 case "_OrganizedOpenSpace":
                     {
                         double totalopenspacearea = 0, PlotArea1 = 0;
@@ -544,7 +731,7 @@ namespace ProsoftAcPlugin
                         erropenspace.errcause = openerrcause;
                         Commands.errlist.Add(erropenspace);
                         break;
-                    }                    
+                    }
                 case "_Amenity":
                     {
                         double socialarea = 0, PlotArea_social = 0;
@@ -649,10 +836,10 @@ namespace ProsoftAcPlugin
                     }
                 case "_Splay":
                     {
-                        bool splayinplot = false,istchsplay_indiv,istchsplay_mrd=false, istchsplay_intrd;
+                        bool splayinplot = false, istchsplay_indiv, istchsplay_mrd = false, istchsplay_intrd;
                         int splayerrcnt = 0;
                         string splayerrcause = "";
-                        foreach(Polyline pl in Plugin.asplaypline)
+                        foreach (Polyline pl in Plugin.asplaypline)
                         {
                             splayinplot = false;
                             istchsplay_indiv = false;
@@ -668,7 +855,7 @@ namespace ProsoftAcPlugin
                                 Point3d Bottomright = new Point3d(ptright.X, ptbottom.Y, 0);
                                 splayinplot = IsInPolyLine(plplot, Upperleft, Bottomright);
                             }
-                            if(!splayinplot)
+                            if (!splayinplot)
                             {
                                 splayerrcnt++;
                                 splayerrcause += "-Some Splay entities are not in Plot Area.";
@@ -677,16 +864,16 @@ namespace ProsoftAcPlugin
                             {
                                 istchsplay_indiv = checkTwoPlineTouch(plindiv, pl);
                             }
-                            if(!istchsplay_indiv)
+                            if (!istchsplay_indiv)
                             {
                                 splayerrcause += "-Some Splay entites are not touched with Individual Sub Plot Layer.";
                                 splayerrcnt++;
                             }
-                            foreach(Polyline plmrd in Plugin.amroadpline)
+                            foreach (Polyline plmrd in Plugin.amroadpline)
                             {
                                 istchsplay_mrd = checkTwoPlineTouch(plmrd, pl);
                             }
-                            if(!istchsplay_mrd)
+                            if (!istchsplay_mrd)
                             {
                                 splayerrcause += "-Some Splay entites are not touched with Mainroad Layer.";
                                 splayerrcnt++;
@@ -713,7 +900,7 @@ namespace ProsoftAcPlugin
                         bool istchbuffer = false;
                         string buferrcause = "";
                         int buferrcnt = 0;
-                        foreach(Polyline pl in Plugin.aBufferpline)
+                        foreach (Polyline pl in Plugin.aBufferpline)
                         {
                             if (Plugin.aWaterBodypline.Count != 0)
                             {
@@ -813,7 +1000,7 @@ namespace ProsoftAcPlugin
                         {
                             Plugin.LeftOwnerArea += pl.Area;
                         }
-                            break;
+                        break;
                     }
                 case "_SurrenderToAuthority":
                     {
@@ -828,11 +1015,11 @@ namespace ProsoftAcPlugin
                         bool istchcmp_plt = false;
                         string cmpwallerrcause = "";
                         int cmpwlerrcauseCnt = 0;
-                        foreach(Polyline pl in Plugin.aCompndwllpline)
+                        foreach (Polyline pl in Plugin.aCompndwllpline)
                         {
-                            if(!istchcmp_plt)
+                            if (!istchcmp_plt)
                             {
-                                foreach(Polyline plplt in Plugin.aplotpline)
+                                foreach (Polyline plplt in Plugin.aplotpline)
                                 {
                                     istchcmp_plt = checkTwoPlineTouch(plplt, pl);
                                     if (istchcmp_plt)
@@ -840,7 +1027,7 @@ namespace ProsoftAcPlugin
                                 }
                             }
                         }
-                        if(!istchcmp_plt)
+                        if (!istchcmp_plt)
                         {
                             cmpwallerrcause += "-Some CompoundWall entities are not closed with Plot.";
                             cmpwlerrcauseCnt++;
@@ -858,9 +1045,9 @@ namespace ProsoftAcPlugin
                         List<Point3d> Pltlineptlist = new List<Point3d>();
                         string elineerrcause = "";
                         int elineerrcnt = 0;
-                        foreach(Polyline plplt in Plugin.aplotpline)
+                        foreach (Polyline plplt in Plugin.aplotpline)
                         {
-                            for(int i=0;i<plplt.NumberOfVertices;i++)
+                            for (int i = 0; i < plplt.NumberOfVertices; i++)
                             {
                                 Pltlineptlist.Add(plplt.GetPoint3dAt(i));
                             }
@@ -872,20 +1059,20 @@ namespace ProsoftAcPlugin
                                     foreach (Polyline pl in Plugin.aElectricpline)
                                     {
                                         elineptlist.Clear();
-                                        
+
                                         for (int i = 0; i < pl.NumberOfVertices; i++)
                                         {
                                             elineptlist.Add(pl.GetPoint3dAt(i));
                                         }
-                                        foreach(Point3d pt in Pltlineptlist)
+                                        foreach (Point3d pt in Pltlineptlist)
                                         {
-                                            int cntx = 0,cnty=0;
+                                            int cntx = 0, cnty = 0;
                                             foreach (Point3d pt1 in elineptlist)
                                             {
-                                                if(pt.X==pt1.X+3||pt.X==pt1.X-3)
+                                                if (pt.X == pt1.X + 3 || pt.X == pt1.X - 3)
                                                 {
                                                     cntx++;
-                                                    if(cntx==2)
+                                                    if (cntx == 2)
                                                     {
                                                         break;
                                                     }
@@ -900,7 +1087,7 @@ namespace ProsoftAcPlugin
                                                 }
 
                                             }
-                                            if(cntx<2||cnty<2)
+                                            if (cntx < 2 || cnty < 2)
                                             {
                                                 elineerrcause += "-Some Electric Line entities are not maintained safety distance.";
                                                 elineerrcnt++;
@@ -908,8 +1095,8 @@ namespace ProsoftAcPlugin
                                         }
                                     }
                                     break;
-                                }                                    
-                                
+                                }
+
                             case 2:
                                 {
                                     foreach (Polyline pl in Plugin.aElectricpline)
@@ -959,20 +1146,66 @@ namespace ProsoftAcPlugin
                     }
             }
         }
-        public static void LayerRuleCheck_BldgPermiss(Database db, string slayer)
+        public static void LayerRuleCheck_BldgPermiss( string slayer)
         {
-            switch(slayer)
+            switch (slayer)
             {
+                case "_Window":    
+                    {
+                        int windowerrcnt = 0;
+                        string winerrcause = "";
+                        List<ObjectId> objidlist = new List<ObjectId>();
+                        foreach (Polyline pln in Plugin.aroompline)
+                        {
+                            double rarea = pln.Area;
+                            foreach (Polyline wpl in Plugin.awindowpline)
+                            {
+                                for (int i = 0; i < wpl.NumberOfVertices; i++)
+                                {
+                                    Point3d pt3 = wpl.GetPoint3dAt(i);
+                                    if (IsPointOnPolyline(pln, pt3))
+                                    {
+                                        double warea = 0;
+                                        foreach (ProsoftAcPlugin.windowrule rule in ProsoftAcPlugin.Commands.awindowrule)
+                                        {
+                                            if (rule.pl == wpl)
+                                            {
+                                                warea = rule.width * rule.height;
+                                                MessageBox.Show("Window Area: "+warea.ToString());
+                                            }
+                                        }
+                                        
+                                        if (warea < (rarea * 0.1))
+                                        {
+                                            windowerrcnt++;
+                                            Commands.windowerrcause.Add("This Window is little than 10 % area of room");
+                                            winerrcause = winerrcause + "-" + "This Window is little than 10 % area of room";
+                                            objidlist.Add(wpl.ObjectId);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        ruleError err = new ruleError();
+                        err.errorCnt = windowerrcnt;
+                        err.lyrname = "_Window";
+                        err.errcause = winerrcause;
+                        err.objIdlist = objidlist;
+                        Commands.errlist.Add(err);
+                        break;
+                    }
                 case "_Plot":
                     {
                         double buildinghght = 0;
-                        Point3d topPt=new Point3d(0,0,0);
+                        Point3d topPt = new Point3d(0, 0, 0);
                         Point3d bottomPt = new Point3d(0, 0, 0);
-                        double PlotArea=0;
+                        double PlotArea = 0;
                         string plterrcause = "";
                         int plterrcnt = 0;
                         double roadwidth = 0;
-                        bottomPt =Plugin.aFlrinSecpline.First().GetPoint3dAt(0);
+                        bottomPt = Plugin.aFlrinSecpline.First().GetPoint3dAt(0);
+                        List<ObjectId> objlst = new List<ObjectId>();
                         Polyline PlotLine = Plugin.aplotpline.First();
                         Polyline PrpWkline = Plugin.aPropWrkpline;
                         Point3d ptleftplt = Commands.Getleft(PlotLine);
@@ -988,31 +1221,47 @@ namespace ProsoftAcPlugin
                         double lsetback, rsetback, fsetback, rearsetback;
                         lsetback = Math.Abs(ptleftplt.X - ptleftprp.X);
                         rsetback = Math.Abs(ptrightplt.X - ptrightprp.X);
-                        fsetback= Math.Abs(pttopplt.Y - pttopprp.Y);
-                        rearsetback= Math.Abs(ptbottomplt.Y - ptbottomprp.Y);
-                        if(fsetback<rearsetback)
+                        fsetback = Math.Abs(pttopplt.Y - pttopprp.Y);
+                        rearsetback = Math.Abs(ptbottomplt.Y - ptbottomprp.Y);
+                        if (fsetback < rearsetback)
                         {
                             Swap(fsetback, rearsetback);
                         }
-                        
-                        if(Plugin.amroadNmTxt.Count!=0)
+                        if (Plugin.amroadNmTxt.Count != 0)
                         {
                             string widthtxt = Commands.GetMTextContent(Plugin.amroadNmTxt.ElementAt(0));
                             roadwidth = Commands.GetRoadWidth(widthtxt);
                         }
-                        
-
-                        foreach (Polyline pl in Plugin.aFlrinSecpline)
+                        MText terracetxt=null;
+                        foreach(MText txt in Plugin.aFlrinSecTxt)
                         {
-                            for(int i=0;i<pl.NumberOfVertices;i++)
+                            string str = txt.Contents.ToUpper();
+                            MessageBox.Show(str);
+                            if (str.Contains("TERRACE"))
                             {
-                                if (topPt.Y < pl.GetPoint3dAt(i).Y)
-                                    topPt = pl.GetPoint3dAt(i);
+                                terracetxt = txt;
+                                MessageBox.Show("Terrace: " + terracetxt.ObjectId.ToString());
                             }
                         }
-                        foreach(Polyline pl in Plugin.aGllvlpline)
+                        
+                        foreach (Polyline pl in Plugin.aFlrinSecpline)
                         {
-                            for(int i=0;i<pl.NumberOfVertices;i++)
+                            if(terracetxt!=null)
+                            {
+                                if (IsInPolyLine(pl, terracetxt.GeometricExtents.MinPoint,terracetxt.GeometricExtents.MaxPoint))
+                                {
+                                    for (int i = 0; i < pl.NumberOfVertices; i++)
+                                    {
+                                        if (topPt.Y < pl.GetPoint3dAt(i).Y)
+                                            topPt = pl.GetPoint3dAt(i);
+                                    }
+                                    break;
+                                }
+                            } 
+                        }
+                        foreach (Polyline pl in Plugin.aGllvlpline)
+                        {
+                            for (int i = 0; i < pl.NumberOfVertices; i++)
                             {
                                 if (bottomPt.Y > pl.GetPoint3dAt(i).Y)
                                     bottomPt = pl.GetPoint3dAt(i);
@@ -1021,66 +1270,16 @@ namespace ProsoftAcPlugin
                         foreach (Polyline pl2 in Plugin.aplotpline)
                             PlotArea += pl2.Area;
                         buildinghght = topPt.Y - bottomPt.Y;
-                        if(PlotArea<=50)
+                        MessageBox.Show("Building Height: "+buildinghght.ToString());
+                        if (PlotArea <= 50)
                         {
-                            if( buildinghght > 7)
+                            if (buildinghght > 7)
                             {
-                                plterrcause += "-Building Height is out of Rule.";
+                                plterrcause += "-Current Plot Area is less than 50. Building Height is out of rule";
                                 plterrcnt++;
+                                objlst.Add(Plugin.aplotpline[0].ObjectId);
                             }
                             else
-                            {
-                                if(roadwidth>0&&roadwidth<=12)
-                                {                                    
-                                    if(fsetback!=1.5)
-                                    {
-                                        plterrcause += "-Building Setback is out of rule.";
-                                        plterrcnt++;
-                                    }
-                                }
-                                if (roadwidth >= 12 && roadwidth <= 18)
-                                {
-                                    if (fsetback != 1.5)
-                                    {
-                                        plterrcause += "-Building Setback is out of rule.";
-                                        plterrcnt++;
-                                    }
-                                }
-                                if (roadwidth >= 18 && roadwidth <= 24)
-                                {
-                                    if (fsetback != 3)
-                                    {
-                                        plterrcause += "-Building Setback is out of rule.";
-                                        plterrcnt++;
-                                    }
-                                }
-                                if (roadwidth >= 24 && roadwidth <= 30)
-                                {
-                                    if (fsetback != 3)
-                                    {
-                                        plterrcause += "-Building Setback is out of rule.";
-                                        plterrcnt++;
-                                    }
-                                }
-                                if (roadwidth> 30)
-                                {
-                                    if (fsetback != 3)
-                                    {
-                                        plterrcause += "-Building Setback is out of rule.";
-                                        plterrcnt++;
-                                    }
-                                }
-                            }
-                        }
-
-                        if (50<=PlotArea&& PlotArea <= 100)
-                        {
-                            if (buildinghght < 7||buildinghght>10)
-                            {
-                                plterrcause += "Building Height is out of Rule.";
-                                plterrcnt++;
-                            }
-                            else if(buildinghght==7)
                             {
                                 if (roadwidth > 0 && roadwidth <= 12)
                                 {
@@ -1088,6 +1287,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1096,6 +1296,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1104,6 +1305,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1112,6 +1314,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1120,6 +1323,65 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
+                                    }
+                                }
+                            }
+                        }
+
+                        if (50 <= PlotArea && PlotArea <= 100)
+                        {
+                            if (buildinghght < 7 || buildinghght > 10)
+                            {
+                                plterrcause += "-Current Plot Area is less than 100. Building Height is out of rule";
+                                plterrcnt++;
+                                objlst.Add(Plugin.aplotpline[0].ObjectId);
+                            }
+                            else if (buildinghght == 7)
+                            {
+                                if (roadwidth > 0 && roadwidth <= 12)
+                                {
+                                    if (fsetback != 1.5)
+                                    {
+                                        plterrcause += "-Building Setback is out of rule.";
+                                        plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
+                                    }
+                                }
+                                if (roadwidth >= 12 && roadwidth <= 18)
+                                {
+                                    if (fsetback != 1.5)
+                                    {
+                                        plterrcause += "-Building Setback is out of rule.";
+                                        plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
+                                    }
+                                }
+                                if (roadwidth >= 18 && roadwidth <= 24)
+                                {
+                                    if (fsetback != 3)
+                                    {
+                                        plterrcause += "-Building Setback is out of rule.";
+                                        plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
+                                    }
+                                }
+                                if (roadwidth >= 24 && roadwidth <= 30)
+                                {
+                                    if (fsetback != 3)
+                                    {
+                                        plterrcause += "-Building Setback is out of rule.";
+                                        plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
+                                    }
+                                }
+                                if (roadwidth > 30)
+                                {
+                                    if (fsetback != 3)
+                                    {
+                                        plterrcause += "-Building Setback is out of rule.";
+                                        plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1127,10 +1389,11 @@ namespace ProsoftAcPlugin
                             {
                                 if (roadwidth > 0 && roadwidth <= 12)
                                 {
-                                    if (fsetback != 1.5||rsetback!=0.5||lsetback!=0.5||rearsetback!=0.5)
+                                    if (fsetback != 1.5 || rsetback != 0.5 || lsetback != 0.5 || rearsetback != 0.5)
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1139,6 +1402,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1147,6 +1411,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1155,6 +1420,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1163,6 +1429,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1172,8 +1439,9 @@ namespace ProsoftAcPlugin
                         {
                             if (buildinghght > 10)
                             {
-                                plterrcause += "Building Height is out of Rule.";
+                                plterrcause += "-Current Plot Area is less than 200. Building Height is out of rule";
                                 plterrcnt++;
+                                objlst.Add(Plugin.aplotpline[0].ObjectId);
                             }
                             else
                             {
@@ -1183,6 +1451,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1191,6 +1460,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1199,6 +1469,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1207,6 +1478,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1215,6 +1487,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1224,10 +1497,11 @@ namespace ProsoftAcPlugin
                         {
                             if (buildinghght < 7 || buildinghght > 10)
                             {
-                                plterrcause += "Building Height is out of Rule.";
+                                plterrcause += "-Current Plot Area is less than 300. Building Height is out of rule";
                                 plterrcnt++;
+                                objlst.Add(Plugin.aplotpline[0].ObjectId);
                             }
-                            else if(buildinghght==7)
+                            else if (buildinghght == 7)
                             {
                                 if (roadwidth > 0 && roadwidth <= 12)
                                 {
@@ -1235,6 +1509,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1243,6 +1518,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1251,6 +1527,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1259,6 +1536,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1267,10 +1545,11 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
-                            if(buildinghght>7&&buildinghght<=10)
+                            if (buildinghght > 7 || buildinghght <= 10)
                             {
                                 if (roadwidth > 0 && roadwidth <= 12)
                                 {
@@ -1278,6 +1557,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1286,6 +1566,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1294,6 +1575,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1302,6 +1584,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1310,6 +1593,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1319,8 +1603,9 @@ namespace ProsoftAcPlugin
                         {
                             if (buildinghght < 7 || buildinghght > 12)
                             {
-                                plterrcause += "Building Height is out of Rule.";
+                                plterrcause += "-Current Plot Area is less than 400. Building Height is out of rule";
                                 plterrcnt++;
+                                objlst.Add(Plugin.aplotpline[0].ObjectId);
                             }
                             if (buildinghght == 7)
                             {
@@ -1330,6 +1615,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1338,6 +1624,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1346,6 +1633,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1354,6 +1642,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1362,6 +1651,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1373,6 +1663,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1381,6 +1672,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1389,6 +1681,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1397,6 +1690,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1405,6 +1699,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1414,8 +1709,9 @@ namespace ProsoftAcPlugin
                         {
                             if (buildinghght < 7 || buildinghght > 12)
                             {
-                                plterrcause += "Building Height is out of Rule.";
+                                plterrcause += "-Current Plot Area is less than 500. Building Height is out of rule";
                                 plterrcnt++;
+                                objlst.Add(Plugin.aplotpline[0].ObjectId);
                             }
                             if (buildinghght == 7)
                             {
@@ -1425,6 +1721,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1433,6 +1730,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1441,6 +1739,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1449,6 +1748,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1457,6 +1757,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1468,6 +1769,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1476,6 +1778,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1484,6 +1787,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1492,6 +1796,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1500,6 +1805,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1509,8 +1815,9 @@ namespace ProsoftAcPlugin
                         {
                             if (buildinghght < 7 || buildinghght > 15)
                             {
-                                plterrcause += "Building Height is out of Rule.";
+                                plterrcause += "-Current Plot Area is less than 750. Building Height is out of rule";
                                 plterrcnt++;
+                                objlst.Add(Plugin.aplotpline[0].ObjectId);
                             }
                             if (buildinghght == 7)
                             {
@@ -1520,6 +1827,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1528,6 +1836,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1536,6 +1845,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1544,6 +1854,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1552,6 +1863,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1563,6 +1875,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1571,6 +1884,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1579,6 +1893,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1587,6 +1902,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1595,6 +1911,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1606,6 +1923,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1614,6 +1932,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1622,6 +1941,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1630,6 +1950,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1638,6 +1959,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1646,8 +1968,9 @@ namespace ProsoftAcPlugin
                         {
                             if (buildinghght < 7 || buildinghght > 15)
                             {
-                                plterrcause += "Building Height is out of Rule.";
+                                plterrcause += "-Current Plot Area is less than 1000. Building Height is out of rule";
                                 plterrcnt++;
+                                objlst.Add(Plugin.aplotpline[0].ObjectId);
                             }
                             if (buildinghght == 7)
                             {
@@ -1657,6 +1980,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1665,6 +1989,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1673,6 +1998,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1681,6 +2007,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1689,6 +2016,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1700,6 +2028,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1708,6 +2037,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1716,6 +2046,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1724,6 +2055,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1732,6 +2064,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1743,6 +2076,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1751,6 +2085,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1759,6 +2094,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1767,6 +2103,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1775,6 +2112,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1783,8 +2121,9 @@ namespace ProsoftAcPlugin
                         {
                             if (buildinghght < 7 || buildinghght > 18)
                             {
-                                plterrcause += "Building Height is out of Rule.";
+                                plterrcause += "-Current Plot Area is less than 1500. Building Height is out of rule";
                                 plterrcnt++;
+                                objlst.Add(Plugin.aplotpline[0].ObjectId);
                             }
                             if (buildinghght == 7)
                             {
@@ -1794,6 +2133,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1802,6 +2142,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1810,6 +2151,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1818,6 +2160,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1826,6 +2169,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1837,6 +2181,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1845,6 +2190,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1853,6 +2199,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1861,6 +2208,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1869,6 +2217,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1880,6 +2229,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1888,6 +2238,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1896,6 +2247,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1904,6 +2256,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1912,6 +2265,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1923,6 +2277,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1931,6 +2286,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1939,6 +2295,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1947,6 +2304,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -1955,6 +2313,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -1963,8 +2322,9 @@ namespace ProsoftAcPlugin
                         {
                             if (buildinghght < 7 || buildinghght > 18)
                             {
-                                plterrcause += "Building Height is out of Rule.";
+                                plterrcause += "-Current Plot Area is less than 2500. Building Height is out of rule";
                                 plterrcnt++;
+                                objlst.Add(Plugin.aplotpline[0].ObjectId);
                             }
                             if (buildinghght == 7)
                             {
@@ -1974,6 +2334,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -1982,6 +2343,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -1990,6 +2352,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -1998,6 +2361,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -2006,6 +2370,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -2017,6 +2382,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -2025,6 +2391,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -2033,6 +2400,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -2041,6 +2409,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -2049,6 +2418,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -2060,6 +2430,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -2068,6 +2439,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -2076,6 +2448,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -2084,6 +2457,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -2092,16 +2466,18 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
                         }
-                        if (2500 <= PlotArea )
+                        if (2500 <= PlotArea)
                         {
                             if (buildinghght < 7 || buildinghght > 18)
                             {
-                                plterrcause += "Building Height is out of Rule.";
+                                plterrcause += "-Current Plot Area is more than 2500. Building Height is out of rule";
                                 plterrcnt++;
+                                objlst.Add(Plugin.aplotpline[0].ObjectId);
                             }
                             if (buildinghght == 7)
                             {
@@ -2111,6 +2487,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -2119,6 +2496,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -2127,6 +2505,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -2135,6 +2514,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -2143,6 +2523,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -2154,6 +2535,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -2162,6 +2544,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -2170,6 +2553,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -2178,6 +2562,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -2186,6 +2571,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -2197,6 +2583,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 12 && roadwidth <= 18)
@@ -2205,6 +2592,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 18 && roadwidth <= 24)
@@ -2213,6 +2601,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth >= 24 && roadwidth <= 30)
@@ -2221,6 +2610,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                                 if (roadwidth > 30)
@@ -2229,6 +2619,7 @@ namespace ProsoftAcPlugin
                                     {
                                         plterrcause += "-Building Setback is out of rule.";
                                         plterrcnt++;
+                                        objlst.Add(Plugin.aplotpline[0].ObjectId);
                                     }
                                 }
                             }
@@ -2238,21 +2629,26 @@ namespace ProsoftAcPlugin
                         err_plt.errorCnt = plterrcnt;
                         err_plt.lyrname = "_Plot";
                         err_plt.errcause = plterrcause;
+                        err_plt.objIdlist = objlst;
                         Commands.errlist.Add(err_plt);
                         break;
                     }
                 case "_OrganizedOpenSpace":
                     {
-                        double PlotArea=0, greenArea = 0,openspaceArea=0;
-                        double openspacewidth = 0, length=0;
+                        double PlotArea = 0, greenArea = 0, openspaceArea = 0;
+                        double openspacewidth = 0, length = 0;
                         string openerrcause = "";
                         int openerrcnt = 0;
+                        List<ObjectId> objidlst=new List<ObjectId>();
                         foreach (Polyline pl2 in Plugin.aplotpline)
                             PlotArea += pl2.Area;
                         greenArea = Plugin.aopenspacepline.ElementAt(0).Area;
                         length = Plugin.aopenspacepline.ElementAt(0).Length;
                         foreach (Polyline pl in Plugin.aopenspacepline)
+                        {
                             openspaceArea += pl.Area;
+                            objidlst.Add(pl.ObjectId);
+                        }
                         string openEntname = Plugin.aopenspaceTxt.ElementAt(0).Text;
                         if (openEntname.Contains("Green Strip"))
                             openEntname = "Green Strip";
@@ -2262,12 +2658,12 @@ namespace ProsoftAcPlugin
                             openEntname = "Tot lot";
                         if (openEntname.Contains("OPEN SPACE"))
                             openEntname = "OPEN SPACE";
-                        if(openEntname== "Green Strip"|| openEntname == "Green Belt")
-                            if (300<=PlotArea||PlotArea<=4000)   
+                        if (openEntname == "Green Strip" || openEntname == "Green Belt")
+                            if (300 <= PlotArea || PlotArea <= 4000)
                             {
                                 //(length/2-width)*width=area
                                 openspacewidth = (length / 2 - Math.Sqrt(Math.Pow(length / 2, 2) - 4 * greenArea)) / 2;
-                                if(openspacewidth<1|| openspacewidth >2)
+                                if (openspacewidth < 1 || openspacewidth > 2)
                                 {
                                     openerrcause += "-Green Strip or Green Belt is out of rule.";
                                     openerrcnt++;
@@ -2291,7 +2687,7 @@ namespace ProsoftAcPlugin
                                     openerrcnt++;
                                 }
                             }
-                            if(PlotArea>40000 && Plugin.projtypestate == 3)
+                            if (PlotArea > 40000 && Plugin.projtypestate == 3)
                             {
                                 if (openspaceArea > PlotArea * 0.075)
                                 {
@@ -2304,6 +2700,7 @@ namespace ProsoftAcPlugin
                         err_orgopen.errorCnt = openerrcnt;
                         err_orgopen.lyrname = "_OrganizedOpenSpace";
                         err_orgopen.errcause = openerrcause;
+                        err_orgopen.objIdlist = objidlst;
                         Commands.errlist.Add(err_orgopen);
                         break;
                     }
@@ -2519,14 +2916,35 @@ namespace ProsoftAcPlugin
                     }
                 case "_MainRoad":
                     {
-                        double mroadwidth = 0, PlotArea=0;
+                        double mroadwidth = 0, PlotArea = 0;
+                        string strerrcause = "";
+                        int errcnt = 0;
+                        List<ObjectId> objidlst = new List<ObjectId>();
                         foreach (Polyline pl2 in Plugin.aplotpline)
                             PlotArea += pl2.Area;
                         if (Plugin.amroadNmTxt.Count != 0)
                         {
                             string widthtxt = Commands.GetMTextContent(Plugin.amroadNmTxt.ElementAt(0));
                             mroadwidth = Commands.GetRoadWidth(widthtxt);
+                            if(mroadwidth==0)
+                            {
+                                strerrcause += "-MainRoad Width is worng.";
+                                errcnt++;
+                                objidlst.Add(Plugin.amroadNmTxt[0].ObjectId);
+                            }                                
                         }
+                        else
+                        {
+                            strerrcause += "-No Text in the MainRoad Layer.";
+                            errcnt++;
+                            objidlst.Add(Plugin.amroadpline[0].ObjectId);
+                        }
+                        ruleError err_mroad = new ruleError();
+                        err_mroad.errorCnt = errcnt;
+                        err_mroad.lyrname = "_MainRoad";
+                        err_mroad.errcause = strerrcause;
+                        err_mroad.objIdlist = objidlst;
+                        Commands.errlist.Add(err_mroad);
                         break;
                     }
                 case "_InternalRoad":
@@ -2534,45 +2952,51 @@ namespace ProsoftAcPlugin
                         double inroadwidth = 0;
                         string inrderrcause = "";
                         int inrderrcnt = 0;
+                        List<ObjectId> objidlst = new List<ObjectId>();
                         if (Plugin.ainterroadTxt.Count != 0)
                         {
                             string widthtxt = Commands.GetMTextContent(Plugin.amroadNmTxt.ElementAt(0));
                             inroadwidth = Commands.GetRoadWidth(widthtxt);
                             if (inroadwidth < 9.14)
                             {
-                                inrderrcause += "-Internal road width is less than rule.";
-                                inrderrcnt ++;
+                                inrderrcause += "-Internal road width is less than rule(9.14).";
+                                inrderrcnt++;
+                                objidlst.Add(Plugin.amroadNmTxt[0].ObjectId);
                             }
                         }
                         ruleError err_inrd = new ruleError();
                         err_inrd.errorCnt = inrderrcnt;
                         err_inrd.lyrname = "_InternalRoad";
                         err_inrd.errcause = inrderrcause;
+                        err_inrd.objIdlist = objidlst;
                         Commands.errlist.Add(err_inrd);
                         break;
                     }
                 case "_Driveway":
                     {
-                        double drivewidth = 0,PlotArea=0;
+                        double drivewidth = 0, PlotArea = 0;
                         string driveerrcause = "";
                         int driveerrcnt = 0;
+                        List<ObjectId> objidlst = new List<ObjectId>();
                         foreach (Polyline pl2 in Plugin.aplotpline)
                             PlotArea += pl2.Area;
                         if (Plugin.ainterroadTxt.Count != 0)
                         {
                             string widthtxt = Commands.GetMTextContent(Plugin.amroadNmTxt.ElementAt(0));
                             drivewidth = Commands.GetRoadWidth(widthtxt);
-                            if(PlotArea>4000)
+                            if (PlotArea > 4000)
                                 if (drivewidth < 4.5)
                                 {
-                                    driveerrcause += "-Drive way width is less than rule.";
+                                    driveerrcause += "-Drive way width is less than rule(4.5).";
                                     driveerrcnt++;
+                                    objidlst.Add(Plugin.ainterroadTxt[0].ObjectId);
                                 }
-                            else
+                                else
                                 if (drivewidth < 3.6)
                                 {
-                                    driveerrcause += "-Drive way width is less than rule.";
+                                    driveerrcause += "-Drive way width is less than rule(3.6).";
                                     driveerrcnt++;
+                                    objidlst.Add(Plugin.ainterroadTxt[0].ObjectId);
                                 }
                         }
 
@@ -2580,72 +3004,91 @@ namespace ProsoftAcPlugin
                         err_inrd.errorCnt = driveerrcnt;
                         err_inrd.lyrname = "_Driveway";
                         err_inrd.errcause = driveerrcause;
+                        err_inrd.objIdlist = objidlst;
                         Commands.errlist.Add(err_inrd);
                         break;
                     }
                 case "_Ramp":
                     {
-                        double rmplength = 0,rmpwidth = 0, rmpht = 0,plinth=0;
+                        double rmplength = 0, rmpwidth = 0, rmpht = 0, plinth = 0;
                         double glY = Plugin.aGllvlpline.ElementAt(0).GetPoint3dAt(0).Y;
+                        Polyline firstcellarpl = null, basefirstfloorpl = null;
+                        DBText basefirsttxt = null;
                         Point3d tmpTop = new Point3d(0, 0, 0);
-                        MText Cellartxt=null; Polyline plcellar=null;
+                        List<Polyline> plcellarlist = new List<Polyline>();
+                        List<ObjectId> objidlst = new List<ObjectId>();
                         string rmperrcause = "";
                         int rmperrcnt = 0;
-                        int plnCnt = 0;
-                        foreach(MText txt in Plugin.aFlrinSecTxt)
+                        foreach (DBText txt in Plugin.aFloorTxt)
                         {
-                            if (txt.Contents.Contains("CELLAR"))
-                                Cellartxt = txt;
+                            string strtmp = txt.TextString;
+                            if (strtmp.Contains("BASEMENT FIRST") || strtmp.Contains("CELLAR"))
+                            {
+                                basefirsttxt = txt;
+                            }
                         }
-                        foreach(Polyline pl in Plugin.aFlrinSecpline)
+                        if (basefirsttxt == null)
+                            return;
+                        foreach (Polyline pl in Plugin.aFloorpline)
                         {
-                            Point3d ptstart = Cellartxt.Location;
-                            Point3d ptend = new Point3d(Cellartxt.Location.X + Cellartxt.Width, Cellartxt.Location.Y + Cellartxt.Height, 0);
-                            Point3d lowtop = Commands.Gettop(pl);
-                            
-                            if (plnCnt == 0)
-                                tmpTop = lowtop;
-                            plnCnt++;
-                            if (tmpTop.Y > lowtop.Y)
-                                tmpTop = lowtop;
-                            if (IsInPolyLine(pl, ptstart, ptend))
-                                plcellar = pl;
+                            if (IsInPolyLine(pl, basefirsttxt.Position,
+                                new Point3d(basefirsttxt.Position.X + basefirsttxt.Bounds.Value.MaxPoint.X - basefirsttxt.Bounds.Value.MinPoint.X
+                                , basefirsttxt.Position.Y + basefirsttxt.Height, 0)))
+                            {
+                                basefirstfloorpl = pl;
+                                break;
+                            }
                         }
-                        plinth = tmpTop.Y - glY;
-                        foreach(MText txt in Plugin.arampTxt)
+                        MessageBox.Show("Ramp Step");
+                        Point3d ptfirsttop = Commands.Gettop(basefirstfloorpl);
+                        foreach (Polyline pl in Plugin.aFlrinSecpline)
+                        {
+                            Point3d ptbottom = Commands.Getbottom(pl);
+                            if (glY > ptbottom.Y)
+                                plcellarlist.Add(pl);
+                        }
+                        Polyline firstFlrINSeccellarpl = plcellarlist[0];
+                        foreach (Polyline pl in plcellarlist)
+                        {
+                            if (Commands.Gettop(pl).Y > Commands.Gettop(firstFlrINSeccellarpl).Y)
+                                firstFlrINSeccellarpl = pl;
+                        }
+                        plinth = Commands.Gettop(firstFlrINSeccellarpl).Y - glY;
+                        foreach (MText txt in Plugin.arampTxt)
                         {
                             Point3d ptstart = txt.Location;
                             Point3d ptend = new Point3d(txt.Location.X + txt.Width, txt.Location.Y + txt.Height, 0);
                             string str = txt.Contents;
-                            str.ToLower();
+                            str = str.ToLower();
                             int lengthpos = str.IndexOf(" mt. long ");
                             string strlength = str.Substring(0, lengthpos);
                             rmplength = Convert.ToDouble(strlength);
-                            str.Remove(0, lengthpos + 10);
+                            str = str.Remove(0, lengthpos + 10);
                             int widehpos = str.IndexOf(" mt. high ");
                             string strwide = str.Substring(0, widehpos);
                             rmpht = Convert.ToDouble(strwide);
-                            str.Remove(0, widehpos + 10);
+                            str = str.Remove(0, widehpos + 10);
                             int htpos = str.IndexOf(" mt. wide ");
                             string strht = str.Substring(0, htpos);
                             rmpwidth = Convert.ToDouble(strht);
-                            str.Remove(0, htpos + 10);
-                            double cellarht = Commands.Gettop(plcellar).Y - Commands.Getbottom(plcellar).Y;
-                            if (IsInPolyLine(plcellar,ptstart,ptend))
+                            if (IsInPolyLine(basefirstfloorpl, ptstart, ptend))
                             {
-                                
-                                if (rmplength > (cellarht - plinth) * 8)
+                                double cellarht = Commands.Gettop(firstFlrINSeccellarpl).Y - Commands.Getbottom(firstFlrINSeccellarpl).Y;
+                                if (rmplength >= (cellarht - plinth) * 8)
                                 {
-                                    rmperrcause += "Ramp is out of rule.";
+                                    rmperrcause += "-Ramp Length is out of rule.";
                                     rmperrcnt++;
+                                    objidlst.Add(txt.ObjectId);
                                 }
                             }
                             else
                             {
-                                if(rmpwidth>5.4)
+                                double cellarht = Commands.Gettop(firstFlrINSeccellarpl).Y - Commands.Getbottom(firstFlrINSeccellarpl).Y;
+                                if (rmplength >= (cellarht) * 8)
                                 {
-                                    rmperrcause += "Ramp is out of rule.";
+                                    rmperrcause += "-Ramp is out of rule.";
                                     rmperrcnt++;
+                                    objidlst.Add(txt.ObjectId);
                                 }
                             }
                         }
@@ -2653,7 +3096,442 @@ namespace ProsoftAcPlugin
                         err_inrd.errorCnt = rmperrcnt;
                         err_inrd.lyrname = "_Ramp";
                         err_inrd.errcause = rmperrcause;
+                        err_inrd.objIdlist = objidlst;
                         Commands.errlist.Add(err_inrd);
+                        break;
+                    }
+                case "_StairCase":
+                    {
+                        double PlotArea = 0;
+                        string stairerrcause = "";
+                        int errcnt = 0;
+                        List<ObjectId> objidlst = new List<ObjectId>();
+                        foreach (Polyline pl2 in Plugin.aplotpline)
+                            PlotArea += pl2.Area;
+                        foreach (Polyline pl in Plugin.aStairpline)
+                        {
+                            Point3d ptleftplt = Commands.Getleft(pl);
+                            Point3d ptrightplt = Commands.Getright(pl);
+                            Point3d pttopplt = Commands.Gettop(pl);
+                            Point3d ptbottomplt = Commands.Getbottom(pl);
+                            double width1 = Math.Abs(ptleftplt.X - ptrightplt.X);
+                            double width2 = Math.Abs(pttopplt.Y - ptbottomplt.Y);
+                            if(pl.Closed)
+                            {
+                                if (PlotArea < 300)
+                                {
+                                    if (width1 < 2 && width2 < 2)
+                                    {
+                                        stairerrcause += " -Staircase Width is out of rule, will be 2";
+                                        errcnt++;
+                                        objidlst.Add(pl.ObjectId);
+                                    }
+                                }
+                                if (300 <= PlotArea && PlotArea <= 4000)
+                                {
+                                    if (width1 < 2.5 && width2 < 2.5)
+                                    {
+                                        stairerrcause += " -Staircase Width is out of rule, will be 2.5";
+                                        errcnt++;
+                                        objidlst.Add(pl.ObjectId);
+                                    }
+                                }
+                                if (PlotArea > 4000)
+                                {
+                                    if (width1 < 3 && width2 < 3)
+                                    {
+                                        stairerrcause += " -Staircase Width is out of rule, will be 3";
+                                        errcnt++;
+                                        objidlst.Add(pl.ObjectId);
+                                    }
+                                }
+                            }
+                        }
+                        ruleError err_stair = new ruleError();
+                        err_stair.errorCnt = errcnt;
+                        err_stair.lyrname = "_StairCase";
+                        err_stair.errcause = stairerrcause;
+                        err_stair.objIdlist = objidlst;
+                        Commands.errlist.Add(err_stair);
+                        break;
+                    }
+                case "_Passage":
+                    {
+                        double PlotArea = 0;
+                        string Passageerrcause = "";
+                        int errcnt = 0;
+                        List<ObjectId> objidlst = new List<ObjectId>();
+                        foreach (Polyline pl2 in Plugin.aplotpline)
+                            PlotArea += pl2.Area;
+                        foreach (Polyline pl in Plugin.aPassagepline)
+                        {
+                            Point3d ptleftplt = Commands.Getleft(pl);
+                            Point3d ptrightplt = Commands.Getright(pl);
+                            Point3d pttopplt = Commands.Gettop(pl);
+                            Point3d ptbottomplt = Commands.Getbottom(pl);
+                            double width1 = Math.Abs(ptleftplt.X - ptrightplt.X);
+                            double width2 = Math.Abs(pttopplt.Y - ptbottomplt.Y);
+                            if (PlotArea <= 300)
+                            {
+                                if (width1 != 2 && width2 != 2)
+                                {
+                                    Passageerrcause += " -Passage Width is out of rule";
+                                    errcnt++;
+                                    objidlst.Add(pl.ObjectId);
+                                }
+                            }
+                            if (300 <= PlotArea || PlotArea <= 4000)
+                            {
+                                if (width1 != 2.5 && width2 != 2.5)
+                                {
+                                    Passageerrcause += " -Passage Width is out of rule";
+                                    errcnt++;
+                                    objidlst.Add(pl.ObjectId);
+                                }
+                            }
+                            if (PlotArea >= 4000)
+                            {
+                                if (width1 != 3 && width2 != 3)
+                                {
+                                    Passageerrcause += " -Passage Width is out of rule";
+                                    errcnt++;
+                                    objidlst.Add(pl.ObjectId);
+                                }
+                            }
+                        }
+                        ruleError err_passage = new ruleError();
+                        err_passage.errorCnt = errcnt;
+                        err_passage.lyrname = "_Passage";
+                        err_passage.errcause = Passageerrcause;
+                        err_passage.objIdlist=objidlst;
+                        Commands.errlist.Add(err_passage);
+                        break;
+                    }
+                case "_Room":
+                    {
+                        int windowerrcntrm = 0;
+                        string roomerrcause = "";
+                        List<ObjectId> objidlst = new List<ObjectId>();
+                        foreach (Polyline pln in Plugin.aroompline)
+                        {
+                            foreach (windowrule wr in Commands.awindowrule)
+                            {
+                                for (int i = 0; i < wr.pl.NumberOfVertices; i++)
+                                {
+                                    Point3d pt3 = wr.pl.GetPoint3dAt(i);
+                                    if (IsPointOnPolyline(pln, pt3))
+                                    {
+                                        double area = pln.Area;
+                                        if (area > (wr.width * wr.height * 10))
+                                        {
+                                            windowerrcntrm++;
+                                            Commands.roomerrcause.Add("This room does not satisfy ventilation requirement.");
+                                            roomerrcause = roomerrcause + "-" + "This room does not satisfy ventilation requirement.";
+                                            objidlst.Add(pln.ObjectId);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                            bool bIntext = false;
+                            foreach (MText inst in Plugin.aroomNmTxt)
+                            {
+                                bIntext = IsInPolyLine(pln, inst.GeometricExtents.MinPoint, inst.GeometricExtents.MaxPoint);
+                                if (bIntext)
+                                    break;
+                            }
+                            if(!bIntext)
+                            {
+                                windowerrcntrm++;
+                                Commands.roomerrcause.Add("This room does not contain roomname.");
+                                roomerrcause = roomerrcause + "-" + "This room does not contain roomname or roomname Text range is out of RoomPolyline.";
+                                objidlst.Add(pln.ObjectId);
+                            }
+                        }
+                        ruleError errrm = new ruleError();
+                        errrm.errorCnt = windowerrcntrm;
+                        errrm.lyrname = "_Room";
+                        errrm.errcause = roomerrcause;
+                        errrm.objIdlist = objidlst;
+                        Commands.errlist.Add(errrm);
+                        break;
+                    }
+                case "_Door":
+                    {
+                        int doorerrcnt = 0;
+                        string doorerrcause = "";
+                        List<ObjectId> objidlst = new List<ObjectId>();
+                        foreach (Polyline pln in Plugin.aroompline)
+                        {
+                            double rarea = pln.Area;
+                            foreach (Polyline dpl in Plugin.adoorpline)
+                            {
+                                for (int i = 0; i < dpl.NumberOfVertices; i++)
+                                {
+                                    Point3d pt3 = dpl.GetPoint3dAt(i);
+                                    if (IsPointOnPolyline(pln, pt3))
+                                    {
+                                        double darea = 0;
+                                        foreach (ProsoftAcPlugin.doorrule rule in ProsoftAcPlugin.Commands.adoorrule)
+                                        {
+                                            if (rule.pl == dpl)
+                                            {
+                                                darea = rule.width * rule.height;
+                                            }
+                                        }
+
+                                        if (darea < (rarea * 0.1))
+                                        {
+                                            doorerrcnt++;
+                                            doorerrcause += "-This door is little than 10 % area of room";
+                                            objidlst.Add(dpl.ObjectId);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        ruleError err = new ruleError();
+                        err.errorCnt = doorerrcnt;
+                        err.lyrname = "_Door";
+                        err.errcause = doorerrcause;
+                        err.objIdlist = objidlst;
+                        Commands.errlist.Add(err);
+                        break;
+                    }
+                case "_Splay":
+                    {
+                        int splayerrcnt = 0;
+                        string splayerrcause = "";
+                        double mroadwidth = 0;
+                        List<ObjectId> objidlst = new List<ObjectId>();
+                        if (Plugin.amroadNmTxt.Count != 0)
+                        {
+                            string widthtxt = Commands.GetMTextContent(Plugin.amroadNmTxt.ElementAt(0));
+                            mroadwidth = Commands.GetRoadWidth(widthtxt);
+                        }
+                        foreach (Polyline pl in Plugin.asplaypline)
+                        {
+                            Point3d ptleft = Commands.Getleft(pl);
+                            Point3d ptright = Commands.Getright(pl);
+                            Point3d pttop = Commands.Gettop(pl);
+                            Point3d ptbottom = Commands.Getbottom(pl);
+                            double width = ptleft.X - ptright.X;
+                            if (mroadwidth < 12)
+                            {
+                                if (width != 3)
+                                {
+                                    splayerrcause += "-splay provision should be 3mX3m";
+                                    splayerrcnt++;
+                                    objidlst.Add(pl.ObjectId);
+                                }
+                            }
+                            if (mroadwidth >= 12 && mroadwidth < 24)
+                            {
+                                if (width != 4.5)
+                                {
+                                    splayerrcause += "-splay provision should be 4.5mX4.5m";
+                                    splayerrcnt++;
+                                    objidlst.Add(pl.ObjectId);
+                                }
+                            }
+                            if (mroadwidth > 24)
+                            {
+                                if (width != 6)
+                                {
+                                    splayerrcause += "-splay provision should be 6mX6m";
+                                    splayerrcnt++;
+                                    objidlst.Add(pl.ObjectId);
+                                }
+                            }
+                        }
+                        ruleError errsplay = new ruleError();
+                        errsplay.errorCnt = splayerrcnt;
+                        errsplay.lyrname = "_Splay";
+                        errsplay.errcause = splayerrcause;
+                        errsplay.objIdlist = objidlst;
+                        Commands.errlist.Add(errsplay);
+                        break;
+
+                    }
+                case "_VentilationShaft":
+                    {
+                        double width1 = 0, width2 = 0;
+                        int errcnt = 0;
+                        string errcause = "";
+                        List<ObjectId> objidlst = new List<ObjectId>();
+                        foreach (Polyline pl in Plugin.aVenShaftpline)
+                        {
+                            Point3d ptleft = Commands.Getleft(pl);
+                            Point3d ptright = Commands.Getright(pl);
+                            Point3d pttop = Commands.Gettop(pl);
+                            Point3d ptbottom = Commands.Getbottom(pl);
+                            width1 = Math.Abs(ptleft.X - ptright.X);
+                            width2 = Math.Abs(pttop.Y - ptbottom.Y);
+                            if (pl.Area < 9)
+                                if (width1 < 2 || width2 < 2)
+                                {
+                                    errcnt++;
+                                    errcause += "-Ventilation side width is smaller than 2.";
+                                    objidlst.Add(pl.ObjectId);
+                                }
+                            if (pl.Area > 9 && pl.Area < 25)
+                                if (width1 < 3 || width2 < 3)
+                                {
+                                    errcnt++;
+                                    errcause += "-Ventilation side width is smaller than 3.";
+                                    objidlst.Add(pl.ObjectId);
+                                }    
+                        }
+                        ruleError err = new ruleError();
+                        err.errorCnt = errcnt;
+                        err.lyrname = "_VentilationShaft";
+                        err.errcause = errcause;
+                        err.objIdlist=  objidlst;
+                        Commands.errlist.Add(err);
+                        break;
+                    }
+                case "_Amenity":
+                    {
+                        double amenityarea = 0, plotarea = 0;
+                        int errcnt = 0;
+                        string errcause = "";
+                        List<ObjectId> objidlst = new List<ObjectId>();
+                        if(Plugin.aAmenitypline.Count!=0)
+                        {
+                            foreach (Polyline pl in Plugin.aplotpline)
+                                plotarea += pl.Area;
+                            foreach (Polyline pl in Plugin.aAmenitypline)
+                            {
+                                amenityarea += pl.Area;
+                                objidlst.Add(pl.ObjectId);
+                            }
+                            if (plotarea < 20235 && 0 < plotarea)
+                                if (amenityarea < plotarea * 0.03)
+                                {
+                                    errcnt++;
+                                    errcause += "-Amenity Area is too small";
+                                }
+                            if (plotarea >= 20235)
+                                if (amenityarea < plotarea * 0.05)
+                                {
+                                    errcnt++;
+                                    errcause += "-Amenity Area is too small";
+                                }
+                            ruleError err = new ruleError();
+                            err.errorCnt = errcnt;
+                            err.lyrname = "_Amenity";
+                            err.errcause = errcause;
+                            err.objIdlist = objidlst;
+                            Commands.errlist.Add(err);
+                        }                        
+                        break;
+                    }
+                case "_BufferZone":
+                    {
+                        bool istchbuffer = false;
+                        string buferrcause = "";
+                        int buferrcnt = 0;
+                        List<ObjectId> objidlst = new List<ObjectId>();
+                        foreach (Polyline pl in Plugin.aBufferpline)
+                        {
+                            if (Plugin.aWaterBodypline.Count != 0)
+                            {
+                                istchbuffer = false;
+                                foreach (Polyline plwbody in Plugin.aWaterBodypline)
+                                {
+                                    istchbuffer = checkTwoPlineTouch(plwbody, pl);
+                                    if (istchbuffer)
+                                    {
+                                        Point3d ptleft = Commands.Getleft(pl);
+                                        Point3d ptright = Commands.Getright(pl);
+                                        Point3d pttop = Commands.Gettop(pl);
+                                        Point3d ptbottom = Commands.Getbottom(pl);
+                                        double width = ptright.X - ptleft.X;
+                                        double height = pttop.Y - ptbottom.Y;
+                                        if (height != 2)
+                                        {
+                                            buferrcause += "-BufferZone thickness is not 2.0mts.";
+                                            buferrcnt++;
+                                            objidlst.Add(plwbody.ObjectId);
+                                        }
+                                        break;
+                                    }
+                                }
+                                if (!istchbuffer)
+                                {
+                                    buferrcause += "BufferZone is not closed with WaterBodies.";
+                                    buferrcnt++;
+                                    objidlst.Add(pl.ObjectId);
+                                }
+                            }
+                            if (Plugin.aElectricpline.Count != 0)
+                            {
+                                istchbuffer = false;
+                                foreach (Polyline pleline in Plugin.aElectricpline)
+                                {
+                                    istchbuffer = checkTwoPlineTouch(pleline, pl);
+                                    if (istchbuffer)
+                                    {
+                                        Point3d ptleft = Commands.Getleft(pl);
+                                        Point3d ptright = Commands.Getright(pl);
+                                        Point3d pttop = Commands.Gettop(pl);
+                                        Point3d ptbottom = Commands.Getbottom(pl);
+                                        double width = ptright.X - ptleft.X;
+                                        double height = pttop.Y - ptbottom.Y;
+                                        if (height != 10)
+                                        {
+                                            buferrcause += "-BufferZone thickness is not 10.0mts.";
+                                            buferrcnt++;
+                                            objidlst.Add(pleline.ObjectId);
+                                        }
+                                        break;
+                                    }
+                                }
+                                if (!istchbuffer)
+                                {
+                                    buferrcause += "BufferZone is not closed with ElectricLine.";
+                                    buferrcnt++;
+                                    objidlst.Add(pl.ObjectId);
+                                }
+                            }
+                            if (Plugin.aWaterlinepline.Count != 0)
+                            {
+                                istchbuffer = false;
+                                foreach (Polyline pwline in Plugin.aWaterlinepline)
+                                {
+                                    istchbuffer = checkTwoPlineTouch(pwline, pl);
+                                    if (istchbuffer)
+                                    {
+                                        Point3d ptleft = Commands.Getleft(pl);
+                                        Point3d ptright = Commands.Getright(pl);
+                                        Point3d pttop = Commands.Gettop(pl);
+                                        Point3d ptbottom = Commands.Getbottom(pl);
+                                        double width = ptright.X - ptleft.X;
+                                        double height = pttop.Y - ptbottom.Y;
+                                        if (height != 10)
+                                        {
+                                            buferrcause += "-BufferZone thickness is not 2.0mts.";
+                                            buferrcnt++;
+                                            objidlst.Add(pwline.ObjectId);
+                                        }
+                                        break;
+                                    }
+                                }
+                                if (!istchbuffer)
+                                {
+                                    buferrcause += "BufferZone is not closed with ElectricLine.";
+                                    buferrcnt++;
+                                    objidlst.Add(pl.ObjectId);
+                                }
+                            }
+                        }
+                        ruleError errbuf = new ruleError();
+                        errbuf.errorCnt = buferrcnt;
+                        errbuf.lyrname = "_BufferZone";
+                        errbuf.errcause = buferrcause;
+                        errbuf.objIdlist = objidlst;
+                        Commands.errlist.Add(errbuf);
                         break;
                     }
             }
@@ -2682,7 +3560,7 @@ namespace ProsoftAcPlugin
         public static bool IsInPolyLine(Polyline pl, Point3d ptbegin, Point3d ptend)        //this returns rect that includes ptbegin and ptend is in polyline or not.
         {
             bool bresult = false;
-            if (pl.GeometricExtents.MinPoint.X < ptbegin.X && pl.GeometricExtents.MaxPoint.X > ptend.X && pl.GeometricExtents.MinPoint.Y < ptbegin.Y && pl.GeometricExtents.MaxPoint.Y > ptend.Y)
+            if (pl.GeometricExtents.MinPoint.X <= ptbegin.X && pl.GeometricExtents.MaxPoint.X >= ptend.X && pl.GeometricExtents.MinPoint.Y <= ptbegin.Y && pl.GeometricExtents.MaxPoint.Y >= ptend.Y)
             {
                 bresult = true;
             }

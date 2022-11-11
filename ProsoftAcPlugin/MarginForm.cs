@@ -20,6 +20,7 @@ namespace NBCLayers
         private void btn_ok_Click(object sender, EventArgs e)
         {
             ProsoftAcPlugin.Commands.MarginSave();
+            ProsoftAcPlugin.Commands.MarginBlock();
             this.Close();
         }
 

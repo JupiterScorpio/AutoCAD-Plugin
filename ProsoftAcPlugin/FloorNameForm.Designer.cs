@@ -106,93 +106,113 @@ namespace NBCLayers
             // 
             // btn_0
             // 
+            this.btn_0.Enabled = false;
             this.btn_0.Location = new System.Drawing.Point(93, 19);
             this.btn_0.Name = "btn_0";
             this.btn_0.Size = new System.Drawing.Size(23, 81);
             this.btn_0.TabIndex = 12;
             this.btn_0.Text = "0";
             this.btn_0.UseVisualStyleBackColor = true;
+            this.btn_0.Click += new System.EventHandler(this.btn_0_Click);
             // 
             // btn_9
             // 
+            this.btn_9.Enabled = false;
             this.btn_9.Location = new System.Drawing.Point(64, 77);
             this.btn_9.Name = "btn_9";
             this.btn_9.Size = new System.Drawing.Size(23, 23);
             this.btn_9.TabIndex = 11;
             this.btn_9.Text = "9";
             this.btn_9.UseVisualStyleBackColor = true;
+            this.btn_9.Click += new System.EventHandler(this.btn_9_Click);
             // 
             // btn_8
             // 
+            this.btn_8.Enabled = false;
             this.btn_8.Location = new System.Drawing.Point(35, 77);
             this.btn_8.Name = "btn_8";
             this.btn_8.Size = new System.Drawing.Size(23, 23);
             this.btn_8.TabIndex = 10;
             this.btn_8.Text = "8";
             this.btn_8.UseVisualStyleBackColor = true;
+            this.btn_8.Click += new System.EventHandler(this.btn_8_Click);
             // 
             // btn_7
             // 
+            this.btn_7.Enabled = false;
             this.btn_7.Location = new System.Drawing.Point(6, 77);
             this.btn_7.Name = "btn_7";
             this.btn_7.Size = new System.Drawing.Size(23, 23);
             this.btn_7.TabIndex = 9;
             this.btn_7.Text = "7";
             this.btn_7.UseVisualStyleBackColor = true;
+            this.btn_7.Click += new System.EventHandler(this.btn_7_Click);
             // 
             // btn_6
             // 
+            this.btn_6.Enabled = false;
             this.btn_6.Location = new System.Drawing.Point(64, 48);
             this.btn_6.Name = "btn_6";
             this.btn_6.Size = new System.Drawing.Size(23, 23);
             this.btn_6.TabIndex = 8;
             this.btn_6.Text = "6";
             this.btn_6.UseVisualStyleBackColor = true;
+            this.btn_6.Click += new System.EventHandler(this.btn_6_Click);
             // 
             // btn_5
             // 
+            this.btn_5.Enabled = false;
             this.btn_5.Location = new System.Drawing.Point(35, 48);
             this.btn_5.Name = "btn_5";
             this.btn_5.Size = new System.Drawing.Size(23, 23);
             this.btn_5.TabIndex = 7;
             this.btn_5.Text = "5";
             this.btn_5.UseVisualStyleBackColor = true;
+            this.btn_5.Click += new System.EventHandler(this.btn_5_Click);
             // 
             // btn_4
             // 
+            this.btn_4.Enabled = false;
             this.btn_4.Location = new System.Drawing.Point(6, 48);
             this.btn_4.Name = "btn_4";
             this.btn_4.Size = new System.Drawing.Size(23, 23);
             this.btn_4.TabIndex = 6;
             this.btn_4.Text = "4";
             this.btn_4.UseVisualStyleBackColor = true;
+            this.btn_4.Click += new System.EventHandler(this.btn_4_Click);
             // 
             // btn_3
             // 
+            this.btn_3.Enabled = false;
             this.btn_3.Location = new System.Drawing.Point(64, 19);
             this.btn_3.Name = "btn_3";
             this.btn_3.Size = new System.Drawing.Size(23, 23);
             this.btn_3.TabIndex = 5;
             this.btn_3.Text = "3";
             this.btn_3.UseVisualStyleBackColor = true;
+            this.btn_3.Click += new System.EventHandler(this.btn_3_Click);
             // 
             // btn_2
             // 
+            this.btn_2.Enabled = false;
             this.btn_2.Location = new System.Drawing.Point(35, 19);
             this.btn_2.Name = "btn_2";
             this.btn_2.Size = new System.Drawing.Size(23, 23);
             this.btn_2.TabIndex = 4;
             this.btn_2.Text = "2";
             this.btn_2.UseVisualStyleBackColor = true;
+            this.btn_2.Click += new System.EventHandler(this.btn_2_Click);
             // 
             // btn_1
             // 
+            this.btn_1.Enabled = false;
             this.btn_1.Location = new System.Drawing.Point(6, 19);
             this.btn_1.Name = "btn_1";
             this.btn_1.Size = new System.Drawing.Size(23, 23);
             this.btn_1.TabIndex = 3;
             this.btn_1.Text = "1";
             this.btn_1.UseVisualStyleBackColor = true;
+            this.btn_1.Click += new System.EventHandler(this.btn_1_Click);
             // 
             // groupBox2
             // 
@@ -208,30 +228,36 @@ namespace NBCLayers
             // 
             // btn_and
             // 
+            this.btn_and.Enabled = false;
             this.btn_and.Location = new System.Drawing.Point(5, 77);
             this.btn_and.Name = "btn_and";
             this.btn_and.Size = new System.Drawing.Size(66, 23);
             this.btn_and.TabIndex = 6;
             this.btn_and.Text = "&(And)";
             this.btn_and.UseVisualStyleBackColor = true;
+            this.btn_and.Click += new System.EventHandler(this.btn_and_Click);
             // 
             // btn_hypen
             // 
+            this.btn_hypen.Enabled = false;
             this.btn_hypen.Location = new System.Drawing.Point(5, 47);
             this.btn_hypen.Name = "btn_hypen";
             this.btn_hypen.Size = new System.Drawing.Size(66, 23);
             this.btn_hypen.TabIndex = 5;
             this.btn_hypen.Text = "-(Hypen)";
             this.btn_hypen.UseVisualStyleBackColor = true;
+            this.btn_hypen.Click += new System.EventHandler(this.btn_hypen_Click);
             // 
             // btn_comma
             // 
+            this.btn_comma.Enabled = false;
             this.btn_comma.Location = new System.Drawing.Point(6, 19);
             this.btn_comma.Name = "btn_comma";
             this.btn_comma.Size = new System.Drawing.Size(66, 23);
             this.btn_comma.TabIndex = 4;
             this.btn_comma.Text = ",(Comma)";
             this.btn_comma.UseVisualStyleBackColor = true;
+            this.btn_comma.Click += new System.EventHandler(this.btn_comma_Click);
             // 
             // FloorNames
             // 
