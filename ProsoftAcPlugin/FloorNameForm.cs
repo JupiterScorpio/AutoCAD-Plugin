@@ -36,7 +36,9 @@ namespace NBCLayers
 
         private void FloorNameForm_Load(object sender, EventArgs e)
         {
-
+            chk_mezzanine.Checked = false;
+            chk_typical.Checked = false;
+            chk_podium.Checked = false;
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
@@ -107,66 +109,105 @@ namespace NBCLayers
         private void btn_comma_Click(object sender, EventArgs e)
         {
             cmb_floorname.Text += ",";
+            btn_comma.Enabled = false;
+            btn_hypen.Enabled = false;
+            btn_and.Enabled = false;
         }
 
         private void btn_hypen_Click(object sender, EventArgs e)
         {
             cmb_floorname.Text += "-";
+            btn_comma.Enabled = false;
+            btn_hypen.Enabled = false;
+            btn_and.Enabled = false;
         }
 
         private void btn_and_Click(object sender, EventArgs e)
         {
             cmb_floorname.Text += "&";
+            btn_comma.Enabled = false;
+            btn_hypen.Enabled = false;
+            btn_and.Enabled = false;
         }
 
         private void btn_0_Click(object sender, EventArgs e)
         {
             cmb_floorname.Text += "0";
+            btn_comma.Enabled = true;
+            btn_hypen.Enabled = true;
+            btn_and.Enabled = true;
         }
 
         private void btn_1_Click(object sender, EventArgs e)
         {
             cmb_floorname.Text += "1";
+            btn_comma.Enabled = true;
+            btn_hypen.Enabled = true;
+            btn_and.Enabled = true;
         }
 
         private void btn_2_Click(object sender, EventArgs e)
         {
             cmb_floorname.Text += "2";
+            btn_comma.Enabled = true;
+            btn_hypen.Enabled = true;
+            btn_and.Enabled = true;
         }
 
         private void btn_3_Click(object sender, EventArgs e)
         {
             cmb_floorname.Text += "3";
+            btn_comma.Enabled = true;
+            btn_hypen.Enabled = true;
+            btn_and.Enabled = true;
         }
 
         private void btn_4_Click(object sender, EventArgs e)
         {
             cmb_floorname.Text += "4";
+            btn_comma.Enabled = true;
+            btn_hypen.Enabled = true;
+            btn_and.Enabled = true;
         }
 
         private void btn_5_Click(object sender, EventArgs e)
         {
             cmb_floorname.Text += "5";
+            btn_comma.Enabled = true;
+            btn_hypen.Enabled = true;
+            btn_and.Enabled = true;
         }
 
         private void btn_6_Click(object sender, EventArgs e)
         {
             cmb_floorname.Text += "6";
+            btn_comma.Enabled = true;
+            btn_hypen.Enabled = true;
+            btn_and.Enabled = true;
         }
 
         private void btn_7_Click(object sender, EventArgs e)
         {
             cmb_floorname.Text += "7";
+            btn_comma.Enabled = true;
+            btn_hypen.Enabled = true;
+            btn_and.Enabled = true;
         }
 
         private void btn_8_Click(object sender, EventArgs e)
         {
             cmb_floorname.Text += "8";
+            btn_comma.Enabled = true;
+            btn_hypen.Enabled = true;
+            btn_and.Enabled = true;
         }
 
         private void btn_9_Click(object sender, EventArgs e)
         {
             cmb_floorname.Text += "9";
+            btn_comma.Enabled = true;
+            btn_hypen.Enabled = true;
+            btn_and.Enabled = true;
         }
 
         private void cmb_floorname_SelectedIndexChanged(object sender, EventArgs e)
@@ -297,12 +338,12 @@ namespace NBCLayers
                     options.SetRejectMessage("\nSelected object is no a Polyline.");
                     options.AddAllowedClass(typeof(Polyline), true);
                     PromptEntityResult result = ed.GetEntity(options);
-                    if ((string)Application.GetSystemVariable("clayer") == "_FloorInSection")
+                    if ((string)Application.GetSystemVariable("clayer") == "_FloorInSection"&&result.ObjectId!=null)
                     {
                         if (result.Status == PromptStatus.OK)
                         {
                             Polyline poly = tr.GetObject(result.ObjectId, OpenMode.ForRead, false) as Polyline;
-                            if (poly != null)
+                            if ((poly != null)&&(poly.Layer== "_FloorInSection"))
                             {
                                 TextStyleTable ts = (TextStyleTable)tr.GetObject(db.TextStyleTableId, OpenMode.ForRead);
                                 ObjectId mtStyleid = db.Textstyle;
@@ -334,14 +375,17 @@ namespace NBCLayers
                                 Point3d ptbottom = ProsoftAcPlugin.Commands.Getbottom(poly);
                                 double width = ptright.X - ptleft.X;
                                 double height = pttop.Y - ptbottom.Y;
-                                txt.Height = height; //<==change to your default height
-                                txt.Width = width;
+                                txt.Height = height/3; //<==change to your default height
+                                txt.Width = width/3;
+                                txt.TextHeight = 0.1;
                                 txt.TextStyleId = mtStyleid;
                                 txt.Attachment = AttachmentPoint.BottomLeft;
-                                txt.Location = new Point3d(ptleft.X, ptbottom.Y, 0);
+                                txt.Location = new Point3d(ptleft.X+width/2, ptbottom.Y+height/2, 0);
                                 btr.AppendEntity(txt);
                                 tr.AddNewlyCreatedDBObject(txt, true);
                             }
+                            else
+                                Application.ShowAlertDialog("PolyLine not selected or incorrect layer!");
                         }
 
                     }
@@ -367,7 +411,7 @@ namespace NBCLayers
                         if (result1.Status == PromptStatus.OK)
                         {
                             Polyline poly1 = tr.GetObject(result1.ObjectId, OpenMode.ForRead, false) as Polyline;
-                            if (poly1 != null)
+                            if (poly1 != null && poly1.Layer == "_Floor")
                             {
                                 TextStyleTable ts = (TextStyleTable)tr.GetObject(db.TextStyleTableId, OpenMode.ForRead);
                                 ObjectId mtStyleid = db.Textstyle;
@@ -400,14 +444,17 @@ namespace NBCLayers
                                 Point3d ptbottom = ProsoftAcPlugin.Commands.Getbottom(poly1);
                                 double width = ptright.X - ptleft.X;
                                 double height = pttop.Y - ptbottom.Y;
-                                txt.Height = height; //<==change to your default height
-                                txt.Width = width;
+                                txt.Height = height/3; //<==change to your default height
+                                txt.Width = width/3;
+                                txt.TextHeight = 0.3;
                                 txt.TextStyleId = mtStyleid;
                                 txt.Attachment = AttachmentPoint.BottomLeft;
-                                txt.Location = new Point3d(ptleft.X, ptbottom.Y, 0);
+                                txt.Location = new Point3d(ptleft.X + width / 2, ptbottom.Y + height / 2, 0);
                                 btr.AppendEntity(txt);
                                 tr.AddNewlyCreatedDBObject(txt, true);
                             }
+                            else
+                                Application.ShowAlertDialog("PolyLine not selected or incorrect layer!");
                         }
                     }
                     tr.Commit();

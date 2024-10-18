@@ -31,5 +31,15 @@ namespace NBCLayers
         {
             this.single_opt.Checked = true;
         }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void single_opt_CheckedChanged(object sender, EventArgs e)
+        {
+            msecName_txt.Enabled=false;
+        }
     }
 }

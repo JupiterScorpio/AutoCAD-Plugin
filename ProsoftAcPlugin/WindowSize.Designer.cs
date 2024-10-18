@@ -78,6 +78,7 @@ namespace ProsoftAcPlugin
             // 
             // ok_btn
             // 
+            this.ok_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.ok_btn.Enabled = false;
             this.ok_btn.Location = new System.Drawing.Point(238, 28);
             this.ok_btn.Name = "ok_btn";
@@ -112,8 +113,10 @@ namespace ProsoftAcPlugin
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WindowSize";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WindowSize";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.WindowSize_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

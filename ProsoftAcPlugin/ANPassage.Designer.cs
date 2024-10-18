@@ -29,12 +29,13 @@ namespace NBCLayers
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ANPassage));
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.width_txt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.width_txt = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btn_ok = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -72,22 +73,6 @@ namespace NBCLayers
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Passage Dimenssion";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Width";
-            // 
-            // width_txt
-            // 
-            this.width_txt.Location = new System.Drawing.Point(23, 50);
-            this.width_txt.Name = "width_txt";
-            this.width_txt.Size = new System.Drawing.Size(46, 20);
-            this.width_txt.TabIndex = 4;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -97,8 +82,25 @@ namespace NBCLayers
             this.label3.TabIndex = 5;
             this.label3.Text = "mt. Wide";
             // 
+            // width_txt
+            // 
+            this.width_txt.Location = new System.Drawing.Point(23, 50);
+            this.width_txt.Name = "width_txt";
+            this.width_txt.Size = new System.Drawing.Size(46, 20);
+            this.width_txt.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(27, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Width";
+            // 
             // btn_ok
             // 
+            this.btn_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_ok.Location = new System.Drawing.Point(90, 217);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(65, 29);
@@ -127,10 +129,13 @@ namespace NBCLayers
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ANPassage";
+            this.ShowIcon = false;
             this.Text = "Assign Name Dialog";
+            this.TopMost = true;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

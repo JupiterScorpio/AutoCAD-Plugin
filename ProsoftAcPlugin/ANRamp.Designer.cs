@@ -29,6 +29,7 @@ namespace NBCLayers
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ANRamp));
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -141,6 +142,7 @@ namespace NBCLayers
             // 
             // btn_ok
             // 
+            this.btn_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_ok.Location = new System.Drawing.Point(112, 191);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(65, 29);
@@ -159,9 +161,11 @@ namespace NBCLayers
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ANRamp";
+            this.ShowInTaskbar = false;
             this.Text = "Assign Name Dialog";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.ANRamp_Load);

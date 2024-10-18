@@ -29,6 +29,7 @@ namespace ProsoftAcPlugin
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DoorSizeFrm));
             this.cancel_btn = new System.Windows.Forms.Button();
             this.ok_btn = new System.Windows.Forms.Button();
             this.height_txt = new System.Windows.Forms.TextBox();
@@ -54,9 +55,11 @@ namespace ProsoftAcPlugin
             this.cancel_btn.TabIndex = 11;
             this.cancel_btn.Text = "Cancel";
             this.cancel_btn.UseVisualStyleBackColor = true;
+            this.cancel_btn.Click += new System.EventHandler(this.cancel_btn_Click_1);
             // 
             // ok_btn
             // 
+            this.ok_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.ok_btn.Location = new System.Drawing.Point(265, 184);
             this.ok_btn.Name = "ok_btn";
             this.ok_btn.Size = new System.Drawing.Size(65, 34);
@@ -197,10 +200,13 @@ namespace ProsoftAcPlugin
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cancel_btn);
             this.Controls.Add(this.ok_btn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DoorSizeFrm";
+            this.ShowInTaskbar = false;
             this.Text = "Door Information Dialog";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.DoorSizeFrm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

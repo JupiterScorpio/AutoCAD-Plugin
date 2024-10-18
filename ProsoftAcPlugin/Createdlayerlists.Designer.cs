@@ -62,6 +62,7 @@ namespace NBCLayers
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Createdlayerlists";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Created Layers";
             this.TopMost = true;

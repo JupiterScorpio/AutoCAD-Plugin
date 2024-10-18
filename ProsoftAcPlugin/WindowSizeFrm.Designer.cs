@@ -29,6 +29,7 @@ namespace NBCLayers
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WindowSizeFrm));
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.depth_txt = new System.Windows.Forms.TextBox();
@@ -42,6 +43,7 @@ namespace NBCLayers
             this.label3 = new System.Windows.Forms.Label();
             this.cancel_btn = new System.Windows.Forms.Button();
             this.ok_btn = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -160,9 +162,11 @@ namespace NBCLayers
             this.cancel_btn.TabIndex = 21;
             this.cancel_btn.Text = "Cancel";
             this.cancel_btn.UseVisualStyleBackColor = true;
+            this.cancel_btn.Click += new System.EventHandler(this.cancel_btn_Click);
             // 
             // ok_btn
             // 
+            this.ok_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.ok_btn.Location = new System.Drawing.Point(263, 175);
             this.ok_btn.Name = "ok_btn";
             this.ok_btn.Size = new System.Drawing.Size(65, 34);
@@ -171,11 +175,23 @@ namespace NBCLayers
             this.ok_btn.UseVisualStyleBackColor = true;
             this.ok_btn.Click += new System.EventHandler(this.ok_btn_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(313, 37);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(105, 17);
+            this.checkBox1.TabIndex = 28;
+            this.checkBox1.Text = "Window Remark";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // WindowSizeFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(425, 227);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);
@@ -183,10 +199,13 @@ namespace NBCLayers
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cancel_btn);
             this.Controls.Add(this.ok_btn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WindowSizeFrm";
+            this.ShowInTaskbar = false;
             this.Text = "Window Information Dialog";
+            this.TopMost = true;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -209,5 +228,6 @@ namespace NBCLayers
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button cancel_btn;
         private System.Windows.Forms.Button ok_btn;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

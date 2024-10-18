@@ -29,6 +29,7 @@ namespace NBCLayers
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoadAName));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -93,6 +94,7 @@ namespace NBCLayers
             // 
             // btn_ok
             // 
+            this.btn_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_ok.Location = new System.Drawing.Point(60, 152);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(64, 23);
@@ -124,11 +126,14 @@ namespace NBCLayers
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "RoadAName";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AssignNameDialog";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

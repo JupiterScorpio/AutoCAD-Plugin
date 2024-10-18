@@ -38,6 +38,7 @@ namespace ProsoftAcPlugin
             // 
             // btn_ok
             // 
+            this.btn_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_ok.Location = new System.Drawing.Point(172, 442);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(78, 36);
@@ -80,6 +81,8 @@ namespace ProsoftAcPlugin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(342, 490);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.all_chk);
@@ -89,7 +92,9 @@ namespace ProsoftAcPlugin
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LayersShowHideForm";
+            this.ShowInTaskbar = false;
             this.Text = "Layers Show&Hide Select";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LayersShowHideForm_FormClosing);
             this.Load += new System.EventHandler(this.LayersShowHideForm_Load);
             this.ResumeLayout(false);

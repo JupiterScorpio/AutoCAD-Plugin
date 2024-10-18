@@ -55,7 +55,7 @@ namespace ProsoftAcPlugin
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(15, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(199, 16);
+            this.label1.Size = new System.Drawing.Size(198, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Select a layer to NBC rule check";
             // 
@@ -80,6 +80,7 @@ namespace ProsoftAcPlugin
             // 
             // btn_ok
             // 
+            this.btn_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_ok.Location = new System.Drawing.Point(63, 519);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(78, 36);
@@ -96,10 +97,12 @@ namespace ProsoftAcPlugin
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NBCruleCheck";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NBCruleCheck";
             this.TopMost = true;

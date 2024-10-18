@@ -29,6 +29,7 @@ namespace NBCLayers
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MarginForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_side2 = new System.Windows.Forms.Button();
             this.btn_side1 = new System.Windows.Forms.Button();
@@ -190,6 +191,7 @@ namespace NBCLayers
             // 
             // btn_ok
             // 
+            this.btn_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_ok.Location = new System.Drawing.Point(283, 300);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(61, 23);
@@ -206,10 +208,13 @@ namespace NBCLayers
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MarginForm";
+            this.ShowInTaskbar = false;
             this.Text = "Margin";
+            this.TopMost = true;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

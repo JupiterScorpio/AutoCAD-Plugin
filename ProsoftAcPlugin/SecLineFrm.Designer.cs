@@ -29,6 +29,7 @@ namespace NBCLayers
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SecLineFrm));
             this.label1 = new System.Windows.Forms.Label();
             this.secname_txt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -82,6 +83,7 @@ namespace NBCLayers
             this.single_opt.TabStop = true;
             this.single_opt.Text = "Single Line";
             this.single_opt.UseVisualStyleBackColor = true;
+            this.single_opt.CheckedChanged += new System.EventHandler(this.single_opt_CheckedChanged);
             // 
             // multi_opt
             // 
@@ -97,6 +99,7 @@ namespace NBCLayers
             // 
             // btn_ok
             // 
+            this.btn_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_ok.Location = new System.Drawing.Point(92, 198);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(62, 23);
@@ -113,6 +116,7 @@ namespace NBCLayers
             this.btn_cancel.TabIndex = 7;
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // SecLineFrm
             // 
@@ -127,10 +131,13 @@ namespace NBCLayers
             this.Controls.Add(this.label2);
             this.Controls.Add(this.secname_txt);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SecLineFrm";
+            this.ShowInTaskbar = false;
             this.Text = "Section Line Dialog";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.SecLineFrm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

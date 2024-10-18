@@ -59,35 +59,35 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="accoremgd, Version=24.1.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <HintPath>..\packages\Speckle.AutoCAD.API.2022.0.0.3\lib\net47\accoremgd.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="accoremgd, Version=24.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\AutoCAD2021NET.1.0.5\lib\2021\accoremgd.dll</HintPath>
     </Reference>
     <Reference Include="AcCui, Version=24.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Speckle.AutoCAD.API.2022.0.0.3\lib\net47\AcCui.dll</HintPath>
-      <Private>False</Private>
     </Reference>
-    <Reference Include="acdbmgd, Version=24.1.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <HintPath>..\packages\Speckle.AutoCAD.API.2022.0.0.3\lib\net47\acdbmgd.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+    <Reference Include="acdbmgd, Version=24.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\AutoCAD2021NET.1.0.5\lib\2021\acdbmgd.dll</HintPath>
     </Reference>
-    <Reference Include="acdbmgdbrep, Version=24.1.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <HintPath>..\packages\Speckle.AutoCAD.API.2022.0.0.3\lib\net47\acdbmgdbrep.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="acdbmgdbrep, Version=24.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\AutoCAD2021NET.1.0.5\lib\2021\acdbmgdbrep.dll</HintPath>
     </Reference>
     <Reference Include="AcDx, Version=20.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoCAD-2015.Net.Base.1.0.0\lib\net45\AcDx.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="acmgd, Version=24.1.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <HintPath>..\packages\Speckle.AutoCAD.API.2022.0.0.3\lib\net47\acmgd.dll</HintPath>
+    <Reference Include="acmgd, Version=24.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\AutoCAD2021NET.1.0.5\lib\2021\acmgd.dll</HintPath>
+    </Reference>
+    <Reference Include="AcMPolygonMGD">
+      <HintPath>..\packages\AcMPolygonMGD.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="AcMr, Version=20.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoCAD-2015.Net.Base.1.0.0\lib\net45\AcMr.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="AcMr, Version=24.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD2021NET.1.0.5\lib\2021\AcMr.DLL</HintPath>
     </Reference>
     <Reference Include="AcTcMgd, Version=20.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoCAD-2015.Net.Base.1.0.0\lib\net45\AcTcMgd.dll</HintPath>
@@ -99,34 +99,311 @@
     </Reference>
     <Reference Include="AdWindows, Version=3.1.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Speckle.AutoCAD.API.2022.0.0.3\lib\net47\AdWindows.dll</HintPath>
-      <Private>False</Private>
+    </Reference>
+    <Reference Include="AecArchMgd, Version=8.3.53.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\AutoCAD2021NET.1.0.5\lib\2021\AecArchMgd.dll</HintPath>
+    </Reference>
+    <Reference Include="AecBaseMgd, Version=8.3.53.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\AutoCAD2021NET.1.0.5\lib\2021\AecBaseMgd.dll</HintPath>
+    </Reference>
+    <Reference Include="AeccDbMgd, Version=13.3.854.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\AutoCAD2021NET.1.0.5\lib\2021\AeccDbMgd.dll</HintPath>
+    </Reference>
+    <Reference Include="AecProjectBaseMgd, Version=8.3.53.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\AutoCAD2021NET.1.0.5\lib\2021\AecProjectBaseMgd.dll</HintPath>
+    </Reference>
+    <Reference Include="AecPropDataMgd, Version=8.3.53.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\AutoCAD2021NET.1.0.5\lib\2021\AecPropDataMgd.dll</HintPath>
     </Reference>
     <Reference Include="Autodesk.Forge, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Autodesk.Forge.1.9.0\lib\net452\Autodesk.Forge.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+    <Reference Include="FabricationAPI, Version=2020.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\AutoCAD2021NET.1.0.5\lib\2021\FabricationAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="FabricationCore, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\AutoCAD2021NET.1.0.5\lib\2021\FabricationCore.dll</HintPath>
+    </Reference>
+    <Reference Include="GraphQL.Client, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GraphQL.Client.6.0.0\lib\net461\GraphQL.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="GraphQL.Client.Abstractions, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GraphQL.Client.Abstractions.6.0.0\lib\netstandard2.0\GraphQL.Client.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="GraphQL.Client.Abstractions.Websocket, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GraphQL.Client.Abstractions.Websocket.6.0.0\lib\netstandard2.0\GraphQL.Client.Abstractions.Websocket.dll</HintPath>
+    </Reference>
+    <Reference Include="GraphQL.Primitives, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GraphQL.Primitives.6.0.0\lib\netstandard2.0\GraphQL.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.ACSMCOMPONENTS24Lib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD2021NET.1.0.5\lib\2021\Interop.ACSMCOMPONENTS24Lib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Sqlite, Version=7.0.5.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Sqlite.Core.7.0.5\lib\netstandard2.0\Microsoft.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Objects, Version=2.20.1.16205, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Speckle.Objects.2.20.1\lib\netstandard2.0\Objects.dll</HintPath>
+    </Reference>
+    <Reference Include="Objects.Converter.Autocad2021, Version=2.20.1.16205, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Speckle.Objects.Converter.Autocad2021.2.20.1\lib\netstandard2.0\Objects.Converter.Autocad2021.dll</HintPath>
+    </Reference>
+    <Reference Include="PnP3dObjectsMgd, Version=12.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\AutoCAD2021NET.1.0.5\lib\2021\PnP3dObjectsMgd.dll</HintPath>
+    </Reference>
+    <Reference Include="PnP3dPartsRepository, Version=12.0.47.10, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD2021NET.1.0.5\lib\2021\PnP3dPartsRepository.dll</HintPath>
+    </Reference>
+    <Reference Include="PnPProjectManagerMgd, Version=12.0.47.10, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoCAD2021NET.1.0.5\lib\2021\PnPProjectManagerMgd.DLL</HintPath>
+    </Reference>
+    <Reference Include="Polly, Version=7.0.0.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Polly.7.2.3\lib\net472\Polly.dll</HintPath>
+    </Reference>
+    <Reference Include="Polly.Contrib.WaitAndRetry, Version=1.0.0.0, Culture=neutral, PublicKeyToken=17ed651729209acc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Polly.Contrib.WaitAndRetry.1.1.1\lib\net472\Polly.Contrib.WaitAndRetry.dll</HintPath>
+    </Reference>
+    <Reference Include="Polly.Extensions.Http, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c8a3ffc3f8f825cc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Polly.Extensions.Http.3.0.0\lib\netstandard2.0\Polly.Extensions.Http.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="RestSharp, Version=106.11.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.11.7\lib\net452\RestSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.12.0\lib\net47\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Enrichers.ClientInfo, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Enrichers.ClientInfo.1.3.0\lib\net462\Serilog.Enrichers.ClientInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Enrichers.GlobalLogContext, Version=3.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Enrichers.GlobalLogContext.3.0.0\lib\net45\Serilog.Enrichers.GlobalLogContext.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Exceptions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=fc5550082a9c642c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Exceptions.8.4.0\lib\net472\Serilog.Exceptions.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Formatting.Compact, Version=1.1.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Formatting.Compact.1.1.0\lib\net452\Serilog.Formatting.Compact.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Console, Version=4.1.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.Console.4.1.0\lib\net45\Serilog.Sinks.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=5.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.File.5.0.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.PeriodicBatching, Version=3.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.PeriodicBatching.3.1.0\lib\net45\Serilog.Sinks.PeriodicBatching.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Seq, Version=5.2.2.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.Seq.5.2.2\lib\net45\Serilog.Sinks.Seq.dll</HintPath>
+    </Reference>
+    <Reference Include="SerilogTimings, Version=3.0.1.0, Culture=neutral, PublicKeyToken=ea6fc7d88906f03a, processorArchitecture=MSIL">
+      <HintPath>..\packages\SerilogTimings.3.0.1\lib\netstandard2.0\SerilogTimings.dll</HintPath>
+    </Reference>
+    <Reference Include="Speckle.Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Speckle.Newtonsoft.Json.13.0.2\lib\net45\Speckle.Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SpeckleCore2, Version=2.20.1.16205, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Speckle.Core.2.20.1\lib\netstandard2.0\SpeckleCore2.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2, Version=2.1.4.1835, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_e_sqlite3.2.1.4\lib\net461\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core, Version=2.1.4.1835, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.core.2.1.4\lib\netstandard2.0\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.dynamic_cdecl, Version=2.1.4.1835, Culture=neutral, PublicKeyToken=b68184102cba0b3b, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.provider.dynamic_cdecl.2.1.4\lib\netstandard2.0\SQLitePCLRaw.provider.dynamic_cdecl.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.AppContext.4.3.0\lib\net463\System.AppContext.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.3.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tracing, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.Tracing.4.3.0\lib\net462\System.Diagnostics.Tracing.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.DoubleNumerics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.DoubleNumerics.3.1.3\lib\netstandard1.3\System.DoubleNumerics.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Globalization.Calendars, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Globalization.Calendars.4.3.0\lib\net46\System.Globalization.Calendars.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq.Expressions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Expressions.4.3.0\lib\net463\System.Linq.Expressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.0\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.WebSockets.Client.Managed, Version=1.0.22.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.WebSockets.Client.Managed.1.0.22\lib\net45\System.Net.WebSockets.Client.Managed.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive, Version=5.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.5.0.0\lib\net472\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.4.3.0\lib\net462\System.Reflection.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.4.3.0\lib\net463\System.Runtime.InteropServices.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.5.0.1\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.5.0.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.RegularExpressions.4.3.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
     <Reference Include="winlichd">
       <HintPath>.\winlichd.dll</HintPath>
     </Reference>
@@ -156,11 +433,47 @@
     <Compile Include="Createdlayerlists.Designer.cs">
       <DependentUpon>Createdlayerlists.cs</DependentUpon>
     </Compile>
+    <Compile Include="EnteranceGateFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnteranceGateFrm.Designer.cs">
+      <DependentUpon>EnteranceGateFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExitGateFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExitGateFrm.Designer.cs">
+      <DependentUpon>ExitGateFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FireDoorFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FireDoorFrm.Designer.cs">
+      <DependentUpon>FireDoorFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FireGateFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FireGateFrm.Designer.cs">
+      <DependentUpon>FireGateFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FirePipe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FirePipe.Designer.cs">
+      <DependentUpon>FirePipe.cs</DependentUpon>
+    </Compile>
     <Compile Include="FloorNameForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FloorNameForm.Designer.cs">
       <DependentUpon>FloorNameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LineConversion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LineConversion.Designer.cs">
+      <DependentUpon>LineConversion.cs</DependentUpon>
     </Compile>
     <Compile Include="MarginForm.cs">
       <SubType>Form</SubType>
@@ -218,7 +531,18 @@
     <Compile Include="Projtittle.Designer.cs">
       <DependentUpon>Projtittle.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProjTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjTypeForm.Designer.cs">
+      <DependentUpon>ProjTypeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RoadAName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,17 +555,54 @@
     <Compile Include="RoomNameForm.Designer.cs">
       <DependentUpon>RoomNameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RuleCheckControlVariables.cs" />
     <Compile Include="RuleCheckForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RuleCheckForm.Designer.cs">
       <DependentUpon>RuleCheckForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Rulecheckprogress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rulecheckprogress.Designer.cs">
+      <DependentUpon>Rulecheckprogress.cs</DependentUpon>
+    </Compile>
     <Compile Include="SecLineFrm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SecLineFrm.Designer.cs">
       <DependentUpon>SecLineFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SumpFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SumpFrm.Designer.cs">
+      <DependentUpon>SumpFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TankFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TankFrm.Designer.cs">
+      <DependentUpon>TankFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TwoPolyTouch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TwoPolyTouch.Designer.cs">
+      <DependentUpon>TwoPolyTouch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateFrm.Designer.cs">
+      <DependentUpon>UpdateFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WDRFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WDRFrm.Designer.cs">
+      <DependentUpon>WDRFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="windowrule.cs" />
     <Compile Include="WindowSize.cs">
@@ -270,8 +631,26 @@
     <EmbeddedResource Include="Createdlayerlists.resx">
       <DependentUpon>Createdlayerlists.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EnteranceGateFrm.resx">
+      <DependentUpon>EnteranceGateFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExitGateFrm.resx">
+      <DependentUpon>ExitGateFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FireDoorFrm.resx">
+      <DependentUpon>FireDoorFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FireGateFrm.resx">
+      <DependentUpon>FireGateFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FirePipe.resx">
+      <DependentUpon>FirePipe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FloorNameForm.resx">
       <DependentUpon>FloorNameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LineConversion.resx">
+      <DependentUpon>LineConversion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MarginForm.resx">
       <DependentUpon>MarginForm.cs</DependentUpon>
@@ -300,6 +679,13 @@
     <EmbeddedResource Include="Projtittle.resx">
       <DependentUpon>Projtittle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProjTypeForm.resx">
+      <DependentUpon>ProjTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="RoadAName.resx">
       <DependentUpon>RoadAName.cs</DependentUpon>
     </EmbeddedResource>
@@ -309,8 +695,26 @@
     <EmbeddedResource Include="RuleCheckForm.resx">
       <DependentUpon>RuleCheckForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Rulecheckprogress.resx">
+      <DependentUpon>Rulecheckprogress.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SecLineFrm.resx">
       <DependentUpon>SecLineFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SumpFrm.resx">
+      <DependentUpon>SumpFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TankFrm.resx">
+      <DependentUpon>TankFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TwoPolyTouch.resx">
+      <DependentUpon>TwoPolyTouch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateFrm.resx">
+      <DependentUpon>UpdateFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WDRFrm.resx">
+      <DependentUpon>WDRFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowSize.resx">
       <DependentUpon>WindowSize.cs</DependentUpon>
@@ -324,10 +728,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="NBCicon.ico" />
+    <Content Include="Properties\lnwgt.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy D:\All_tasks\CAD\NBC_Plugin\autocad-addin-NBC\ProsoftAcPlugin\bin\x64\Release\Preval.dll D:\All_tasks\CAD\NBC_Plugin\AutoCadPlugin\AutoCadPlugin\bin\Release\Preval.bundle\Contents\Preval.dll
+    <PostBuildEvent>copy D:\Workstation\Prasad\ACAD\autocad-addin-NBC\ProsoftAcPlugin\bin\x64\Release\Preval.dll D:\Workstation\Prasad\ACAD\AutoCadPlugin\AutoCadPlugin\bin\Release\Preval.bundle\Contents\Preval.dll
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>

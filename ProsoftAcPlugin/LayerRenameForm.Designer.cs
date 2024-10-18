@@ -59,7 +59,7 @@ namespace ProsoftAcPlugin
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(15, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 16);
+            this.label1.Size = new System.Drawing.Size(196, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Select a source layer to rename";
             // 
@@ -69,7 +69,7 @@ namespace ProsoftAcPlugin
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(27, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(221, 16);
+            this.label2.Size = new System.Drawing.Size(220, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Select a destination layer to rename";
             // 
@@ -84,6 +84,7 @@ namespace ProsoftAcPlugin
             // 
             // btn_ok
             // 
+            this.btn_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_ok.Location = new System.Drawing.Point(58, 464);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(71, 34);
@@ -161,8 +162,9 @@ namespace ProsoftAcPlugin
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LayerRenameForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LayerRenameForm";
+            this.Text = "LayerRename";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.LayerRenameForm_Load);
             this.groupBox1.ResumeLayout(false);

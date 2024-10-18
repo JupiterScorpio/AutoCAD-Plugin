@@ -1,5 +1,0 @@
-https://github.com/bradleySuira/autocad-addin
-http://docs.autodesk.com/ACD/2011/ESP/filesMDG/WS1a9193826455f5ff2566ffd511ff6f8c7ca-3d3a.htm
-
-
-https://www.google.com/search?q=how+to+deploy+a+autocad+2020+plugin+dll+c%23&sxsrf=APq-WBtGYR8ygbgLMt98kjtUD3ri3S907Q%3A1650431076054&ei=ZJRfYt_1ApX-rgTO15rwDQ&ved=0ahUKEwjft47w7qH3AhUVv4sKHc6rBt4Q4dUDCA4&uact=5&oq=how+to+deploy+a+autocad+2020+plugin+dll+c%23&gs_lcp=Cgdnd3Mtd2l6EAM6BwgAEEcQsANKBAhBGABKBAhGGABQiQdYjhtgqCFoAXABeACAAeYBiAH0BJIBBTAuMS4ymAEAoAEByAEIwAEB&sclient=gws-wiz

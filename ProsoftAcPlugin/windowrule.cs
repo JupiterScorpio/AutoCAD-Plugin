@@ -1,4 +1,10 @@
 ﻿using Autodesk.AutoCAD.DatabaseServices;
+using Autodesk.AutoCAD.ApplicationServices;
+using Autodesk.AutoCAD.EditorInput;
+using Autodesk.AutoCAD.Geometry;
+using Autodesk.AutoCAD.Customization;
+using Autodesk.AutoCAD.Windows.Data;
+using Autodesk.AutoCAD.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,24 +18,46 @@ namespace ProsoftAcPlugin
         public Polyline pl;
         public float width;
         public float height;
+        public float depth;
+        public ObjectId objid;
+        public Handle hnd;
+        public string kind;
     }
     public class doorrule
     {
         public Polyline pl;
         public float width;
         public float height;
+        public float depth;
+        public ObjectId objid;
+        public Handle hnd;
+        public string kind;
     }
-    public class roomrule
+    public class Gaterule
     {
         public Polyline pl;
         public float width;
         public float height;
+        public float depth;
+        public ObjectId objid;
+        public Handle hnd;
+        public string kind;
+    }
+    public class roomrule
+    {
+        public Polyline pl;
+        public double width;
+        public double height;
+        public ObjectId objid;
+        public Handle hnd;
     }
     public class mroadrule
     {
         public Polyline pl;
         public float width;
         public float height;
+        public ObjectId objid;
+        public Handle hnd;
     }
     public class intRoadrule
     {
@@ -145,5 +173,30 @@ namespace ProsoftAcPlugin
         public int errorCnt;
         public string errcause;
         public List<ObjectId> objIdlist = null;
+    }
+    public class JsonItems
+    {
+        public string layer { get; set; }
+        public string OId { get; set; }
+        public double width { get; set; }
+        public double height { get; set; }
+        public double depth { get; set; }
+        public string hndle { get; set; }
+        public string projtype { get; set; }
+        public string bpass { get; set; }
+        public string kind { get; set; }
+        public ResultBuffer ToResultBuffer()
+        {
+            return new ResultBuffer(
+                new TypedValue(1, layer),
+                new TypedValue(5, OId),
+                new TypedValue(40, width),
+                new TypedValue(40, height),
+                new TypedValue(40, depth),
+                new TypedValue(5, hndle),
+                new TypedValue(5, projtype),
+                new TypedValue(5, bpass),
+                new TypedValue(5, kind));
+        }
     }
 }

@@ -159,6 +159,7 @@
             // 
             // btn_ok
             // 
+            this.btn_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_ok.Enabled = false;
             this.btn_ok.Location = new System.Drawing.Point(100, 57);
             this.btn_ok.Name = "btn_ok";
@@ -191,6 +192,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PluginForm";
+            this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select Use";

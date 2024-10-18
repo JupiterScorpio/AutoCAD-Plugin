@@ -57,6 +57,10 @@ namespace ProsoftAcPlugin
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmb_location = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.cmb_authority = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.cmb_subLocation = new System.Windows.Forms.ComboBox();
             this.cmb_casetype = new System.Windows.Forms.ComboBox();
             this.cmb_projtype = new System.Windows.Forms.ComboBox();
@@ -71,10 +75,6 @@ namespace ProsoftAcPlugin
             this.label2 = new System.Windows.Forms.Label();
             this.btn_ok = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.cmb_authority = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.cmb_location = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -244,7 +244,7 @@ namespace ProsoftAcPlugin
             // 
             this.cmb_plotsubuse.FormattingEnabled = true;
             this.cmb_plotsubuse.Items.AddRange(new object[] {
-            "Residental Bldg",
+            "Residential Building",
             "Bunglow",
             "semidetached",
             "Row House",
@@ -261,14 +261,15 @@ namespace ProsoftAcPlugin
             "Staff Quarters",
             "Old Age Home",
             "Orphanages",
-            "Other Residental Building",
+            "Other Residential Building",
             "Individual Row House",
             "Shop",
             "Store",
             "Retail Shop",
             "Bank",
             "Safe Deposite",
-            "Shopping Centre"});
+            "Shopping Centre",
+            "Villa"});
             this.cmb_plotsubuse.Location = new System.Drawing.Point(93, 55);
             this.cmb_plotsubuse.Name = "cmb_plotsubuse";
             this.cmb_plotsubuse.Size = new System.Drawing.Size(172, 21);
@@ -279,13 +280,13 @@ namespace ProsoftAcPlugin
             // 
             this.cmb_plotuse.FormattingEnabled = true;
             this.cmb_plotuse.Items.AddRange(new object[] {
-            "Ressidential",
+            "Residential",
             "Commercial",
             "Industrial",
             "Assembly",
             "Public Utility",
             "Transportation and Communication",
-            "Educational/Industrial",
+            "Educational/Institutional",
             "Medical",
             "Storage",
             "Mixed Use",
@@ -396,6 +397,58 @@ namespace ProsoftAcPlugin
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "General Details";
             // 
+            // cmb_location
+            // 
+            this.cmb_location.FormattingEnabled = true;
+            this.cmb_location.Items.AddRange(new object[] {
+            "New Areas/Approved Layout Areas",
+            "Existing Built-Up Areas",
+            "Congested Areas",
+            "Settlement(Gram Khantam/Abadi)",
+            "Gram Panchayat Area with Revenue Survey"});
+            this.cmb_location.Location = new System.Drawing.Point(320, 33);
+            this.cmb_location.Name = "cmb_location";
+            this.cmb_location.Size = new System.Drawing.Size(185, 21);
+            this.cmb_location.TabIndex = 30;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(263, 36);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(51, 13);
+            this.label19.TabIndex = 29;
+            this.label19.Text = "Location:";
+            // 
+            // cmb_authority
+            // 
+            this.cmb_authority.AllowDrop = true;
+            this.cmb_authority.DropDownWidth = 200;
+            this.cmb_authority.FormattingEnabled = true;
+            this.cmb_authority.Items.AddRange(new object[] {
+            "DTCP_GPs",
+            "HMDA_ULBs",
+            "HMDA_GPs",
+            "DTCP_UDAGps",
+            "DTCP_ULBs",
+            "GHMC",
+            "HMDA"});
+            this.cmb_authority.Location = new System.Drawing.Point(68, 36);
+            this.cmb_authority.MaximumSize = new System.Drawing.Size(200, 0);
+            this.cmb_authority.Name = "cmb_authority";
+            this.cmb_authority.Size = new System.Drawing.Size(175, 21);
+            this.cmb_authority.TabIndex = 28;
+            this.cmb_authority.SelectedIndexChanged += new System.EventHandler(this.cmb_authority_SelectedIndexChanged);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 36);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(51, 13);
+            this.label18.TabIndex = 27;
+            this.label18.Text = "Authority:";
+            // 
             // cmb_subLocation
             // 
             this.cmb_subLocation.FormattingEnabled = true;
@@ -460,8 +513,8 @@ namespace ProsoftAcPlugin
             this.cmb_apptype.FormattingEnabled = true;
             this.cmb_apptype.Items.AddRange(new object[] {
             "General Propasal",
-            "Ressidental less than 4000 sq.mts",
-            "Ressidental above 4000 sq.mts"});
+            "Residental less than 4000 sq.mts",
+            "Residental above 4000 sq.mts"});
             this.cmb_apptype.Location = new System.Drawing.Point(99, 66);
             this.cmb_apptype.MaximumSize = new System.Drawing.Size(200, 0);
             this.cmb_apptype.Name = "cmb_apptype";
@@ -539,6 +592,7 @@ namespace ProsoftAcPlugin
             // 
             // btn_ok
             // 
+            this.btn_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_ok.Location = new System.Drawing.Point(389, 551);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(70, 32);
@@ -557,58 +611,6 @@ namespace ProsoftAcPlugin
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 36);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(51, 13);
-            this.label18.TabIndex = 27;
-            this.label18.Text = "Authority:";
-            // 
-            // cmb_authority
-            // 
-            this.cmb_authority.AllowDrop = true;
-            this.cmb_authority.DropDownWidth = 200;
-            this.cmb_authority.FormattingEnabled = true;
-            this.cmb_authority.Items.AddRange(new object[] {
-            "DTCP_GPs",
-            "HMDA_ULBs",
-            "HMDA_GPs",
-            "DTCP_UDAGps",
-            "DTCP_ULBs",
-            "GHMC",
-            "HMDA"});
-            this.cmb_authority.Location = new System.Drawing.Point(68, 36);
-            this.cmb_authority.MaximumSize = new System.Drawing.Size(200, 0);
-            this.cmb_authority.Name = "cmb_authority";
-            this.cmb_authority.Size = new System.Drawing.Size(175, 21);
-            this.cmb_authority.TabIndex = 28;
-            this.cmb_authority.SelectedIndexChanged += new System.EventHandler(this.cmb_authority_SelectedIndexChanged);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(263, 36);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(51, 13);
-            this.label19.TabIndex = 29;
-            this.label19.Text = "Location:";
-            // 
-            // cmb_location
-            // 
-            this.cmb_location.FormattingEnabled = true;
-            this.cmb_location.Items.AddRange(new object[] {
-            "New Areas/Approved Layout Areas",
-            "Existing Built-Up Areas",
-            "Congested Areas",
-            "Settlement(Gram Khantam/Abadi)",
-            "Gram Panchayat Area with Revenue Survey"});
-            this.cmb_location.Location = new System.Drawing.Point(320, 33);
-            this.cmb_location.Name = "cmb_location";
-            this.cmb_location.Size = new System.Drawing.Size(185, 21);
-            this.cmb_location.TabIndex = 30;
-            // 
             // projectinForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -621,6 +623,7 @@ namespace ProsoftAcPlugin
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "projectinForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProjectInformation";
             this.TopMost = true;

@@ -29,6 +29,7 @@ namespace ProsoftAcPlugin
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoomNameForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.close_btn = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -147,10 +148,10 @@ namespace ProsoftAcPlugin
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "List of Room Names";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // close_btn
             // 
+            this.close_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.close_btn.Enabled = false;
             this.close_btn.Location = new System.Drawing.Point(691, 459);
             this.close_btn.Name = "close_btn";
@@ -170,7 +171,6 @@ namespace ProsoftAcPlugin
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Hotel";
-            this.groupBox7.Enter += new System.EventHandler(this.groupBox7_Enter);
             // 
             // hotel_opt2
             // 
@@ -179,10 +179,10 @@ namespace ProsoftAcPlugin
             this.hotel_opt2.Name = "hotel_opt2";
             this.hotel_opt2.Size = new System.Drawing.Size(165, 17);
             this.hotel_opt2.TabIndex = 6;
-            this.hotel_opt2.TabStop = true;
             this.hotel_opt2.Text = "Room without Attached Toilet";
             this.hotel_opt2.UseVisualStyleBackColor = true;
             this.hotel_opt2.CheckedChanged += new System.EventHandler(this.hotel_opt2_CheckedChanged);
+            this.hotel_opt2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.hotel_opt2_MouseDown);
             // 
             // hotel_opt1
             // 
@@ -191,10 +191,10 @@ namespace ProsoftAcPlugin
             this.hotel_opt1.Name = "hotel_opt1";
             this.hotel_opt1.Size = new System.Drawing.Size(150, 17);
             this.hotel_opt1.TabIndex = 5;
-            this.hotel_opt1.TabStop = true;
             this.hotel_opt1.Text = "Room with Attached Toilet";
             this.hotel_opt1.UseVisualStyleBackColor = true;
             this.hotel_opt1.CheckedChanged += new System.EventHandler(this.hotel_opt1_CheckedChanged);
+            this.hotel_opt1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.hotel_opt1_MouseDown);
             // 
             // groupBox6
             // 
@@ -218,10 +218,10 @@ namespace ProsoftAcPlugin
             this.godown_opt.Name = "godown_opt";
             this.godown_opt.Size = new System.Drawing.Size(67, 17);
             this.godown_opt.TabIndex = 5;
-            this.godown_opt.TabStop = true;
             this.godown_opt.Text = "GodOwn";
             this.godown_opt.UseVisualStyleBackColor = true;
             this.godown_opt.CheckedChanged += new System.EventHandler(this.godown_opt_CheckedChanged);
+            this.godown_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.godown_opt_MouseDown);
             // 
             // factoryrm_opt
             // 
@@ -230,10 +230,10 @@ namespace ProsoftAcPlugin
             this.factoryrm_opt.Name = "factoryrm_opt";
             this.factoryrm_opt.Size = new System.Drawing.Size(60, 17);
             this.factoryrm_opt.TabIndex = 5;
-            this.factoryrm_opt.TabStop = true;
             this.factoryrm_opt.Text = "Factory";
             this.factoryrm_opt.UseVisualStyleBackColor = true;
             this.factoryrm_opt.CheckedChanged += new System.EventHandler(this.factoryrm_opt_CheckedChanged);
+            this.factoryrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.factoryrm_opt_MouseDown);
             // 
             // shedrm_opt
             // 
@@ -242,10 +242,10 @@ namespace ProsoftAcPlugin
             this.shedrm_opt.Name = "shedrm_opt";
             this.shedrm_opt.Size = new System.Drawing.Size(50, 17);
             this.shedrm_opt.TabIndex = 5;
-            this.shedrm_opt.TabStop = true;
             this.shedrm_opt.Text = "Shed";
             this.shedrm_opt.UseVisualStyleBackColor = true;
             this.shedrm_opt.CheckedChanged += new System.EventHandler(this.shedrm_opt_CheckedChanged);
+            this.shedrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.shedrm_opt_MouseDown);
             // 
             // openshedrm_opt
             // 
@@ -254,10 +254,10 @@ namespace ProsoftAcPlugin
             this.openshedrm_opt.Name = "openshedrm_opt";
             this.openshedrm_opt.Size = new System.Drawing.Size(79, 17);
             this.openshedrm_opt.TabIndex = 10;
-            this.openshedrm_opt.TabStop = true;
             this.openshedrm_opt.Text = "Open Shed";
             this.openshedrm_opt.UseVisualStyleBackColor = true;
             this.openshedrm_opt.CheckedChanged += new System.EventHandler(this.openshedrm_opt_CheckedChanged);
+            this.openshedrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.openshedrm_opt_MouseDown);
             // 
             // storagerm_opt
             // 
@@ -266,10 +266,10 @@ namespace ProsoftAcPlugin
             this.storagerm_opt.Name = "storagerm_opt";
             this.storagerm_opt.Size = new System.Drawing.Size(93, 17);
             this.storagerm_opt.TabIndex = 9;
-            this.storagerm_opt.TabStop = true;
             this.storagerm_opt.Text = "Storage Room";
             this.storagerm_opt.UseVisualStyleBackColor = true;
             this.storagerm_opt.CheckedChanged += new System.EventHandler(this.storagerm_opt_CheckedChanged);
+            this.storagerm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.storagerm_opt_MouseDown);
             // 
             // wrkshp_opt
             // 
@@ -278,10 +278,10 @@ namespace ProsoftAcPlugin
             this.wrkshp_opt.Name = "wrkshp_opt";
             this.wrkshp_opt.Size = new System.Drawing.Size(76, 17);
             this.wrkshp_opt.TabIndex = 8;
-            this.wrkshp_opt.TabStop = true;
             this.wrkshp_opt.Text = "WorkShop";
             this.wrkshp_opt.UseVisualStyleBackColor = true;
             this.wrkshp_opt.CheckedChanged += new System.EventHandler(this.wrkshp_opt_CheckedChanged);
+            this.wrkshp_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.wrkshp_opt_MouseDown);
             // 
             // groupBox5
             // 
@@ -295,7 +295,6 @@ namespace ProsoftAcPlugin
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Educational";
-            this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
             // 
             // kgardenrm_opt
             // 
@@ -304,10 +303,10 @@ namespace ProsoftAcPlugin
             this.kgardenrm_opt.Name = "kgardenrm_opt";
             this.kgardenrm_opt.Size = new System.Drawing.Size(90, 17);
             this.kgardenrm_opt.TabIndex = 7;
-            this.kgardenrm_opt.TabStop = true;
             this.kgardenrm_opt.Text = "KinderGarden";
             this.kgardenrm_opt.UseVisualStyleBackColor = true;
             this.kgardenrm_opt.CheckedChanged += new System.EventHandler(this.kgardenrm_opt_CheckedChanged);
+            this.kgardenrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.kgardenrm_opt_MouseDown);
             // 
             // staffrm_opt
             // 
@@ -316,10 +315,10 @@ namespace ProsoftAcPlugin
             this.staffrm_opt.Name = "staffrm_opt";
             this.staffrm_opt.Size = new System.Drawing.Size(78, 17);
             this.staffrm_opt.TabIndex = 6;
-            this.staffrm_opt.TabStop = true;
             this.staffrm_opt.Text = "Staff Room";
             this.staffrm_opt.UseVisualStyleBackColor = true;
             this.staffrm_opt.CheckedChanged += new System.EventHandler(this.staffrm_opt_CheckedChanged);
+            this.staffrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.staffrm_opt_MouseDown);
             // 
             // hostelrm_opt
             // 
@@ -328,10 +327,10 @@ namespace ProsoftAcPlugin
             this.hostelrm_opt.Name = "hostelrm_opt";
             this.hostelrm_opt.Size = new System.Drawing.Size(86, 17);
             this.hostelrm_opt.TabIndex = 5;
-            this.hostelrm_opt.TabStop = true;
             this.hostelrm_opt.Text = "Hostel Room";
             this.hostelrm_opt.UseVisualStyleBackColor = true;
             this.hostelrm_opt.CheckedChanged += new System.EventHandler(this.hostelrm_opt_CheckedChanged);
+            this.hostelrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.hostelrm_opt_MouseDown);
             // 
             // clsrm_opt
             // 
@@ -340,10 +339,10 @@ namespace ProsoftAcPlugin
             this.clsrm_opt.Name = "clsrm_opt";
             this.clsrm_opt.Size = new System.Drawing.Size(81, 17);
             this.clsrm_opt.TabIndex = 4;
-            this.clsrm_opt.TabStop = true;
             this.clsrm_opt.Text = "Class Room";
             this.clsrm_opt.UseVisualStyleBackColor = true;
             this.clsrm_opt.CheckedChanged += new System.EventHandler(this.clsrm_opt_CheckedChanged);
+            this.clsrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.clsrm_opt_MouseDown);
             // 
             // groupBox4
             // 
@@ -370,7 +369,6 @@ namespace ProsoftAcPlugin
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Public";
-            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // pub_servtoilrm_opt
             // 
@@ -379,10 +377,10 @@ namespace ProsoftAcPlugin
             this.pub_servtoilrm_opt.Name = "pub_servtoilrm_opt";
             this.pub_servtoilrm_opt.Size = new System.Drawing.Size(91, 17);
             this.pub_servtoilrm_opt.TabIndex = 3;
-            this.pub_servtoilrm_opt.TabStop = true;
             this.pub_servtoilrm_opt.Text = "Servant Toilet";
             this.pub_servtoilrm_opt.UseVisualStyleBackColor = true;
             this.pub_servtoilrm_opt.CheckedChanged += new System.EventHandler(this.pub_servtoilrm_opt_CheckedChanged);
+            this.pub_servtoilrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pub_servtoilrm_opt_MouseDown);
             // 
             // pub_sevbath_opt
             // 
@@ -391,10 +389,10 @@ namespace ProsoftAcPlugin
             this.pub_sevbath_opt.Name = "pub_sevbath_opt";
             this.pub_sevbath_opt.Size = new System.Drawing.Size(87, 17);
             this.pub_sevbath_opt.TabIndex = 3;
-            this.pub_sevbath_opt.TabStop = true;
             this.pub_sevbath_opt.Text = "Servant Bath";
             this.pub_sevbath_opt.UseVisualStyleBackColor = true;
             this.pub_sevbath_opt.CheckedChanged += new System.EventHandler(this.pub_sevbath_opt_CheckedChanged);
+            this.pub_sevbath_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pub_sevbath_opt_MouseDown);
             // 
             // pub_labrm_opt
             // 
@@ -403,10 +401,10 @@ namespace ProsoftAcPlugin
             this.pub_labrm_opt.Name = "pub_labrm_opt";
             this.pub_labrm_opt.Size = new System.Drawing.Size(75, 17);
             this.pub_labrm_opt.TabIndex = 3;
-            this.pub_labrm_opt.TabStop = true;
             this.pub_labrm_opt.Text = "Laboratory";
             this.pub_labrm_opt.UseVisualStyleBackColor = true;
             this.pub_labrm_opt.CheckedChanged += new System.EventHandler(this.pub_labrm_opt_CheckedChanged);
+            this.pub_labrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pub_labrm_opt_MouseDown);
             // 
             // pub_librm_opt
             // 
@@ -415,10 +413,10 @@ namespace ProsoftAcPlugin
             this.pub_librm_opt.Name = "pub_librm_opt";
             this.pub_librm_opt.Size = new System.Drawing.Size(56, 17);
             this.pub_librm_opt.TabIndex = 3;
-            this.pub_librm_opt.TabStop = true;
             this.pub_librm_opt.Text = "Library";
             this.pub_librm_opt.UseVisualStyleBackColor = true;
             this.pub_librm_opt.CheckedChanged += new System.EventHandler(this.pub_librm_opt_CheckedChanged);
+            this.pub_librm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pub_librm_opt_MouseDown);
             // 
             // pub_meetrm_opt
             // 
@@ -427,10 +425,10 @@ namespace ProsoftAcPlugin
             this.pub_meetrm_opt.Name = "pub_meetrm_opt";
             this.pub_meetrm_opt.Size = new System.Drawing.Size(84, 17);
             this.pub_meetrm_opt.TabIndex = 15;
-            this.pub_meetrm_opt.TabStop = true;
             this.pub_meetrm_opt.Text = "Meeting Hall";
             this.pub_meetrm_opt.UseVisualStyleBackColor = true;
             this.pub_meetrm_opt.CheckedChanged += new System.EventHandler(this.pub_meetrm_opt_CheckedChanged);
+            this.pub_meetrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pub_meetrm_opt_MouseDown);
             // 
             // pub_communityrm_opt
             // 
@@ -439,10 +437,10 @@ namespace ProsoftAcPlugin
             this.pub_communityrm_opt.Name = "pub_communityrm_opt";
             this.pub_communityrm_opt.Size = new System.Drawing.Size(97, 17);
             this.pub_communityrm_opt.TabIndex = 14;
-            this.pub_communityrm_opt.TabStop = true;
             this.pub_communityrm_opt.Text = "Community Hall";
             this.pub_communityrm_opt.UseVisualStyleBackColor = true;
             this.pub_communityrm_opt.CheckedChanged += new System.EventHandler(this.pub_communityrm_opt_CheckedChanged);
+            this.pub_communityrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pub_communityrm_opt_MouseDown);
             // 
             // pub_consultrm_opt
             // 
@@ -451,10 +449,10 @@ namespace ProsoftAcPlugin
             this.pub_consultrm_opt.Name = "pub_consultrm_opt";
             this.pub_consultrm_opt.Size = new System.Drawing.Size(74, 17);
             this.pub_consultrm_opt.TabIndex = 13;
-            this.pub_consultrm_opt.TabStop = true;
             this.pub_consultrm_opt.Text = "Consulting";
             this.pub_consultrm_opt.UseVisualStyleBackColor = true;
             this.pub_consultrm_opt.CheckedChanged += new System.EventHandler(this.pub_consultrm_opt_CheckedChanged);
+            this.pub_consultrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pub_consultrm_opt_MouseDown);
             // 
             // pub_clinicrm_opt
             // 
@@ -464,10 +462,10 @@ namespace ProsoftAcPlugin
             this.pub_clinicrm_opt.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.pub_clinicrm_opt.Size = new System.Drawing.Size(50, 17);
             this.pub_clinicrm_opt.TabIndex = 3;
-            this.pub_clinicrm_opt.TabStop = true;
             this.pub_clinicrm_opt.Text = "Clinic";
             this.pub_clinicrm_opt.UseVisualStyleBackColor = true;
             this.pub_clinicrm_opt.CheckedChanged += new System.EventHandler(this.pub_clinicrm_opt_CheckedChanged);
+            this.pub_clinicrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pub_clinicrm_opt_MouseDown);
             // 
             // pub_marriagerm_opt
             // 
@@ -476,10 +474,10 @@ namespace ProsoftAcPlugin
             this.pub_marriagerm_opt.Name = "pub_marriagerm_opt";
             this.pub_marriagerm_opt.Size = new System.Drawing.Size(87, 17);
             this.pub_marriagerm_opt.TabIndex = 3;
-            this.pub_marriagerm_opt.TabStop = true;
             this.pub_marriagerm_opt.Text = "Marriage Hall";
             this.pub_marriagerm_opt.UseVisualStyleBackColor = true;
             this.pub_marriagerm_opt.CheckedChanged += new System.EventHandler(this.pub_marriagerm_opt_CheckedChanged);
+            this.pub_marriagerm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pub_marriagerm_opt_MouseDown);
             // 
             // pub_operthetrerm_opt
             // 
@@ -488,10 +486,10 @@ namespace ProsoftAcPlugin
             this.pub_operthetrerm_opt.Name = "pub_operthetrerm_opt";
             this.pub_operthetrerm_opt.Size = new System.Drawing.Size(111, 17);
             this.pub_operthetrerm_opt.TabIndex = 12;
-            this.pub_operthetrerm_opt.TabStop = true;
             this.pub_operthetrerm_opt.Text = "Operation Theatre";
             this.pub_operthetrerm_opt.UseVisualStyleBackColor = true;
             this.pub_operthetrerm_opt.CheckedChanged += new System.EventHandler(this.pub_operthetrerm_opt_CheckedChanged);
+            this.pub_operthetrerm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pub_operthetrerm_opt_MouseDown);
             // 
             // pub_entrm_opt
             // 
@@ -500,10 +498,10 @@ namespace ProsoftAcPlugin
             this.pub_entrm_opt.Name = "pub_entrm_opt";
             this.pub_entrm_opt.Size = new System.Drawing.Size(89, 17);
             this.pub_entrm_opt.TabIndex = 3;
-            this.pub_entrm_opt.TabStop = true;
             this.pub_entrm_opt.Text = "Entrance Hall";
             this.pub_entrm_opt.UseVisualStyleBackColor = true;
             this.pub_entrm_opt.CheckedChanged += new System.EventHandler(this.pub_entrm_opt_CheckedChanged);
+            this.pub_entrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pub_entrm_opt_MouseDown);
             // 
             // pub_assem_opt
             // 
@@ -512,10 +510,10 @@ namespace ProsoftAcPlugin
             this.pub_assem_opt.Name = "pub_assem_opt";
             this.pub_assem_opt.Size = new System.Drawing.Size(90, 17);
             this.pub_assem_opt.TabIndex = 11;
-            this.pub_assem_opt.TabStop = true;
             this.pub_assem_opt.Text = "Assembly Hall";
             this.pub_assem_opt.UseVisualStyleBackColor = true;
             this.pub_assem_opt.CheckedChanged += new System.EventHandler(this.pub_assem_opt_CheckedChanged);
+            this.pub_assem_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pub_assem_opt_MouseDown);
             // 
             // pub_cinemarm_opt
             // 
@@ -524,10 +522,10 @@ namespace ProsoftAcPlugin
             this.pub_cinemarm_opt.Name = "pub_cinemarm_opt";
             this.pub_cinemarm_opt.Size = new System.Drawing.Size(81, 17);
             this.pub_cinemarm_opt.TabIndex = 10;
-            this.pub_cinemarm_opt.TabStop = true;
             this.pub_cinemarm_opt.Text = "Cinema Hall";
             this.pub_cinemarm_opt.UseVisualStyleBackColor = true;
             this.pub_cinemarm_opt.CheckedChanged += new System.EventHandler(this.pub_cinemarm_opt_CheckedChanged);
+            this.pub_cinemarm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pub_cinemarm_opt_MouseDown);
             // 
             // pub_specialrm_opt
             // 
@@ -536,10 +534,10 @@ namespace ProsoftAcPlugin
             this.pub_specialrm_opt.Name = "pub_specialrm_opt";
             this.pub_specialrm_opt.Size = new System.Drawing.Size(91, 17);
             this.pub_specialrm_opt.TabIndex = 9;
-            this.pub_specialrm_opt.TabStop = true;
             this.pub_specialrm_opt.Text = "Special Room";
             this.pub_specialrm_opt.UseVisualStyleBackColor = true;
             this.pub_specialrm_opt.CheckedChanged += new System.EventHandler(this.pub_specialrm_opt_CheckedChanged);
+            this.pub_specialrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pub_specialrm_opt_MouseDown);
             // 
             // pub_genralwrdrm_opt
             // 
@@ -548,10 +546,10 @@ namespace ProsoftAcPlugin
             this.pub_genralwrdrm_opt.Name = "pub_genralwrdrm_opt";
             this.pub_genralwrdrm_opt.Size = new System.Drawing.Size(91, 17);
             this.pub_genralwrdrm_opt.TabIndex = 8;
-            this.pub_genralwrdrm_opt.TabStop = true;
             this.pub_genralwrdrm_opt.Text = "General Ward";
             this.pub_genralwrdrm_opt.UseVisualStyleBackColor = true;
             this.pub_genralwrdrm_opt.CheckedChanged += new System.EventHandler(this.pub_genralwrdrm_opt_CheckedChanged);
+            this.pub_genralwrdrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pub_genralwrdrm_opt_MouseDown);
             // 
             // pub_auditrm_opt
             // 
@@ -560,10 +558,10 @@ namespace ProsoftAcPlugin
             this.pub_auditrm_opt.Name = "pub_auditrm_opt";
             this.pub_auditrm_opt.Size = new System.Drawing.Size(74, 17);
             this.pub_auditrm_opt.TabIndex = 7;
-            this.pub_auditrm_opt.TabStop = true;
             this.pub_auditrm_opt.Text = "Auditorium";
             this.pub_auditrm_opt.UseVisualStyleBackColor = true;
             this.pub_auditrm_opt.CheckedChanged += new System.EventHandler(this.pub_auditrm_opt_CheckedChanged);
+            this.pub_auditrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pub_auditrm_opt_MouseDown);
             // 
             // pub_rmrm_opt
             // 
@@ -572,10 +570,10 @@ namespace ProsoftAcPlugin
             this.pub_rmrm_opt.Name = "pub_rmrm_opt";
             this.pub_rmrm_opt.Size = new System.Drawing.Size(53, 17);
             this.pub_rmrm_opt.TabIndex = 6;
-            this.pub_rmrm_opt.TabStop = true;
             this.pub_rmrm_opt.Text = "Room";
             this.pub_rmrm_opt.UseVisualStyleBackColor = true;
             this.pub_rmrm_opt.CheckedChanged += new System.EventHandler(this.pub_rmrm_opt_CheckedChanged);
+            this.pub_rmrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pub_rmrm_opt_MouseDown);
             // 
             // groupBox3
             // 
@@ -605,7 +603,6 @@ namespace ProsoftAcPlugin
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Commercial";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // saferm_opt
             // 
@@ -614,10 +611,10 @@ namespace ProsoftAcPlugin
             this.saferm_opt.Name = "saferm_opt";
             this.saferm_opt.Size = new System.Drawing.Size(78, 17);
             this.saferm_opt.TabIndex = 1;
-            this.saferm_opt.TabStop = true;
             this.saferm_opt.Text = "Safe Room";
             this.saferm_opt.UseVisualStyleBackColor = true;
             this.saferm_opt.CheckedChanged += new System.EventHandler(this.saferm_opt_CheckedChanged);
+            this.saferm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.saferm_opt_MouseDown);
             // 
             // bankrm_opt
             // 
@@ -626,10 +623,10 @@ namespace ProsoftAcPlugin
             this.bankrm_opt.Name = "bankrm_opt";
             this.bankrm_opt.Size = new System.Drawing.Size(50, 17);
             this.bankrm_opt.TabIndex = 2;
-            this.bankrm_opt.TabStop = true;
             this.bankrm_opt.Text = "Bank";
             this.bankrm_opt.UseVisualStyleBackColor = true;
             this.bankrm_opt.CheckedChanged += new System.EventHandler(this.bankrm_opt_CheckedChanged);
+            this.bankrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bankrm_opt_MouseDown);
             // 
             // atriunrm_opt
             // 
@@ -638,10 +635,10 @@ namespace ProsoftAcPlugin
             this.atriunrm_opt.Name = "atriunrm_opt";
             this.atriunrm_opt.Size = new System.Drawing.Size(54, 17);
             this.atriunrm_opt.TabIndex = 2;
-            this.atriunrm_opt.TabStop = true;
             this.atriunrm_opt.Text = "Atrium";
             this.atriunrm_opt.UseVisualStyleBackColor = true;
             this.atriunrm_opt.CheckedChanged += new System.EventHandler(this.atriunrm_opt_CheckedChanged);
+            this.atriunrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.atriunrm_opt_MouseDown);
             // 
             // shoprm_opt
             // 
@@ -650,10 +647,10 @@ namespace ProsoftAcPlugin
             this.shoprm_opt.Name = "shoprm_opt";
             this.shoprm_opt.Size = new System.Drawing.Size(50, 17);
             this.shoprm_opt.TabIndex = 2;
-            this.shoprm_opt.TabStop = true;
             this.shoprm_opt.Text = "Shop";
             this.shoprm_opt.UseVisualStyleBackColor = true;
             this.shoprm_opt.CheckedChanged += new System.EventHandler(this.shoprm_opt_CheckedChanged);
+            this.shoprm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.shoprm_opt_MouseDown);
             // 
             // laundryrm_opt
             // 
@@ -662,10 +659,10 @@ namespace ProsoftAcPlugin
             this.laundryrm_opt.Name = "laundryrm_opt";
             this.laundryrm_opt.Size = new System.Drawing.Size(63, 17);
             this.laundryrm_opt.TabIndex = 2;
-            this.laundryrm_opt.TabStop = true;
             this.laundryrm_opt.Text = "Laundry";
             this.laundryrm_opt.UseVisualStyleBackColor = true;
             this.laundryrm_opt.CheckedChanged += new System.EventHandler(this.laundryrm_opt_CheckedChanged);
+            this.laundryrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.laundryrm_opt_MouseDown);
             // 
             // waitrm_opt
             // 
@@ -674,10 +671,10 @@ namespace ProsoftAcPlugin
             this.waitrm_opt.Name = "waitrm_opt";
             this.waitrm_opt.Size = new System.Drawing.Size(92, 17);
             this.waitrm_opt.TabIndex = 2;
-            this.waitrm_opt.TabStop = true;
             this.waitrm_opt.Text = "Waiting Room";
             this.waitrm_opt.UseVisualStyleBackColor = true;
             this.waitrm_opt.CheckedChanged += new System.EventHandler(this.waitrm_opt_CheckedChanged);
+            this.waitrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.waitrm_opt_MouseDown);
             // 
             // firectrlrm_opt
             // 
@@ -686,10 +683,10 @@ namespace ProsoftAcPlugin
             this.firectrlrm_opt.Name = "firectrlrm_opt";
             this.firectrlrm_opt.Size = new System.Drawing.Size(109, 17);
             this.firectrlrm_opt.TabIndex = 2;
-            this.firectrlrm_opt.TabStop = true;
             this.firectrlrm_opt.Text = "Fire Control Room";
             this.firectrlrm_opt.UseVisualStyleBackColor = true;
             this.firectrlrm_opt.CheckedChanged += new System.EventHandler(this.firectrlrm_opt_CheckedChanged);
+            this.firectrlrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.firectrlrm_opt_MouseDown);
             // 
             // entrancelobbyrm_opt
             // 
@@ -698,10 +695,10 @@ namespace ProsoftAcPlugin
             this.entrancelobbyrm_opt.Name = "entrancelobbyrm_opt";
             this.entrancelobbyrm_opt.Size = new System.Drawing.Size(100, 17);
             this.entrancelobbyrm_opt.TabIndex = 2;
-            this.entrancelobbyrm_opt.TabStop = true;
             this.entrancelobbyrm_opt.Text = "Entrance Lobby";
             this.entrancelobbyrm_opt.UseVisualStyleBackColor = true;
             this.entrancelobbyrm_opt.CheckedChanged += new System.EventHandler(this.entrancelobbyrm_opt_CheckedChanged);
+            this.entrancelobbyrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.entrancelobbyrm_opt_MouseDown);
             // 
             // conferancehalrm_opt
             // 
@@ -710,10 +707,10 @@ namespace ProsoftAcPlugin
             this.conferancehalrm_opt.Name = "conferancehalrm_opt";
             this.conferancehalrm_opt.Size = new System.Drawing.Size(101, 17);
             this.conferancehalrm_opt.TabIndex = 2;
-            this.conferancehalrm_opt.TabStop = true;
             this.conferancehalrm_opt.Text = "Conference Hall";
             this.conferancehalrm_opt.UseVisualStyleBackColor = true;
             this.conferancehalrm_opt.CheckedChanged += new System.EventHandler(this.conferancehalrm_opt_CheckedChanged);
+            this.conferancehalrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.conferancehalrm_opt_MouseDown);
             // 
             // departmentalrm_opt
             // 
@@ -722,10 +719,10 @@ namespace ProsoftAcPlugin
             this.departmentalrm_opt.Name = "departmentalrm_opt";
             this.departmentalrm_opt.Size = new System.Drawing.Size(116, 17);
             this.departmentalrm_opt.TabIndex = 5;
-            this.departmentalrm_opt.TabStop = true;
             this.departmentalrm_opt.Text = "Departmental Store";
             this.departmentalrm_opt.UseVisualStyleBackColor = true;
             this.departmentalrm_opt.CheckedChanged += new System.EventHandler(this.departmentalrm_opt_CheckedChanged);
+            this.departmentalrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.departmentalrm_opt_MouseDown);
             // 
             // hotelrm_opt
             // 
@@ -734,10 +731,10 @@ namespace ProsoftAcPlugin
             this.hotelrm_opt.Name = "hotelrm_opt";
             this.hotelrm_opt.Size = new System.Drawing.Size(81, 17);
             this.hotelrm_opt.TabIndex = 2;
-            this.hotelrm_opt.TabStop = true;
             this.hotelrm_opt.Text = "Hotel Room";
             this.hotelrm_opt.UseVisualStyleBackColor = true;
             this.hotelrm_opt.CheckedChanged += new System.EventHandler(this.hotelrm_opt_CheckedChanged);
+            this.hotelrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.hotelrm_opt_MouseDown);
             // 
             // shworm_opt
             // 
@@ -746,10 +743,10 @@ namespace ProsoftAcPlugin
             this.shworm_opt.Name = "shworm_opt";
             this.shworm_opt.Size = new System.Drawing.Size(83, 17);
             this.shworm_opt.TabIndex = 2;
-            this.shworm_opt.TabStop = true;
             this.shworm_opt.Text = "Show Room";
             this.shworm_opt.UseVisualStyleBackColor = true;
             this.shworm_opt.CheckedChanged += new System.EventHandler(this.shworm_opt_CheckedChanged);
+            this.shworm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.shworm_opt_MouseDown);
             // 
             // cafeteriarm_opt
             // 
@@ -758,10 +755,10 @@ namespace ProsoftAcPlugin
             this.cafeteriarm_opt.Name = "cafeteriarm_opt";
             this.cafeteriarm_opt.Size = new System.Drawing.Size(67, 17);
             this.cafeteriarm_opt.TabIndex = 2;
-            this.cafeteriarm_opt.TabStop = true;
             this.cafeteriarm_opt.Text = "Cafeteria";
             this.cafeteriarm_opt.UseVisualStyleBackColor = true;
             this.cafeteriarm_opt.CheckedChanged += new System.EventHandler(this.cafeteriarm_opt_CheckedChanged);
+            this.cafeteriarm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cafeteriarm_opt_MouseDown);
             // 
             // restaurantrm_opt
             // 
@@ -770,10 +767,10 @@ namespace ProsoftAcPlugin
             this.restaurantrm_opt.Name = "restaurantrm_opt";
             this.restaurantrm_opt.Size = new System.Drawing.Size(77, 17);
             this.restaurantrm_opt.TabIndex = 2;
-            this.restaurantrm_opt.TabStop = true;
             this.restaurantrm_opt.Text = "Restaurant";
             this.restaurantrm_opt.UseVisualStyleBackColor = true;
             this.restaurantrm_opt.CheckedChanged += new System.EventHandler(this.restaurantrm_opt_CheckedChanged);
+            this.restaurantrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.restaurantrm_opt_MouseDown);
             // 
             // receptionrm_opt
             // 
@@ -782,10 +779,10 @@ namespace ProsoftAcPlugin
             this.receptionrm_opt.Name = "receptionrm_opt";
             this.receptionrm_opt.Size = new System.Drawing.Size(74, 17);
             this.receptionrm_opt.TabIndex = 2;
-            this.receptionrm_opt.TabStop = true;
             this.receptionrm_opt.Text = "Reception";
             this.receptionrm_opt.UseVisualStyleBackColor = true;
             this.receptionrm_opt.CheckedChanged += new System.EventHandler(this.receptionrm_opt_CheckedChanged);
+            this.receptionrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.receptionrm_opt_MouseDown);
             // 
             // bakerrm_opt
             // 
@@ -794,10 +791,10 @@ namespace ProsoftAcPlugin
             this.bakerrm_opt.Name = "bakerrm_opt";
             this.bakerrm_opt.Size = new System.Drawing.Size(66, 17);
             this.bakerrm_opt.TabIndex = 4;
-            this.bakerrm_opt.TabStop = true;
             this.bakerrm_opt.Text = "Bakeries";
             this.bakerrm_opt.UseVisualStyleBackColor = true;
             this.bakerrm_opt.CheckedChanged += new System.EventHandler(this.bakerrm_opt_CheckedChanged);
+            this.bakerrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bakerrm_opt_MouseDown);
             // 
             // officerm_opt
             // 
@@ -806,10 +803,10 @@ namespace ProsoftAcPlugin
             this.officerm_opt.Name = "officerm_opt";
             this.officerm_opt.Size = new System.Drawing.Size(53, 17);
             this.officerm_opt.TabIndex = 2;
-            this.officerm_opt.TabStop = true;
             this.officerm_opt.Text = "Office";
             this.officerm_opt.UseVisualStyleBackColor = true;
             this.officerm_opt.CheckedChanged += new System.EventHandler(this.officerm_opt_CheckedChanged);
+            this.officerm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.officerm_opt_MouseDown);
             // 
             // cabinrm_opt
             // 
@@ -818,10 +815,10 @@ namespace ProsoftAcPlugin
             this.cabinrm_opt.Name = "cabinrm_opt";
             this.cabinrm_opt.Size = new System.Drawing.Size(52, 17);
             this.cabinrm_opt.TabIndex = 2;
-            this.cabinrm_opt.TabStop = true;
             this.cabinrm_opt.Text = "Cabin";
             this.cabinrm_opt.UseVisualStyleBackColor = true;
             this.cabinrm_opt.CheckedChanged += new System.EventHandler(this.cabinrm_opt_CheckedChanged);
+            this.cabinrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cabinrm_opt_MouseDown);
             // 
             // pantryrm_opt
             // 
@@ -830,10 +827,10 @@ namespace ProsoftAcPlugin
             this.pantryrm_opt.Name = "pantryrm_opt";
             this.pantryrm_opt.Size = new System.Drawing.Size(55, 17);
             this.pantryrm_opt.TabIndex = 3;
-            this.pantryrm_opt.TabStop = true;
             this.pantryrm_opt.Text = "Pantry";
             this.pantryrm_opt.UseVisualStyleBackColor = true;
             this.pantryrm_opt.CheckedChanged += new System.EventHandler(this.pantryrm_opt_CheckedChanged);
+            this.pantryrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pantryrm_opt_MouseDown);
             // 
             // rmrm_opt
             // 
@@ -842,10 +839,10 @@ namespace ProsoftAcPlugin
             this.rmrm_opt.Name = "rmrm_opt";
             this.rmrm_opt.Size = new System.Drawing.Size(53, 17);
             this.rmrm_opt.TabIndex = 2;
-            this.rmrm_opt.TabStop = true;
             this.rmrm_opt.Text = "Room";
             this.rmrm_opt.UseVisualStyleBackColor = true;
             this.rmrm_opt.CheckedChanged += new System.EventHandler(this.rmrm_opt_CheckedChanged);
+            this.rmrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.rmrm_opt_MouseDown);
             // 
             // groupBox2
             // 
@@ -892,7 +889,6 @@ namespace ProsoftAcPlugin
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Residental";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // balcony_opt
             // 
@@ -901,10 +897,10 @@ namespace ProsoftAcPlugin
             this.balcony_opt.Name = "balcony_opt";
             this.balcony_opt.Size = new System.Drawing.Size(63, 17);
             this.balcony_opt.TabIndex = 36;
-            this.balcony_opt.TabStop = true;
             this.balcony_opt.Text = "Balcony";
             this.balcony_opt.UseVisualStyleBackColor = true;
             this.balcony_opt.CheckedChanged += new System.EventHandler(this.balcony_opt_CheckedChanged);
+            this.balcony_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.balcony_opt_MouseDown);
             // 
             // sitoutrm_opt
             // 
@@ -913,10 +909,10 @@ namespace ProsoftAcPlugin
             this.sitoutrm_opt.Name = "sitoutrm_opt";
             this.sitoutrm_opt.Size = new System.Drawing.Size(55, 17);
             this.sitoutrm_opt.TabIndex = 35;
-            this.sitoutrm_opt.TabStop = true;
             this.sitoutrm_opt.Text = "Sit out";
             this.sitoutrm_opt.UseVisualStyleBackColor = true;
             this.sitoutrm_opt.CheckedChanged += new System.EventHandler(this.sitoutrm_opt_CheckedChanged);
+            this.sitoutrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.sitoutrm_opt_MouseDown);
             // 
             // foyerrm_opt
             // 
@@ -925,10 +921,10 @@ namespace ProsoftAcPlugin
             this.foyerrm_opt.Name = "foyerrm_opt";
             this.foyerrm_opt.Size = new System.Drawing.Size(51, 17);
             this.foyerrm_opt.TabIndex = 34;
-            this.foyerrm_opt.TabStop = true;
             this.foyerrm_opt.Text = "Foyer";
             this.foyerrm_opt.UseVisualStyleBackColor = true;
             this.foyerrm_opt.CheckedChanged += new System.EventHandler(this.foyerrm_opt_CheckedChanged);
+            this.foyerrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.foyerrm_opt_MouseDown);
             // 
             // entrancerm_opt
             // 
@@ -937,10 +933,10 @@ namespace ProsoftAcPlugin
             this.entrancerm_opt.Name = "entrancerm_opt";
             this.entrancerm_opt.Size = new System.Drawing.Size(68, 17);
             this.entrancerm_opt.TabIndex = 33;
-            this.entrancerm_opt.TabStop = true;
             this.entrancerm_opt.Text = "Entrance";
             this.entrancerm_opt.UseVisualStyleBackColor = true;
             this.entrancerm_opt.CheckedChanged += new System.EventHandler(this.entrancerm_opt_CheckedChanged);
+            this.entrancerm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.entrancerm_opt_MouseDown);
             // 
             // hallrm_opt
             // 
@@ -949,10 +945,10 @@ namespace ProsoftAcPlugin
             this.hallrm_opt.Name = "hallrm_opt";
             this.hallrm_opt.Size = new System.Drawing.Size(43, 17);
             this.hallrm_opt.TabIndex = 32;
-            this.hallrm_opt.TabStop = true;
             this.hallrm_opt.Text = "Hall";
             this.hallrm_opt.UseVisualStyleBackColor = true;
             this.hallrm_opt.CheckedChanged += new System.EventHandler(this.hallrm_opt_CheckedChanged);
+            this.hallrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.hallrm_opt_MouseDown);
             // 
             // utilrm_opt
             // 
@@ -961,10 +957,10 @@ namespace ProsoftAcPlugin
             this.utilrm_opt.Name = "utilrm_opt";
             this.utilrm_opt.Size = new System.Drawing.Size(50, 17);
             this.utilrm_opt.TabIndex = 31;
-            this.utilrm_opt.TabStop = true;
             this.utilrm_opt.Text = "Utility";
             this.utilrm_opt.UseVisualStyleBackColor = true;
             this.utilrm_opt.CheckedChanged += new System.EventHandler(this.utilrm_opt_CheckedChanged);
+            this.utilrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.utilrm_opt_MouseDown);
             // 
             // familyrm_opt
             // 
@@ -973,10 +969,10 @@ namespace ProsoftAcPlugin
             this.familyrm_opt.Name = "familyrm_opt";
             this.familyrm_opt.Size = new System.Drawing.Size(85, 17);
             this.familyrm_opt.TabIndex = 30;
-            this.familyrm_opt.TabStop = true;
             this.familyrm_opt.Text = "Family Room";
             this.familyrm_opt.UseVisualStyleBackColor = true;
             this.familyrm_opt.CheckedChanged += new System.EventHandler(this.familyrm_opt_CheckedChanged);
+            this.familyrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.familyrm_opt_MouseDown);
             // 
             // kitchenetterm_opt
             // 
@@ -985,10 +981,10 @@ namespace ProsoftAcPlugin
             this.kitchenetterm_opt.Name = "kitchenetterm_opt";
             this.kitchenetterm_opt.Size = new System.Drawing.Size(79, 17);
             this.kitchenetterm_opt.TabIndex = 29;
-            this.kitchenetterm_opt.TabStop = true;
             this.kitchenetterm_opt.Text = "Kitchenette";
             this.kitchenetterm_opt.UseVisualStyleBackColor = true;
             this.kitchenetterm_opt.CheckedChanged += new System.EventHandler(this.kitchenetterm_opt_CheckedChanged);
+            this.kitchenetterm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.kitchenetterm_opt_MouseDown);
             // 
             // combtoilrm_opt
             // 
@@ -997,10 +993,10 @@ namespace ProsoftAcPlugin
             this.combtoilrm_opt.Name = "combtoilrm_opt";
             this.combtoilrm_opt.Size = new System.Drawing.Size(109, 17);
             this.combtoilrm_opt.TabIndex = 28;
-            this.combtoilrm_opt.TabStop = true;
             this.combtoilrm_opt.Text = "Commbined Toilet";
             this.combtoilrm_opt.UseVisualStyleBackColor = true;
             this.combtoilrm_opt.CheckedChanged += new System.EventHandler(this.combtoilrm_opt_CheckedChanged);
+            this.combtoilrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.combtoilrm_opt_MouseDown);
             // 
             // toilrm_opt
             // 
@@ -1009,10 +1005,10 @@ namespace ProsoftAcPlugin
             this.toilrm_opt.Name = "toilrm_opt";
             this.toilrm_opt.Size = new System.Drawing.Size(51, 17);
             this.toilrm_opt.TabIndex = 27;
-            this.toilrm_opt.TabStop = true;
             this.toilrm_opt.Text = "Toilet";
             this.toilrm_opt.UseVisualStyleBackColor = true;
             this.toilrm_opt.CheckedChanged += new System.EventHandler(this.toilrm_opt_CheckedChanged);
+            this.toilrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.toilrm_opt_MouseDown);
             // 
             // washrm_opt
             // 
@@ -1021,10 +1017,10 @@ namespace ProsoftAcPlugin
             this.washrm_opt.Name = "washrm_opt";
             this.washrm_opt.Size = new System.Drawing.Size(53, 17);
             this.washrm_opt.TabIndex = 26;
-            this.washrm_opt.TabStop = true;
             this.washrm_opt.Text = "Wash";
             this.washrm_opt.UseVisualStyleBackColor = true;
             this.washrm_opt.CheckedChanged += new System.EventHandler(this.washrm_opt_CheckedChanged);
+            this.washrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.washrm_opt_MouseDown);
             // 
             // wcrm_opt
             // 
@@ -1033,10 +1029,10 @@ namespace ProsoftAcPlugin
             this.wcrm_opt.Name = "wcrm_opt";
             this.wcrm_opt.Size = new System.Drawing.Size(49, 17);
             this.wcrm_opt.TabIndex = 25;
-            this.wcrm_opt.TabStop = true;
             this.wcrm_opt.Text = "W. C";
             this.wcrm_opt.UseVisualStyleBackColor = true;
             this.wcrm_opt.CheckedChanged += new System.EventHandler(this.wcrm_opt_CheckedChanged);
+            this.wcrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.wcrm_opt_MouseDown);
             // 
             // bathrm_opt
             // 
@@ -1045,7 +1041,6 @@ namespace ProsoftAcPlugin
             this.bathrm_opt.Name = "bathrm_opt";
             this.bathrm_opt.Size = new System.Drawing.Size(47, 17);
             this.bathrm_opt.TabIndex = 24;
-            this.bathrm_opt.TabStop = true;
             this.bathrm_opt.Text = "Bath";
             this.bathrm_opt.UseVisualStyleBackColor = true;
             this.bathrm_opt.CheckedChanged += new System.EventHandler(this.bathrm_opt_CheckedChanged);
@@ -1057,10 +1052,10 @@ namespace ProsoftAcPlugin
             this.stre_opt.Name = "stre_opt";
             this.stre_opt.Size = new System.Drawing.Size(50, 17);
             this.stre_opt.TabIndex = 23;
-            this.stre_opt.TabStop = true;
             this.stre_opt.Text = "Store";
             this.stre_opt.UseVisualStyleBackColor = true;
             this.stre_opt.CheckedChanged += new System.EventHandler(this.stre_opt_CheckedChanged);
+            this.stre_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.stre_opt_MouseDown);
             // 
             // puja_opt
             // 
@@ -1069,10 +1064,10 @@ namespace ProsoftAcPlugin
             this.puja_opt.Name = "puja_opt";
             this.puja_opt.Size = new System.Drawing.Size(46, 17);
             this.puja_opt.TabIndex = 22;
-            this.puja_opt.TabStop = true;
             this.puja_opt.Text = "Puja";
             this.puja_opt.UseVisualStyleBackColor = true;
             this.puja_opt.CheckedChanged += new System.EventHandler(this.puja_opt_CheckedChanged);
+            this.puja_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.puja_opt_MouseDown);
             // 
             // kitrm_opt
             // 
@@ -1081,10 +1076,10 @@ namespace ProsoftAcPlugin
             this.kitrm_opt.Name = "kitrm_opt";
             this.kitrm_opt.Size = new System.Drawing.Size(61, 17);
             this.kitrm_opt.TabIndex = 21;
-            this.kitrm_opt.TabStop = true;
             this.kitrm_opt.Text = "Kitchen";
             this.kitrm_opt.UseVisualStyleBackColor = true;
             this.kitrm_opt.CheckedChanged += new System.EventHandler(this.kitrm_opt_CheckedChanged);
+            this.kitrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.kitrm_opt_MouseDown);
             // 
             // diningrm_opt
             // 
@@ -1093,10 +1088,10 @@ namespace ProsoftAcPlugin
             this.diningrm_opt.Name = "diningrm_opt";
             this.diningrm_opt.Size = new System.Drawing.Size(55, 17);
             this.diningrm_opt.TabIndex = 20;
-            this.diningrm_opt.TabStop = true;
             this.diningrm_opt.Text = "Dining";
             this.diningrm_opt.UseVisualStyleBackColor = true;
             this.diningrm_opt.CheckedChanged += new System.EventHandler(this.diningrm_opt_CheckedChanged);
+            this.diningrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.diningrm_opt_MouseDown);
             // 
             // livingrm_opt
             // 
@@ -1105,10 +1100,10 @@ namespace ProsoftAcPlugin
             this.livingrm_opt.Name = "livingrm_opt";
             this.livingrm_opt.Size = new System.Drawing.Size(53, 17);
             this.livingrm_opt.TabIndex = 19;
-            this.livingrm_opt.TabStop = true;
             this.livingrm_opt.Text = "Living";
             this.livingrm_opt.UseVisualStyleBackColor = true;
             this.livingrm_opt.CheckedChanged += new System.EventHandler(this.livingrm_opt_CheckedChanged);
+            this.livingrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.livingrm_opt_MouseDown);
             // 
             // workrm_opt
             // 
@@ -1117,10 +1112,10 @@ namespace ProsoftAcPlugin
             this.workrm_opt.Name = "workrm_opt";
             this.workrm_opt.Size = new System.Drawing.Size(76, 17);
             this.workrm_opt.TabIndex = 18;
-            this.workrm_opt.TabStop = true;
             this.workrm_opt.Text = "Work Area";
             this.workrm_opt.UseVisualStyleBackColor = true;
             this.workrm_opt.CheckedChanged += new System.EventHandler(this.workrm_opt_CheckedChanged);
+            this.workrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.workrm_opt_MouseDown);
             // 
             // loungerm_opt
             // 
@@ -1129,10 +1124,10 @@ namespace ProsoftAcPlugin
             this.loungerm_opt.Name = "loungerm_opt";
             this.loungerm_opt.Size = new System.Drawing.Size(61, 17);
             this.loungerm_opt.TabIndex = 17;
-            this.loungerm_opt.TabStop = true;
             this.loungerm_opt.Text = "Lounge";
             this.loungerm_opt.UseVisualStyleBackColor = true;
             this.loungerm_opt.CheckedChanged += new System.EventHandler(this.loungerm_opt_CheckedChanged);
+            this.loungerm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.loungerm_opt_MouseDown);
             // 
             // passagerm_opt
             // 
@@ -1141,10 +1136,10 @@ namespace ProsoftAcPlugin
             this.passagerm_opt.Name = "passagerm_opt";
             this.passagerm_opt.Size = new System.Drawing.Size(66, 17);
             this.passagerm_opt.TabIndex = 16;
-            this.passagerm_opt.TabStop = true;
             this.passagerm_opt.Text = "Passage";
             this.passagerm_opt.UseVisualStyleBackColor = true;
             this.passagerm_opt.CheckedChanged += new System.EventHandler(this.passagerm_opt_CheckedChanged);
+            this.passagerm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.passagerm_opt_MouseDown);
             // 
             // multipurrm_opt
             // 
@@ -1153,10 +1148,10 @@ namespace ProsoftAcPlugin
             this.multipurrm_opt.Name = "multipurrm_opt";
             this.multipurrm_opt.Size = new System.Drawing.Size(119, 17);
             this.multipurrm_opt.TabIndex = 15;
-            this.multipurrm_opt.TabStop = true;
             this.multipurrm_opt.Text = "Multi-purpose Room";
             this.multipurrm_opt.UseVisualStyleBackColor = true;
             this.multipurrm_opt.CheckedChanged += new System.EventHandler(this.multipurrm_opt_CheckedChanged);
+            this.multipurrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.multipurrm_opt_MouseDown);
             // 
             // dressrm_opt
             // 
@@ -1165,10 +1160,10 @@ namespace ProsoftAcPlugin
             this.dressrm_opt.Name = "dressrm_opt";
             this.dressrm_opt.Size = new System.Drawing.Size(83, 17);
             this.dressrm_opt.TabIndex = 14;
-            this.dressrm_opt.TabStop = true;
             this.dressrm_opt.Text = "Dress Room";
             this.dressrm_opt.UseVisualStyleBackColor = true;
             this.dressrm_opt.CheckedChanged += new System.EventHandler(this.dressrm_opt_CheckedChanged);
+            this.dressrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dressrm_opt_MouseDown);
             // 
             // drawrm_opt
             // 
@@ -1177,10 +1172,10 @@ namespace ProsoftAcPlugin
             this.drawrm_opt.Name = "drawrm_opt";
             this.drawrm_opt.Size = new System.Drawing.Size(95, 17);
             this.drawrm_opt.TabIndex = 13;
-            this.drawrm_opt.TabStop = true;
             this.drawrm_opt.Text = "Drawing Room";
             this.drawrm_opt.UseVisualStyleBackColor = true;
             this.drawrm_opt.CheckedChanged += new System.EventHandler(this.drawrm_opt_CheckedChanged);
+            this.drawrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.drawrm_opt_MouseDown);
             // 
             // tvrm_opt
             // 
@@ -1189,10 +1184,10 @@ namespace ProsoftAcPlugin
             this.tvrm_opt.Name = "tvrm_opt";
             this.tvrm_opt.Size = new System.Drawing.Size(73, 17);
             this.tvrm_opt.TabIndex = 12;
-            this.tvrm_opt.TabStop = true;
             this.tvrm_opt.Text = "T.V Room";
             this.tvrm_opt.UseVisualStyleBackColor = true;
             this.tvrm_opt.CheckedChanged += new System.EventHandler(this.tvrm_opt_CheckedChanged);
+            this.tvrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tvrm_opt_MouseDown);
             // 
             // veranrm_opt
             // 
@@ -1201,10 +1196,10 @@ namespace ProsoftAcPlugin
             this.veranrm_opt.Name = "veranrm_opt";
             this.veranrm_opt.Size = new System.Drawing.Size(71, 17);
             this.veranrm_opt.TabIndex = 11;
-            this.veranrm_opt.TabStop = true;
             this.veranrm_opt.Text = "Verandah";
             this.veranrm_opt.UseVisualStyleBackColor = true;
             this.veranrm_opt.CheckedChanged += new System.EventHandler(this.veranrm_opt_CheckedChanged);
+            this.veranrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.veranrm_opt_MouseDown);
             // 
             // servanrm_opt
             // 
@@ -1213,10 +1208,10 @@ namespace ProsoftAcPlugin
             this.servanrm_opt.Name = "servanrm_opt";
             this.servanrm_opt.Size = new System.Drawing.Size(100, 17);
             this.servanrm_opt.TabIndex = 10;
-            this.servanrm_opt.TabStop = true;
             this.servanrm_opt.Text = "Servant\'s Room";
             this.servanrm_opt.UseVisualStyleBackColor = true;
             this.servanrm_opt.CheckedChanged += new System.EventHandler(this.servanrm_opt_CheckedChanged);
+            this.servanrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.servanrm_opt_MouseDown);
             // 
             // attachedtoil_opt
             // 
@@ -1225,10 +1220,10 @@ namespace ProsoftAcPlugin
             this.attachedtoil_opt.Name = "attachedtoil_opt";
             this.attachedtoil_opt.Size = new System.Drawing.Size(97, 17);
             this.attachedtoil_opt.TabIndex = 9;
-            this.attachedtoil_opt.TabStop = true;
             this.attachedtoil_opt.Text = "Attached Toilet";
             this.attachedtoil_opt.UseVisualStyleBackColor = true;
             this.attachedtoil_opt.CheckedChanged += new System.EventHandler(this.attachedtoil_opt_CheckedChanged);
+            this.attachedtoil_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.attachedtoil_opt_MouseDown);
             // 
             // com_toilrm_opt
             // 
@@ -1237,10 +1232,10 @@ namespace ProsoftAcPlugin
             this.com_toilrm_opt.Name = "com_toilrm_opt";
             this.com_toilrm_opt.Size = new System.Drawing.Size(95, 17);
             this.com_toilrm_opt.TabIndex = 8;
-            this.com_toilrm_opt.TabStop = true;
             this.com_toilrm_opt.Text = "Common Toilet";
             this.com_toilrm_opt.UseVisualStyleBackColor = true;
             this.com_toilrm_opt.CheckedChanged += new System.EventHandler(this.com_toilrm_opt_CheckedChanged);
+            this.com_toilrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.com_toilrm_opt_MouseDown);
             // 
             // guestrm_opt
             // 
@@ -1249,10 +1244,10 @@ namespace ProsoftAcPlugin
             this.guestrm_opt.Name = "guestrm_opt";
             this.guestrm_opt.Size = new System.Drawing.Size(84, 17);
             this.guestrm_opt.TabIndex = 7;
-            this.guestrm_opt.TabStop = true;
             this.guestrm_opt.Text = "Guest Room";
             this.guestrm_opt.UseVisualStyleBackColor = true;
             this.guestrm_opt.CheckedChanged += new System.EventHandler(this.guestrm_opt_CheckedChanged);
+            this.guestrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.guestrm_opt_MouseDown);
             // 
             // studyrm_opt
             // 
@@ -1261,10 +1256,10 @@ namespace ProsoftAcPlugin
             this.studyrm_opt.Name = "studyrm_opt";
             this.studyrm_opt.Size = new System.Drawing.Size(83, 17);
             this.studyrm_opt.TabIndex = 6;
-            this.studyrm_opt.TabStop = true;
             this.studyrm_opt.Text = "Study Room";
             this.studyrm_opt.UseVisualStyleBackColor = true;
             this.studyrm_opt.CheckedChanged += new System.EventHandler(this.studyrm_opt_CheckedChanged);
+            this.studyrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.studyrm_opt_MouseDown);
             // 
             // livdinrm_opt
             // 
@@ -1273,10 +1268,10 @@ namespace ProsoftAcPlugin
             this.livdinrm_opt.Name = "livdinrm_opt";
             this.livdinrm_opt.Size = new System.Drawing.Size(94, 17);
             this.livdinrm_opt.TabIndex = 5;
-            this.livdinrm_opt.TabStop = true;
             this.livdinrm_opt.Text = "Living/Dinning";
             this.livdinrm_opt.UseVisualStyleBackColor = true;
             this.livdinrm_opt.CheckedChanged += new System.EventHandler(this.livdinrm_opt_CheckedChanged);
+            this.livdinrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.livdinrm_opt_MouseDown);
             // 
             // livingkitrm_opt
             // 
@@ -1285,10 +1280,10 @@ namespace ProsoftAcPlugin
             this.livingkitrm_opt.Name = "livingkitrm_opt";
             this.livingkitrm_opt.Size = new System.Drawing.Size(94, 17);
             this.livingkitrm_opt.TabIndex = 4;
-            this.livingkitrm_opt.TabStop = true;
             this.livingkitrm_opt.Text = "Living/Kitchen";
             this.livingkitrm_opt.UseVisualStyleBackColor = true;
             this.livingkitrm_opt.CheckedChanged += new System.EventHandler(this.livingkitrm_opt_CheckedChanged);
+            this.livingkitrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.livingkitrm_opt_MouseDown);
             // 
             // dinnigkitrm_opt
             // 
@@ -1297,10 +1292,10 @@ namespace ProsoftAcPlugin
             this.dinnigkitrm_opt.Name = "dinnigkitrm_opt";
             this.dinnigkitrm_opt.Size = new System.Drawing.Size(102, 17);
             this.dinnigkitrm_opt.TabIndex = 3;
-            this.dinnigkitrm_opt.TabStop = true;
             this.dinnigkitrm_opt.Text = "Dinning/Kitchen";
             this.dinnigkitrm_opt.UseVisualStyleBackColor = true;
             this.dinnigkitrm_opt.CheckedChanged += new System.EventHandler(this.dinnigkitrm_opt_CheckedChanged);
+            this.dinnigkitrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dinnigkitrm_opt_MouseDown);
             // 
             // chbedrm_opt
             // 
@@ -1309,10 +1304,10 @@ namespace ProsoftAcPlugin
             this.chbedrm_opt.Name = "chbedrm_opt";
             this.chbedrm_opt.Size = new System.Drawing.Size(91, 17);
             this.chbedrm_opt.TabIndex = 2;
-            this.chbedrm_opt.TabStop = true;
             this.chbedrm_opt.Text = "Ch.Bed Room";
             this.chbedrm_opt.UseVisualStyleBackColor = true;
             this.chbedrm_opt.CheckedChanged += new System.EventHandler(this.chbedrm_opt_CheckedChanged);
+            this.chbedrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.chbedrm_opt_MouseDown);
             // 
             // Mbedrm_opt
             // 
@@ -1321,10 +1316,9 @@ namespace ProsoftAcPlugin
             this.Mbedrm_opt.Name = "Mbedrm_opt";
             this.Mbedrm_opt.Size = new System.Drawing.Size(87, 17);
             this.Mbedrm_opt.TabIndex = 1;
-            this.Mbedrm_opt.TabStop = true;
             this.Mbedrm_opt.Text = "M.Bed Room";
             this.Mbedrm_opt.UseVisualStyleBackColor = true;
-            this.Mbedrm_opt.CheckedChanged += new System.EventHandler(this.Mbedrm_opt_CheckedChanged);
+            this.Mbedrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Mbedrm_opt_MouseDown);
             // 
             // bedrm_opt
             // 
@@ -1333,10 +1327,9 @@ namespace ProsoftAcPlugin
             this.bedrm_opt.Name = "bedrm_opt";
             this.bedrm_opt.Size = new System.Drawing.Size(75, 17);
             this.bedrm_opt.TabIndex = 0;
-            this.bedrm_opt.TabStop = true;
             this.bedrm_opt.Text = "Bed Room";
             this.bedrm_opt.UseVisualStyleBackColor = true;
-            this.bedrm_opt.CheckedChanged += new System.EventHandler(this.bedrm_opt_CheckedChanged);
+            this.bedrm_opt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bedrm_opt_MouseDown);
             // 
             // RoomNameForm
             // 
@@ -1344,8 +1337,12 @@ namespace ProsoftAcPlugin
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 524);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RoomNameForm";
-            this.Text = "RoomNameForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "RoomName";
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.RoomNameForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();

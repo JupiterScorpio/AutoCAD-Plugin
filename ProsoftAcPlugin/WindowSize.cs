@@ -12,12 +12,9 @@ namespace ProsoftAcPlugin
 {
     public partial class WindowSize : Form
     {
-        bool bheight, bwidth;
         public WindowSize()
         {
             InitializeComponent();
-            bheight = false;
-            bwidth = false;
         }
 
         private void width_txt_TextChanged(object sender, EventArgs e)
@@ -35,7 +32,7 @@ namespace ProsoftAcPlugin
             Plugin.nCurwidth = Convert.ToInt32(width_txt.Text);
             Plugin.nCurheight = Convert.ToInt32(height_txt.Text);
             windowrule tmpwindow =new windowrule();
-            tmpwindow.pl = Commands.curPline;
+            tmpwindow.pl = Commands.curPLine;
             tmpwindow.height = Plugin.nCurheight;
             tmpwindow.width = Plugin.nCurwidth;
             Commands.awindowrule.Add(tmpwindow);
