@@ -579,6 +579,258 @@ namespace NBCLayers
                 case "36":
                     strresult = "THIRTY SIXTH FLOOR";
                     break;
+                case "37":
+                    strresult = "THIRTY SEVENTH FLOOR";
+                    break;
+                case "38":
+                    strresult = "THIRTY EIGHTH FLOOR";
+                    break;
+                case "39":
+                    strresult = "THIRTY NINETH FLOOR";
+                    break;
+                case "40":
+                    strresult = "FORTIETH FLOOR";
+                    break;
+                case "41":
+                    strresult = "FORTY FIRST FLOOR";
+                    break;
+                case "42":
+                    strresult = "FORTY SECOND FLOOR";
+                    break;
+                case "43":
+                    strresult = "FORTY THIRD FLOOR";
+                    break;
+                case "44":
+                    strresult = "FORTY FOURTH FLOOR";
+                    break;
+                case "45":
+                    strresult = "FORTY FIFTH FLOOR";
+                    break;
+                case "46":
+                    strresult = "FORTY SIXTH FLOOR";
+                    break;
+                case "47":
+                    strresult = "FORTY SEVENTH FLOOR";
+                    break;
+                case "48":
+                    strresult = "FORTY EIGHTH FLOOR";
+                    break;
+                case "49":
+                    strresult = "FORTY NINETH FLOOR";
+                    break;
+                case "50":
+                    strresult = "FIFTIETH FLOOR";
+                    break;
+                case "51":
+                    strresult = "FIFTY FIRST FLOOR";
+                    break;
+                case "52":
+                    strresult = "FIFTY SECOND FLOOR";
+                    break;
+                case "53":
+                    strresult = "FIFTY THIRD FLOOR";
+                    break;
+                case "54":
+                    strresult = "FIFTY FOURTH FLOOR";
+                    break;
+                case "55":
+                    strresult = "FIFTY FIFTH FLOOR";
+                    break;
+                case "56":
+                    strresult = "FIFTY SIXTH FLOOR";
+                    break;
+                case "57":
+                    strresult = "FIFTY SEVENTH FLOOR";
+                    break;
+                case "58":
+                    strresult = "FIFTY EIGHTH FLOOR";
+                    break;
+                case "59":
+                    strresult = "FIFTY NINETH FLOOR";
+                    break;
+                case "60":
+                    strresult = "SIXTIETH FLOOR";
+                    break;
+                case "61":
+                    strresult = "SIXTY FIRST FLOOR";
+                    break;
+                case "62":
+                    strresult = "SIXTY SECOND FLOOR";
+                    break;
+                case "63":
+                    strresult = "SIXTY THIRD FLOOR";
+                    break;
+                case "64":
+                    strresult = "SIXTY FOURTH FLOOR";
+                    break;
+                case "65":
+                    strresult = "SIXTY FIFTH FLOOR";
+                    break;
+                case "66":
+                    strresult = "SIXTY SIXTH FLOOR";
+                    break;
+                case "67":
+                    strresult = "SIXTY SEVENTH FLOOR";
+                    break;
+                case "68":
+                    strresult = "SIXTY EIGHTH FLOOR";
+                    break;
+                case "69":
+                    strresult = "SIXTY NINETH FLOOR";
+                    break;
+                case "70":
+                    strresult = "SEVENTIETH FLOOR";
+                    break;
+                case "71":
+                    strresult = "SEVENTY FIRST FLOOR";
+                    break;
+                case "72":
+                    strresult = "SEVENTY SECOND FLOOR";
+                    break;
+                case "73":
+                    strresult = "SEVENTY THIRD FLOOR";
+                    break;
+                case "74":
+                    strresult = "SEVENTY FOURTH FLOOR";
+                    break;
+                case "75":
+                    strresult = "SEVENTY FIFTH FLOOR";
+                    break;
+                case "76":
+                    strresult = "SEVENTY SIXTH FLOOR";
+                    break;
+                case "77":
+                    strresult = "SEVENTY SEVENTH FLOOR";
+                    break;
+                case "78":
+                    strresult = "SEVENTY EIGHTH FLOOR";
+                    break;
+                case "79":
+                    strresult = "SEVENTY NINETH FLOOR";
+                    break;
+                case "80":
+                    strresult = "EIGHTIETH FLOOR";
+                    break;
+                case "81":
+                    strresult = "EIGHTY FIRST FLOOR";
+                    break;
+                case "82":
+                    strresult = "EIGHTY SECOND FLOOR";
+                    break;
+                case "83":
+                    strresult = "EIGHTY THIRD FLOOR";
+                    break;
+                case "84":
+                    strresult = "EIGHTY FOURTH FLOOR";
+                    break;
+                case "85":
+                    strresult = "EIGHTY FIFTH FLOOR";
+                    break;
+                case "86":
+                    strresult = "EIGHTY SIXTH FLOOR";
+                    break;
+                case "87":
+                    strresult = "EIGHTY SEVENTH FLOOR";
+                    break;
+                case "88":
+                    strresult = "EIGHTY EIGHTH FLOOR";
+                    break;
+                case "89":
+                    strresult = "EIGHTY NINETH FLOOR";
+                    break;
+                case "90":
+                    strresult = "NINETIETH FLOOR";
+                    break;
+                case "91":
+                    strresult = "NINETY FIRST FLOOR";
+                    break;
+                case "92":
+                    strresult = "NINETY SECOND FLOOR";
+                    break;
+                case "93":
+                    strresult = "NINETY THIRD FLOOR";
+                    break;
+                case "94":
+                    strresult = "NINETY FOURTH FLOOR";
+                    break;
+                case "95":
+                    strresult = "NINETY FIFTH FLOOR";
+                    break;
+                case "96":
+                    strresult = "NINETY SIXTH FLOOR";
+                    break;
+                case "97":
+                    strresult = "NINETY SEVENTH FLOOR";
+                    break;
+                case "98":
+                    strresult = "NINETY EIGHTH FLOOR";
+                    break;
+                case "99":
+                    strresult = "NINETY NINETH FLOOR";
+                    break;
+                case "100":
+                    strresult = "ONE HUNDRED FLOOR";
+                    break;
+                case "101":
+                    strresult = "ONE HUNDRED FIRST FLOOR";
+                    break;
+                case "102":
+                    strresult = "ONE HUNDRED SECOND FLOOR";
+                    break;
+                case "103":
+                    strresult = "ONE HUNDRED THIRD FLOOR";
+                    break;
+                case "104":
+                    strresult = "ONE HUNDRED FOURTH FLOOR";
+                    break;
+                case "105":
+                    strresult = "ONE HUNDRED FIFTH FLOOR";
+                    break;
+                case "106":
+                    strresult = "ONE HUNDRED SIXTH FLOOR";
+                    break;
+                case "107":
+                    strresult = "ONE HUNDRED SEVENTH FLOOR";
+                    break;
+                case "108":
+                    strresult = "ONE HUNDRED EIGHTH FLOOR";
+                    break;
+                case "109":
+                    strresult = "ONE HUNDRED NINETH FLOOR";
+                    break;
+                case "110":
+                    strresult = "ONE HUNDRED TENTH FLOOR";
+                    break;
+                case "111":
+                    strresult = "ONE HUNDRED ELEVENTH FLOOR";
+                    break;
+                case "112":
+                    strresult = "ONE HUNDRED TWELFTH FLOOR";
+                    break;
+                case "113":
+                    strresult = "ONE HUNDRED THIRTEENTH FLOOR";
+                    break;
+                case "114":
+                    strresult = "ONE HUNDRED FOURTEENTH FLOOR";
+                    break;
+                case "115":
+                    strresult = "ONE HUNDRED FIFTEENTH FLOOR";
+                    break;
+                case "116":
+                    strresult = "ONE HUNDRED SIXTEENTH FLOOR";
+                    break;
+                case "117":
+                    strresult = "ONE HUNDRED SEVENTEENTH FLOOR";
+                    break;
+                case "118":
+                    strresult = "ONE HUNDRED EIGHTTEENTH FLOOR";
+                    break;
+                case "119":
+                    strresult = "ONE HUNDRED NINETEENTH FLOOR";
+                    break;
+                case "120":
+                    strresult = "ONE HUNDRED TWENTIETH FLOOR";
+                    break;
             }
             return strresult;
         }
