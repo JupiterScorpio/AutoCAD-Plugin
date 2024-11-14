@@ -343,7 +343,7 @@ namespace NBCLayers
                         if (result.Status == PromptStatus.OK)
                         {
                             Polyline poly = tr.GetObject(result.ObjectId, OpenMode.ForRead, false) as Polyline;
-                            if ((poly != null)&&(poly.Layer== "_FloorInSection"))
+                            if ((poly != null) && (poly.Layer == "_FloorInSection"))
                             {
                                 TextStyleTable ts = (TextStyleTable)tr.GetObject(db.TextStyleTableId, OpenMode.ForRead);
                                 ObjectId mtStyleid = db.Textstyle;
@@ -375,17 +375,20 @@ namespace NBCLayers
                                 Point3d ptbottom = ProsoftAcPlugin.Commands.Getbottom(poly);
                                 double width = ptright.X - ptleft.X;
                                 double height = pttop.Y - ptbottom.Y;
-                                txt.Height = height/3; //<==change to your default height
-                                txt.Width = width/3;
+                                txt.Height = height / 3; //<==change to your default height
+                                txt.Width = width / 3;
                                 txt.TextHeight = 0.1;
                                 txt.TextStyleId = mtStyleid;
                                 txt.Attachment = AttachmentPoint.BottomLeft;
-                                txt.Location = new Point3d(ptleft.X+width/2, ptbottom.Y+height/2, 0);
+                                txt.Location = new Point3d(ptleft.X + width / 2, ptbottom.Y + height / 2, 0);
                                 btr.AppendEntity(txt);
                                 tr.AddNewlyCreatedDBObject(txt, true);
                             }
                             else
+                            {
                                 Application.ShowAlertDialog("PolyLine not selected or incorrect layer!");
+                                return;
+                            }
                         }
 
                     }
@@ -444,8 +447,8 @@ namespace NBCLayers
                                 Point3d ptbottom = ProsoftAcPlugin.Commands.Getbottom(poly1);
                                 double width = ptright.X - ptleft.X;
                                 double height = pttop.Y - ptbottom.Y;
-                                txt.Height = height/3; //<==change to your default height
-                                txt.Width = width/3;
+                                txt.Height = height / 3; //<==change to your default height
+                                txt.Width = width / 3;
                                 txt.TextHeight = 0.3;
                                 txt.TextStyleId = mtStyleid;
                                 txt.Attachment = AttachmentPoint.BottomLeft;
@@ -454,7 +457,10 @@ namespace NBCLayers
                                 tr.AddNewlyCreatedDBObject(txt, true);
                             }
                             else
+                            {
                                 Application.ShowAlertDialog("PolyLine not selected or incorrect layer!");
+                                return;
+                            }
                         }
                     }
                     tr.Commit();

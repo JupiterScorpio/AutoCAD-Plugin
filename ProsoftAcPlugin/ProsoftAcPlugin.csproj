@@ -732,7 +732,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy D:\Workstation\Prasad\ACAD\autocad-addin-NBC\ProsoftAcPlugin\bin\x64\Release\Preval.dll D:\Workstation\Prasad\ACAD\AutoCadPlugin\AutoCadPlugin\bin\Release\Preval.bundle\Contents\Preval.dll
+    <PostBuildEvent>copy D:\Workstation\ADSSoftek\ACAD\autocad-addin-NBC\ProsoftAcPlugin\bin\x64\Release\Preval.dll D:\Workstation\ADSSoftek\ACAD\AutoCadPlugin\AutoCadPlugin\bin\Release\Preval.bundle\Contents\Preval.dll
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
